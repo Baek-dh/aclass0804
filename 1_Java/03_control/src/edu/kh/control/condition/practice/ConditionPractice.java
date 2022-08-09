@@ -102,8 +102,44 @@ public class ConditionPractice {
 	
 	
 	public void practice4() {
+		Scanner sc = new Scanner(System.in);
 		
+		System.out.print("키(m)를 입력해 주세요 : ");
+		double height = sc.nextDouble();
+		
+		System.out.print("몸무게(kg)를 입력해 주세요 : ");
+		double weight = sc.nextDouble();
+		
+		// BMI = 몸무게 / (키(m) * 키(m))
+		double bmi = weight / (height * height);
+		
+//		18.5미만일 경우 저체중  
+//		18.5이상 23미만일 경우 정상체중
+//		23이상 25미만일 경우 과체중 
+//		25이상 30미만일 경우 비만
+//		30이상일 경우 고도 비만
+		
+		String result ;
+		
+		if(bmi < 18.5) {
+			result = "저체중";
+			
+		} else if(bmi < 23) {
+			result = "정상체중";
+			
+		} else if(bmi < 25) {
+			result = "과체중";
+			
+		} else if(bmi < 30) {
+			result = "비만";
+			
+		} else {
+			result = "고도비만";
+		}
+
+		System.out.println(result);
 	}
+	
 	
 	public void practice5() {
 		
