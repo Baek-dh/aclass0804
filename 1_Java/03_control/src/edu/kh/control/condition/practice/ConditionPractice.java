@@ -68,16 +68,38 @@ public class ConditionPractice {
 			System.out.println("불합격입니다.");
 		}
 		
-		
 	}
-	
-	
-	
 	
 	
 	public void practice3() {
 		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("1~12 사이 정수 입력 : ");
+		int month = sc.nextInt();
+		
+		// 30일 : 4 6 9 11
+		// 31일 : 1 3 5 7 8 10 12
+		// 28일 : 2
+		switch(month) {
+		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+			System.out.println(month + "월은 31일 까지 있습니다.");
+			break;
+			
+		case 4: case 6: case 9: case 11:
+			System.out.println(month + "월은 30일 까지 있습니다.");
+			break;
+		
+		case 2:
+			System.out.println(month + "월은 28일 까지 있습니다.");
+			break;
+			
+		default: System.out.println(month + "월은 잘못 입력된 달입니다.");
+		}
+
 	}
+	
+	
 	
 	public void practice4() {
 		
