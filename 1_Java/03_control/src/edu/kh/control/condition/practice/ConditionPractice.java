@@ -112,6 +112,7 @@ public class ConditionPractice {
 		
 		// BMI = 몸무게 / (키(m) * 키(m))
 		double bmi = weight / (height * height);
+		System.out.println("BMI 지수 : " + bmi);
 		
 //		18.5미만일 경우 저체중  
 //		18.5이상 23미만일 경우 정상체중
@@ -141,7 +142,64 @@ public class ConditionPractice {
 	}
 	
 	
+	
+	
 	public void practice5() {
+		Scanner sc = new Scanner(System.in);
+		
+		// 변수의 장점 : 재사용성
+		
+		System.out.print("중간 고사 점수 : ");
+		double midTerm = sc.nextInt(); // int로 입력 받아도 대입 연산 시 double 자동 형변환
+		
+		System.out.print("기말 고사 점수 : ");
+		double finalTerm = sc.nextInt();
+		
+		System.out.print("과제 점수 : ");
+		double report = sc.nextInt();
+		
+		System.out.print("출석 횟수 : ");
+		double attendance = sc.nextInt();
+		
+		// 각각의 점수를 비율에 맞게 변경
+		midTerm   *= 0.2;   // midTerm = midTerm * 0.2;
+		finalTerm *= 0.3;   
+		report    *= 0.3;   
+		//attendance *= 1; // attendance = attendance * 5 * 0.2;
+		
+		System.out.println("================= 결과 =================");
+		
+		
+		if(attendance <= 20 * (1 - 0.3)  ) { // 14번 이하 출석 했을 경우
+			System.out.println("Fail [출석 횟수 부족] (" + (int)attendance + "/20)");
+													// 소수점 버림 처리
+			
+		}else { // 출석 만족
+			System.out.printf("중간 고사 점수(20) : %.1f \n" , midTerm);
+			System.out.printf("기말 고사 점수(30) : %.1f \n" , finalTerm);
+			System.out.printf("과제 점수     (30) : %.1f \n" , report);
+			System.out.printf("출석 점수     (20) : %.1f \n" , attendance);
+			
+			double sum =  midTerm + finalTerm + report + attendance;
+			
+			System.out.printf("총점 : %.1f \n" , sum);
+			
+			if(sum >= 70.0) {
+				System.out.println("PASS");
+			}else {
+				System.out.println("Fail [점수 미달]");
+			}
+		}
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
