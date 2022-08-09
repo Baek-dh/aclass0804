@@ -12,11 +12,20 @@ public class ConditionRun {
 //		ex.test2();
 		
 //		ex.ex1();
-		ex.ex2();
+//		ex.ex2();
+//		ex.ex3();
+//		ex.ex4();
+//		ex.ex5();
 	
 		
+		SwitchExample switchEx = new SwitchExample();
 		
-		
+//		switchEx.ex1();
+//		switchEx.ex2();
+//		switchEx.ex3();
+//		switchEx.ex4();
+		switchEx.ex4v2();
+//		switchEx.ex5();
 		
 		
 	}
