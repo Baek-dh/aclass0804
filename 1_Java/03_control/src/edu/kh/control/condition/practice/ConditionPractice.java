@@ -194,12 +194,4 @@ public class ConditionPractice {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 }
