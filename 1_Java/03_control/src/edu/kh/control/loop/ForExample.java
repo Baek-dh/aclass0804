@@ -330,11 +330,187 @@ public class ForExample {
 			
 			System.out.println(); // 줄 바꿈
 		}
+	}
+	
+	
+	public void ex13() {
+		
+		// 2중 for문을 이용하여 다음 모양을 출력하세요.
+		
+		// 1
+		// 12
+		// 123
+		// 1234
+		
+		// 1234
+		// 1234
+		// 1234
+		// 1234
+		
+		for(int x=1; x<=4 ; x++) { // 4번 반복
+			
+			// 1234
+			for(int i=1 ; i<=x ; i++) {
+				System.out.print(i);
+			}
+			
+			System.out.println(); // 줄 바꿈
+		}
 		
 	}
 	
 	
+	public void ex14() {
+		// 2중 for문을 이용하여 다음 모양을 출력하세요.
+		
+		// 4
+		// 43
+		// 432
+		// 4321
+		
+		// 4321
+		// 4321
+		// 4321
+		// 4321
+		
+		for(int x=4 ; x>=1 ; x--) {
+			
+			for(int i=4 ; i>=x ; i--) {
+				System.out.print(i);
+			}
+			
+			System.out.println();
+		}
+		
+		
+		
+		
+		/*
+		 * for(int x=1 ; x<=4 ; x++) {
+		 * 
+		 * for(int i=4 ; i>= 5-x ; i--) { System.out.print(i); }
+		 * 
+		 * System.out.println(); }
+		 */
+		
+	}
 	
+	
+	public void ex15() {
+		// 2중 for문을 이용하여 다음 모양을 출력하세요.
+		
+		// 입력된 정수 : 4
+		// 4321
+		// 321
+		// 21
+		// 1
+		
+		// 입력된 정수 : 5
+		// 54321
+		// 4321
+		// 321
+		// 21
+		// 1
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("입력된 정수 : ");
+		int input = sc.nextInt();
+
+		for(int x=input ; x>=1 ; x--) {
+		
+			// 54321 같이 한 줄 출력
+			for(int i = x ; i>=1 ; i--) {
+				System.out.print(i);
+			}
+			
+			System.out.println(); // 줄 바꿈
+		}
+	}
+	
+	
+	public void ex16() {
+		
+		// 2중 for문을 이용하여 다음 모양을 출력하세요.
+		
+		// *
+		// **
+		// ***
+		// ****
+		// *****
+		
+		// row == 행(한 줄)  ,  column == 열(한 칸)
+		for(int row = 1 ; row <= 5 ; row++) {
+			
+			for(int col=1 ; col <= row ; col++) {
+				System.out.print("*");
+			}
+			
+			System.out.println();
+		}
+	}
+	
+	
+	public void ex17() {
+		
+		// 합계 : sum  
+		// 개수 : count
+		
+		// * count, %(나머지), for문을 이용한 검색 
+		
+		// 1 부터 20 사이의 3의 배수의 개수 출력 
+		
+		// ex) 3 6 9 12 15 18
+		//     sum : 63
+		//     count : 6
+		
+		int sum = 0;
+		int count = 0; // 수를 셀 때는 0부터 1씩 증가시키면서 세는 것이 보통 
+		
+		for(int i = 1 ; i <= 20 ; i++) {
+			
+			// 3의 배수만 출력
+			if(i % 3 == 0) {
+				System.out.print(i + " ");
+				sum += i; // 누적
+				count++; // 1증가
+			}
+ 		}
+		
+		// \n : 개행문자
+		System.out.println("\nsum : " + sum);
+		System.out.println("count : " + count);
+		
+	}
+	
+	
+	public void ex18() {
+		
+		// 2중 for문과 count를 이용해서 아래 모양 출력하기
+		
+		//  1  2  3  4
+		//  5  6  7  8
+		//  9 10 11 12
+		
+		int count = 1;
+		
+		for(int row = 1 ; row <= 3 ; row++) {
+			
+			for(int col = 1 ; col <= 4 ; col++) {
+				
+				//System.out.printf("%3d", count);
+				//count++;
+			
+				System.out.printf("%3d", count++);
+				// 후위 증감 연산을 이용하여
+				// 출력 후 count 값을 1 증가
+				
+			}
+			
+			System.out.println(); // 줄바꿈
+		}
+		
+	}
 	
 	
 	
