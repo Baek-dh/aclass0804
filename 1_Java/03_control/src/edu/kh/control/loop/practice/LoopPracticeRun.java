@@ -8,7 +8,11 @@ public class LoopPracticeRun {
 
 //		lp.practice4();
 //		lp.practice6();
-		lp.practice9();
+//		lp.practice9();
+//		lp.practice10();
+		lp.practice11();
+//		lp.practice12();
+//		lp.practice13();
 	}
 	
 }
