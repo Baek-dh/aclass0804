@@ -503,9 +503,4 @@ public class ArrayExample {
 	
 	
 	
-	
-	
-	
-	
-	
 }
