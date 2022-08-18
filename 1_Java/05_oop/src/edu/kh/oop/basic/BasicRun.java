@@ -1,4 +1,4 @@
-package eud.kh.oop.basic;
+package edu.kh.oop.basic;
 
 public class BasicRun {
 
