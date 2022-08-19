@@ -34,7 +34,7 @@ public class Member {
 		// 한번 만들어둔 생성자를 계속 재사용
 		// -> 코드길이 감소, 재사용성 증가
 	}
-
+	
 	// 기본 생성자가 없어도 Member() 구문에서 에러가 발생하지 않는다!
 	// -> 클래스에 생성자가 하나도 작성되지 않으면
 	//    컴파일러가 자동으로 기본 생성자를 추가해준다!
@@ -89,9 +89,9 @@ public class Member {
 	// --> 매개변수명은 사용자가 보기 편하게 하기위해 의미를 부여하는 것 뿐
 	//     컴퓨터한테는 불필요한 요소라서 오버로딩 검사 시 인식되지 않음.
 	
-	//public Member(String memberPw, String memberId) {
-		// Duplicate method Member(String, String) in type Member
-	//}
+//	public Member(String memberPw, String memberId) {
+//		 Duplicate method Member(String, String) in type Member
+//	}
 	
 	
 	
@@ -106,6 +106,7 @@ public class Member {
 		this.memberPhone = memberPhone;
 	}
 	
+	
 	public Member(String memberId, int memberAge, String memberPhone) {
 		 
 		this(memberAge, memberPhone); // this() 생성자 호출
@@ -115,10 +116,6 @@ public class Member {
 		this.memberId = memberId;
 		
 	}
-	
-	
-	
-	
 	
 	
 	

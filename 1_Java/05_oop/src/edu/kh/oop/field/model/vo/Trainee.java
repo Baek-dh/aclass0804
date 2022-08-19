@@ -4,8 +4,10 @@ public class Trainee { // 훈련생
 
 	public String name;  // 이름
 	public String phone; // 휴대폰 번호
-	public String email = "aaa"; // 이메일(선택) 
+	public String email; // 이메일(선택) 
 	public int salary;   // 급여(훈련수당)
+	
+	
 	public static char classRoom; // 강의장
 	
 	// 명시적 초기화 : 필드 선언 시 바로 값 초기화

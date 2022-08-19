@@ -5,7 +5,7 @@ public class Student {
 
 	// 필드 : 객체의 속성
 	public String name;
-	public static String schoolName = "KH 고등학교";
+	public static String schoolName = "KH 고등학교"; 
 	
 	// 메서드 : 객체의 기능
 	public void study() {
