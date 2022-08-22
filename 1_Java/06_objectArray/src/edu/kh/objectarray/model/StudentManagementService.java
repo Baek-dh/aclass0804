@@ -131,6 +131,54 @@ public class StudentManagementService {
 	}
 	
 	
+	/** 학생 정보 조회(이름) 서비스 메서드
+	 * @param name (입력받은 이름)
+	 * @return 
+	 * null : 검색 결과 X
+	 * resultArr(null 아님) : 검색 결과 O
+	 */
+	public Student[] selectName(String name) {
+		
+		// stdArr 객체 배열의 각 인덱스가 참조하는 Student 객체가 있음.
+		// Student 객체의 필드 값 중 name과 입력 받은 name이 일치하면
+		// 해당 Student 객체의 주소를 별도 객체 배열에 저장해서
+		// 메서드 종료 시 반환
+ 		
+		// 검색 결과 저장용 객체 배열
+		Student[] resultArr = new Student[stdArr.length];
+		
+		// resultArr에서 값을 대입할 인덱스 번호를 나타내는 변수
+		int resultIdx = 0;
+		
+		// stdArr 배열에 순차 접근
+		for(int i=0 ; i<stdArr.length ; i++) {
+			
+			if(stdArr[i] == null) {
+				break; // 반복 종료
+			}
+			
+			// 학생 이름 == 입력 이름이 같으면
+			if( stdArr[i].getName().equals(name)  ) {
+				resultArr[resultIdx] = stdArr[i]; 
+				
+				resultIdx++; // 대입되는 인덱스를 다음으로 이동
+			}
+		}
+		
+		
+		// 검색이 아무도 되지 않은 경우
+		if(resultIdx == 0) {
+			return null;
+		}
+		
+		else { // 결과 있음
+			return resultArr;
+		}
+		
+		
+		
+	}
+	
 	
 	
 	

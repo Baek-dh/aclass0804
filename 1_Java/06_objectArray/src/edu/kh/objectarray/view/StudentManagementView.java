@@ -44,7 +44,7 @@ public class StudentManagementView {
 			case 2: printAll(); break;
 			case 3: selectIndex(); break;
 			
-			case 4: break;
+			case 4: selectName(); break;
 			
 			case 5: updateStudent(); break;
 			
@@ -175,6 +175,39 @@ public class StudentManagementView {
 			System.out.println("수정되었습니다.");
 		}
 		
+	}
+	
+	
+	/**
+	 * 학생 정보 조회(이름) 메서드
+	 */
+	public void selectName() {
+		System.out.println("[학생 정보 조회(이름)]");
+		System.out.print("이름 : ");
+		String name = sc.next();
+		
+		// 학생 정보 조회(이름) 서비스 메서드 호출 후 결과 반환
+		Student[] resultArr = service.selectName(name);
+		
+		
+		if(resultArr == null) {
+			System.out.println("검색 결과가 없습니다.");
+		}else {
+			
+			for(int i=0 ; i<resultArr.length ; i++) {
+				
+				if(resultArr[i] == null) { // 검색 결과가 더 이상 없음
+					break;
+				}
+				// 홍길동(3학년 5반 17번)
+				System.out.printf("%s(%d학년 %d반 %d번)\n", 
+								  resultArr[i].getName(), 
+								  resultArr[i].getGrade(),
+								  resultArr[i].getClassRoom(),
+								  resultArr[i].getNumber()     );
+			}
+			
+		}
 		
 	}
 	
