@@ -497,7 +497,6 @@ public class ArrayExample {
 		
 		System.out.println(arr2);
 		
-		
 	}
 	
 	
