@@ -1,5 +1,9 @@
 package edu.kh.poly.ex1.model.service;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import edu.kh.poly.ex1.model.vo.Car;
 import edu.kh.poly.ex1.model.vo.Spark;
 import edu.kh.poly.ex1.model.vo.Truck;
@@ -43,6 +47,7 @@ public class Example1 {
 		//				 참조하는 객체 실제 타입의 오버라이딩된 메서드 연결
 		//
 		System.out.println( c2.toString() );
+		// String edu.kh.poly.ex1.model.vo.Car.toString()
 		
 	}
 	
@@ -171,6 +176,7 @@ public class Example1 {
 		}
 		
 		
+		
 	}
 	
 	
@@ -194,12 +200,6 @@ public class Example1 {
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }
