@@ -153,7 +153,6 @@ public class SetService {
 		System.out.println(num + 100); // 223
 		System.out.println(dNum + 100); // 223.123
 		
-		
 		// Auto Boxing (자동 포장)
 		Integer i1 = 10;  // Integer = int
 						  // Integer = new Integer(int)  // 컴파일러가 바꿔줌
@@ -170,7 +169,6 @@ public class SetService {
 		
 		while(lotto.size() < 6) {
 			int ran = (int)(Math.random() * 45 + 1); // 1~45 난수
-			
 			
 //			lotto.add(new Integer(ran)); // deprecated : 삭제 예정
 			lotto.add(ran);
