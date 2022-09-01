@@ -78,7 +78,18 @@ public class ServerService {
 			// 5) 연결된 클라이언트와 입출력 스트림 생성(얻어오기)
 			// -> 클라이언트가 서버 요청 시 소켓을 전달함
 			// -> 소켓에 입/출력 스트림이 담겨 있음
-			is = clientSocket.getInputStream();
+//			is = clientSocket.getInputStream();
+			is = null;
+			
+			// 원인
+			// 서버의 82번째 줄이 null로 잘못 작성 되어 있어어
+			// 92번째 줄 BufferedReader 객체 생성 시 오류 발생
+			
+			// 해결방법
+			// 82번째 줄을 is = clientSocket.getInputStream(); 수정
+			
+			
+			
 			os = clientSocket.getOutputStream();
 			
 			
