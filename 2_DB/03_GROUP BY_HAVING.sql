@@ -137,6 +137,85 @@ HAVING COUNT(*) <= 5 -- HAVING절에는 그룹 함수가 반드시 작성된다!
 ORDER BY 1;
 
 
+------------------------------------------------------------------------------
+
+-- 집계함수(ROLLUP, CUBE)
+-- 그룹 별 산출 결과 값의 집계를 계산하는 함수
+-- (그룹별로 중간 집계 결과를 추가)
+-- GROUP BY 절에서만 사용할 수 있는 함수!
+
+
+-- ROLLUP : GROUP BY 절에서 가장 먼저 작성된 컬럼의 중간 집계를 처리하는 함수
+
+SELECT DEPT_CODE, JOB_CODE, COUNT(*)
+FROM EMPLOYEE
+GROUP BY  ROLLUP(DEPT_CODE, JOB_CODE)
+ORDER BY 1;
+
+-- CUBE  : GROUP BY 절에 작성된 모든 컬럼의 중간 집계를 처리하는 함수
+SELECT DEPT_CODE, JOB_CODE, COUNT(*)
+FROM EMPLOYEE
+GROUP BY  CUBE(DEPT_CODE, JOB_CODE)
+ORDER BY 1;
+
+-----------------------------------------------------------------------
+
+/* SET OPERATOR(집합 연산자)
+
+- 여러 SELECT의 결과(RESULT SET)를 하나의 결과로 만드는 연산자
+
+- UNION (합집합) : 두 SELECT 결과를 하나로 합침
+					단, 중복은 한 번만 작성
+
+- INTERSECT (교집합) : 두 SELECT 결과 중 중복되는 부분만 조회
+
+- UNION ALL : UNION + INTERSECT 
+			 합집합에서 중복 부분 제거 X
+
+- MINUS(차집합) : A에서 A,B 교집합 부분을 제거하고 조회
+*/
+
+-- 부서코드가 'D5'인 사원의 사번, 이름, 부서코드, 급여 
+SELECT EMP_ID, EMP_NAME, DEPT_CODE, SALARY
+FROM EMPLOYEE
+WHERE DEPT_CODE = 'D5'
+--UNION 
+--UNION ALL
+--INTERSECT 
+MINUS
+-- 급여가 300만 초과인 사원의 사번, 이름, 부서코드, 급여 
+SELECT EMP_ID, EMP_NAME, DEPT_CODE, SALARY
+FROM EMPLOYEE
+WHERE SALARY > 3000000;
+
+
+-- (주의사항!) 집합 연산자를 사용하기 위한 SELECT문들은
+-- 조회하는 컬럼의 타입, 개수가 모두 동일해야 한다!
+
+SELECT EMP_ID, EMP_NAME, DEPT_CODE, SALARY
+FROM EMPLOYEE
+WHERE DEPT_CODE = 'D5'
+UNION 
+SELECT EMP_ID, EMP_NAME, DEPT_CODE, 1
+FROM EMPLOYEE
+WHERE SALARY > 3000000;
+
+
+-- 서로 다른 테이블이지만 컬럼의 타입, 개수만 일치하면 집합 연산자 사용 가능!
+SELECT EMP_ID, EMP_NAME FROM EMPLOYEE
+UNION
+SELECT DEPT_ID, DEPT_TITLE FROM DEPARTMENT;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
