@@ -326,8 +326,23 @@ AND LOCATION_ID = LOCAL_CODE; -- (EMPLOYEE + DEPARTMENT) + LOCATION 조인
 -- 사번, 이름, 직급명, 부서명, 근무지역명, 급여를 조회하세요
 
 -- ANSI
+SELECT EMP_ID, EMP_NAME, JOB_NAME, DEPT_TITLE, LOCAL_NAME, SALARY
+FROM EMPLOYEE
+JOIN JOB USING(JOB_CODE)
+JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+JOIN LOCATION ON (LOCAL_CODE = LOCATION_ID)
+WHERE JOB_NAME = '대리'
+AND LOCAL_NAME LIKE 'ASIA%';
+
 
 -- 오라클 전용
+SELECT EMP_ID, EMP_NAME, JOB_NAME, DEPT_TITLE, LOCAL_NAME, SALARY
+FROM EMPLOYEE E, JOB J, DEPARTMENT, LOCATION
+WHERE E.JOB_CODE = J.JOB_CODE
+AND DEPT_CODE = DEPT_ID
+AND LOCATION_ID = LOCAL_CODE
+AND JOB_NAME = '대리'
+AND LOCAL_NAME LIKE 'ASIA%';
 
 
 
@@ -339,18 +354,43 @@ AND LOCATION_ID = LOCAL_CODE; -- (EMPLOYEE + DEPARTMENT) + LOCATION 조인
 
 -- 1. 주민번호가 70년대 생이면서 성별이 여자이고, 성이 '전'씨인 직원들의 
 -- 사원명, 주민번호, 부서명, 직급명을 조회하시오.
+SELECT EMP_NAME, EMP_NO, DEPT_TITLE, JOB_NAME
+FROM EMPLOYEE
+JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID)
+JOIN JOB USING(JOB_CODE)
+WHERE EMP_NO LIKE '7%' -- 70년대생
+AND SUBSTR(EMP_NO, 8, 1) = '2' -- 여자
+AND EMP_NAME LIKE '전%';
 
-      
-      
--- 2. 이름에 '형'자가 들어가는 직원들의 사번, 사원명, 부서명을 조회하시오.
 
+-- 2. 이름에 '형'자가 들어가는 직원들의 사번, 사원명, 직급명, 부서명을 조회하시오.
+SELECT EMP_ID, EMP_NAME, JOB_NAME, DEPT_TITLE
+FROM EMPLOYEE
+NATURAL JOIN JOB
+JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+WHERE EMP_NAME LIKE '%형%';
 
 
 -- 3. 해외영업 1부, 2부에 근무하는 사원의 
 -- 사원명, 직급명, 부서코드, 부서명을 조회하시오.
+SELECT EMP_NAME, JOB_NAME, DEPT_CODE, DEPT_TITLE
+FROM EMPLOYEE
+JOIN JOB USING(JOB_CODE)
+JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID)
+DEPT_TITLE IN ('해외영업1부', '해외영업2부');
+--WHERE DEPT_TITLE LIKE '%1부'
+--OR DEPT_TITLE LIKE '%2부';
 
 
---4. 보너스포인트를 받는 직원들의 사원명, 보너스포인트, 부서명, 근무지역명을 조회하시오.
+
+--4. 보너스포인트를 받는 직원들의 
+--사원명, 보너스포인트, 부서명, 근무지역명을 조회하시오.
+SELECT EMP_NAME, BONUS, DEPT_TITLE, LOCAL_NAME
+FROM EMPLOYEE
+LEFT JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID)
+LEFT JOIN LOCATION ON(LOCATION_ID = LOCAL_CODE)
+WHERE BONUS IS NOT NULL;
+
 
 
 --5. 부서가 있는 사원의 사원명, 직급명, 부서명, 지역명 조회
@@ -360,6 +400,7 @@ AND LOCATION_ID = LOCAL_CODE; -- (EMPLOYEE + DEPARTMENT) + LOCATION 조인
 --사원명, 직급명, 급여, 연봉(보너스포함)을 조회하시오.
 --연봉에 보너스포인트를 적용하시오.
 
+-- SALARY * (1 + NVL(BONUS,0) ) * 12 연봉
 
 
 -- 7.한국(KO)과 일본(JP)에 근무하는 직원들의 
@@ -368,6 +409,7 @@ AND LOCATION_ID = LOCAL_CODE; -- (EMPLOYEE + DEPARTMENT) + LOCATION 조인
 
 
 -- 8. 같은 부서에 근무하는 직원들의 사원명, 부서코드, 동료이름을 조회하시오.
+--> 
 -- SELF JOIN 사용
 
 
