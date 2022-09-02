@@ -392,8 +392,12 @@ LEFT JOIN LOCATION ON(LOCATION_ID = LOCAL_CODE)
 WHERE BONUS IS NOT NULL;
 
 
-
 --5. 부서가 있는 사원의 사원명, 직급명, 부서명, 지역명 조회
+SELECT EMP_NAME, JOB_NAME, DEPT_TITLE, LOCAL_NAME
+FROM EMPLOYEE
+JOIN JOB USING(JOB_CODE)
+JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID)
+JOIN LOCATION ON (LOCATION_ID = LOCAL_CODE);
 
 
 -- 6. 급여등급별 최소급여(MIN_SAL)를 초과해서 받는 직원들의
@@ -402,18 +406,66 @@ WHERE BONUS IS NOT NULL;
 
 -- SALARY * (1 + NVL(BONUS,0) ) * 12 연봉
 
+/* 5 : SELECT
+ * 1 : FROM (+ JOIN)
+ * 2 : WHERE
+ * 3 : GROUP BY
+ * 4 : HAVING
+ * 6 : ORDER BY
+ * 
+ * 
+ */
+SELECT EMP_NAME, JOB_NAME, SALARY 급여,
+		SALARY * (1 + NVL(BONUS,0) ) * 12 연봉
+FROM EMPLOYEE
+NATURAL JOIN JOB
+JOIN SAL_GRADE USING(SAL_LEVEL)
+WHERE SALARY > MIN_SAL;
+
 
 -- 7.한국(KO)과 일본(JP)에 근무하는 직원들의 
 -- 사원명, 부서명, 지역명, 국가명을 조회하시오.
+SELECT EMP_NAME 사원명, DEPT_TITLE 부서명, 
+		LOCAL_NAME 지역명, NATIONAL_NAME 국가명
+FROM EMPLOYEE
+JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID)
+JOIN LOCATION ON(LOCATION_ID = LOCAL_CODE)
+JOIN NATIONAL USING(NATIONAL_CODE)
+WHERE NATIONAL_CODE IN ('KO', 'JP');
+--WHERE NATIONAL_NAME IN ('한국', '일본');
 
 
 
--- 8. 같은 부서에 근무하는 직원들의 사원명, 부서코드, 동료이름을 조회하시오.
---> 
+-- 8. 같은 부서에 근무하는 직원들의
+--  사원명, 부서코드, 동료이름을 조회하시오.
 -- SELF JOIN 사용
 
+SELECT E.EMP_NAME 사원명, E.DEPT_CODE 부서코드, 
+		P.EMP_NAME 동료이름
+FROM EMPLOYEE E
+JOIN EMPLOYEE P ON(E.DEPT_CODE = P.DEPT_CODE)
+WHERE E.EMP_NAME != P.EMP_NAME 
+ORDER BY 사원명;
 
 
--- 9. 보너스포인트가 없는 직원들 중에서 직급코드가 J4와 J7인 직원들의 사원명, 직급명, 급여를 조회하시오.
--- 단, JOIN, IN 사용할 것
+
+-- 9. 보너스포인트가 없는 직원들 중에서 
+--  직급코드가 J4와 J7인 직원들의 
+--  사원명, 직급명, 급여를 조회하시오.
+--  단, JOIN, IN 사용할 것
+SELECT EMP_NAME, JOB_NAME, SALARY
+FROM EMPLOYEE
+NATURAL JOIN JOB
+WHERE BONUS IS NULL
+AND JOB_CODE IN ('J4', 'J7');
+
+
+
+
+
+
+
+
+
+
 
