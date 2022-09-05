@@ -262,7 +262,9 @@ ROLLBACK;
 SELECT * FROM EMPLOYEE2;
 
 DELETE FROM EMPLOYEE2; --> WHERE절 미작성 시 전체 삭제
+--> 24행 삭제
 
+ROLLBACK;
 
 
 ---------------------------------------------------------------------------------------------
@@ -300,3 +302,17 @@ SELECT * FROM EMPLOYEE3;
 ROLLBACK;
 -- 롤백 후 복구 확인 -> 복구 안됨을 확인!
 SELECT * FROM EMPLOYEE3;
+
+
+-- DELETE : 휴지통 버리기
+-- TRUNCATE : 완전 삭제
+
+
+
+
+
+
+
+
+
+
