@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import oracle.jdbc.driver.OracleDriver;
+
 public class JDBCExample {
 	public static void main(String[] args) {
 		
@@ -47,12 +49,10 @@ public class JDBCExample {
 			
 			// 1. DB 연결에 필요한 Oracle JDBC Driver 메모리에 로드하기
 													// -> 객체로 만들어 두기
-			
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			// -> () 안에 작성된 클래스의 객체를 반환
 			// -> 메모리에 객체가 생성되어지고 JDBC 필요 시 알아서 참조해서 사용
 			// --> 생략해도 자동으로 메모리 로드가 진행됨(명시적으로 작성하는걸 권장)
-			
 			
 			// 2. 연결 정보를 담은 Connection을 생성
 			//	-> DriverManager객체를 이용해서 Connection 객체를 만들어 얻어옴!
@@ -72,7 +72,6 @@ public class JDBCExample {
 			String user = "kh_bdh";
 			
 			String pw = "kh1234";
-			
 			
 			// DriverManager : 
 			// 메모리에 로드된 JDBC 드라이버를 이용해서
