@@ -68,6 +68,8 @@ public class JDBCExample4 {
 				int salary = rs.getInt("SALARY");
 				int annualIncome = rs.getInt("ANNUAL_INCOME");
 				
+				
+				
 				list.add(new Employee(empName, jobName, salary, annualIncome));
 			}
 

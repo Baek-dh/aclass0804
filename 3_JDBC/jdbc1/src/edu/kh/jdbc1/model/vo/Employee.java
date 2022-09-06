@@ -6,6 +6,11 @@ public class Employee {
 	private int salary;
 	private int annualIncome; // 연봉(연간 수입)
 	
+	private String hireDate; // 조회되는 입사일의 데이터 타입이 문자열이기 때문에 String
+	private char gender; // DB에는 문자 하나를 나타내는 자료형이 없으므로
+						 // 어떻게 처리해야될지 생각이 필요
+	
+	
 	public Employee() {	}
 
 	public Employee(String empName, String jobName, int salary, int annualIncome) {
@@ -47,6 +52,25 @@ public class Employee {
 	public void setAnnualIncome(int annualIncome) {
 		this.annualIncome = annualIncome;
 	}
+	
+	public String getHireDate() {
+		return hireDate;
+	}
+	
+	public void setHireDate(String hireDate) {
+		this.hireDate = hireDate;
+	}
+	
+	public char getGender() {
+		return gender;
+	}
+	
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+	
+	
+	
 
 	@Override
 	public String toString() {
