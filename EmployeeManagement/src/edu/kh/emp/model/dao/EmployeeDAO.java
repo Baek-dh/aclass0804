@@ -280,11 +280,193 @@ public class EmployeeDAO {
 		
 		// 결과 반환
 		return emp;
+		
+		
+	}
+
+
+
+	/** 사원 정보 추가 DAO
+	 * @param emp
+	 * @return result(INSERT 성공한 행의 개수 반환)
+	 */
+	public int insertEmployee(Employee emp) {
+		
+		// 결과 저장용 변수 선언
+		int result = 0;
+		
+		try {
+			
+			// 커넥션 생성
+			Class.forName(driver); // "oracle.jdbc.driver.OracleDriver"
+			conn = DriverManager.getConnection(url, user, pw);
+			
+			// ** DML 수행할 예정 **
+			// - 트랜잭션에 DML 구문이 임시 저장
+			// -> 정상적인 DML인지를 판별해서 개발자가 직접 commit, rollback을 수행
+			
+			// 하지만... Connection 객체 생성 시
+			// AutoCommit이 활성화 되어있는 상태이기 때문에
+			// 이를 해제하는 코드를 추가!!!!!!!!!!!!!!!!!!!!!!!!
+			
+			conn.setAutoCommit(false); // AutoCommit 비활성화
+			// -> AutoCommit 비활성화해도
+			//   conn.close() 구문이 수행되면 자동으로 Commit이 수행됨
+			// --> close() 수행 전에 트랜잭션 제어 코드를 작성해야함!
+			
+			
+			// SQL 작성
+			String sql 
+			= "INSERT INTO EMPLOYEE VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, NULL, DEFAULT)";         
+			// 퇴사여부 컬럼의 DEFAULT == 'N'
+			
+			// PreparedStatement 객체 생성(매개변수에 SQL 추가)
+			pstmt = conn.prepareStatement(sql);
+			
+			// ?(placeholder)에 알맞은 값 대입
+			pstmt.setInt(1, emp.getEmpId());
+			pstmt.setString(2, emp.getEmpName());
+			pstmt.setString(3, emp.getEmpNo());
+			pstmt.setString(4, emp.getEmail());
+			pstmt.setString(5, emp.getPhone());
+			pstmt.setString(6, emp.getDeptCode());
+			pstmt.setString(7, emp.getJobCode());
+			pstmt.setString(8, emp.getSalLevel());
+			pstmt.setInt(9, emp.getSalary());
+			pstmt.setDouble(10, emp.getBonus());
+			pstmt.setInt(11, emp.getManagerId());
+			
+			// SQL 수행 후 결과 반환 받기
+			result = pstmt.executeUpdate();
+			
+			// executeUpdate() : DML(INSERT, UPDATE, DELETE) 수행 후 결과 행 개수 반환 
+			// executeQuery() : SELECT 수행 후 ResultSet 반환
+			
+			
+			// *** 트랜잭션 제어 처리 ***
+			// -> DML 성공 여부에 따라서 commit, rollback 제어
+			
+			if(result > 0)	conn.commit(); 	 // DML 성공 시 commit
+			else			conn.rollback(); // DML 실패 시 rollback
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		}
+		
+		// 결과 반환
+		return result;
+	}
+
+
+
+	/** 사번이 일치하는 사원 정보 수정 DAO
+	 * @param emp
+	 * @return result
+	 */
+	public int updateEmployee(Employee emp) {
+		
+		int result = 0; // 결과 저장용 변수
+		
+		try {
+			// 커넥션 생성
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, user, pw);
+			conn.setAutoCommit(false); // AutoCommit 비활성화
+			
+			String sql = "UPDATE EMPLOYEE SET "
+					+ "EMAIL = ?, PHONE = ?, SALARY = ? "
+					+ "WHERE EMP_ID = ?";
+			
+			// PreparedStatement 생성
+			pstmt = conn.prepareStatement(sql);
+			
+			// ?에 알맞은 값을 세팅
+			pstmt.setString(1, emp.getEmail());
+			pstmt.setString(2, emp.getPhone());
+			pstmt.setInt(3, emp.getSalary());
+			pstmt.setInt(4, emp.getEmpId());
+			
+			result = pstmt.executeUpdate(); // 반영된 행의 개수 반환
+			
+			// 트랜잭션 제어 처리
+			if(result == 0)	conn.rollback();
+			else			conn.commit();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			try {
+				// JDBC 객체 자원 반환
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result; // 결과 반환
+	}
+	
+	
+	/** 사번이 일치하는 사원 정보 삭제 DAO
+	 * @param empId
+	 * @return result
+	 */
+	public int deleteEmployee(int empId) {
+		
+		int result = 0;
+		
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, user, pw);
+			conn.setAutoCommit(false);
+			
+			String sql = "DELETE FROM EMPLOYEE WHERE EMP_ID = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, empId);
+
+			result = pstmt.executeUpdate();
+			
+			if(result > 0) conn.commit();
+			else		   conn.rollback();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+		return result;
 	}
 	
 	
 	
 }
+
+
+
+
+
 
 
 
