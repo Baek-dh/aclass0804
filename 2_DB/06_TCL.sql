@@ -14,7 +14,7 @@
  
  EX) INSERT 수행 --------------------------------> DB 반영(X)
    
-     INSERT 수행 --> 트랜잭션에 추가 --> COMMIT --> DB 반영(O)
+     INSERT 수행 --> 트랜잭션에 추가 --> COMMIT --> DB 반영(O)- T
      
      INSERT 10번 수행 --> 1개 트랜잭션에 10개 추가 --> ROLLBACK --> DB 반영 안됨
 
@@ -86,17 +86,14 @@ SAVEPOINT SP2; -- SAVEPOINT 지정
 INSERT INTO DEPARTMENT2 VALUES('T6', '개발6팀', 'L2');
 SAVEPOINT SP3; 
 
-INSERT INTO DEPARTMENT2 VALUES('T7', '개발7팀', 'L2');
-SAVEPOINT SP1;
 
-ROLLBACK TO SP2;
+ROLLBACK TO SP1;
 
 
 SELECT * FROM DEPARTMENT2; 
 
 DELETE FROM DEPARTMENT2 
 WHERE DEPT_ID LIKE 'T%';
-
 
 -- SP2 지점까지 롤백
 ROLLBACK TO SP2;
