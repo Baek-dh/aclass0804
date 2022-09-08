@@ -560,10 +560,10 @@ public class EmployeeDAO {
 				String phone = rs.getString("PHONE");
 				String departmentTitle = rs.getString("DEPT_TITLE");
 				String jobName = rs.getString("JOB_NAME");
-//				int salary = rs.getInt("SALARY");
+				int selectSalary = rs.getInt("SALARY");
 				
 				Employee emp = new Employee(empId, empName, empNo, email, 
-										phone, departmentTitle, jobName, salary);
+										phone, departmentTitle, jobName, selectSalary);
 				
 				empList.add(emp); // List 담기
 				
