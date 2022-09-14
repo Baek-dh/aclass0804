@@ -636,7 +636,6 @@ SELECT ROWNUM, EMP_NAME, SALARY
 FROM TOP_SAL
 WHERE ROWNUM <= 10;
 
-
 --------------------------------------------------------------------------
 
 
