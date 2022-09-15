@@ -69,7 +69,7 @@ WHERE TEST_ID = 'TEST500000';  -- INDEX 사용 X
 
 SELECT * FROM TB_IDX_TEST
 WHERE TEST_NO = 500000; -- INDEX 사용 O
-
+--> 0 ~ 1ms
 
 
 
