@@ -102,7 +102,6 @@ WHERE ROWNUM = 1;
 -- 학과 별 전공과목 평점을 파악하기 위한 적절한 SQL문을 찾아내시오.
 -- 단, 출력헤더는 "계열 학과명", "전공평점"으로 표시되도록 하고, 
 -- 평점은 소수점 한자리까지만 반올림하여 표시되도록 한다.
-
 SELECT DEPARTMENT_NAME "계열 학과명", ROUND(AVG(POINT),1) 전공평점
 FROM TB_DEPARTMENT
 JOIN TB_CLASS USING(DEPARTMENT_NO)
@@ -113,9 +112,6 @@ WHERE CATEGORY = (SELECT CATEGORY
 AND CLASS_TYPE LIKE '전공%'
 GROUP BY DEPARTMENT_NAME
 ORDER BY 1;
-
-
-
 
 
 
