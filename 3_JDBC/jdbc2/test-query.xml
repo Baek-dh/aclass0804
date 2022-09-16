@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>test-query.xml file</comment>
+
+	<!-- TB_TEST 테이블 INSERT SQL -->
+	<entry key="insert">
+		INSERT INTO TB_TEST
+		VALUES(?, ?, ?)
+	</entry>
+	
+</properties>
