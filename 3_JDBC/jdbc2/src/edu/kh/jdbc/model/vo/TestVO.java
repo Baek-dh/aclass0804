@@ -2,7 +2,7 @@ package edu.kh.jdbc.model.vo;
 
 public class TestVO {
 	private int testNo;
-	private String testTitle;
+	private String testTitle; 
 	private String testContent;
 	
 	// 기본생성자

@@ -69,7 +69,7 @@ public class TestDAO {
 			
 			// 4. ?(위치홀더)에 알맞은 값 세팅
 			pstmt.setInt(1, vo1.getTestNo());
-			pstmt.setString(2, vo1.getTestTitle());
+			pstmt.setString(2, vo1.getTestTitle()); 
 			pstmt.setString(3, vo1.getTestContent());
 			
 			// 5. SQL(INSERT) 수행 후 결과 반환 받기
@@ -83,6 +83,35 @@ public class TestDAO {
 		}
 		
 		// 7. SQL 수행 결과 반환
+		return result;
+	}
+
+
+
+	/** 번호가 일치가 행 제목, 내용 수정
+	 * @param conn
+	 * @param vo
+	 * @return result
+	 * @throws SQLException
+	 */
+	public int update(Connection conn, TestVO vo) throws SQLException{
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("update");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getTestTitle());
+			pstmt.setString(2, vo.getTestContent());
+			pstmt.setInt(3, vo.getTestNo());
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
 		return result;
 	}
 
