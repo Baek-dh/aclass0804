@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<comment>driver.xml file</comment>
+	
+	<!-- 마크업 언어 주석 -->
+	<!-- ctrl + shift + / -->
+	
+	<!-- entry : K:V 한 쌍 -->
+	<entry key="driver">oracle.jdbc.driver.OracleDriver</entry>
+	
+	<entry key="url">jdbc:oracle:thin:@localhost:1521:xe</entry>
+	
+	<entry key="user">member_bdh</entry>
+	
+	<entry key="password">member1234</entry>
+	
+</properties>
+
+
+

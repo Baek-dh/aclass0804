@@ -26,8 +26,6 @@ import edu.kh.jdbc.model.vo.TestVO;
 
 
 public class TestService {
-	
-	
 	private TestDAO dao = new TestDAO();
 	
 	

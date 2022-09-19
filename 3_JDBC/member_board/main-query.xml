@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>main-query.xml file</comment>
+	
+	<!-- 아이디 중복 검사 -->
+	<entry key="idDupCheck">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE MEMBER_ID = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	
+</properties>
