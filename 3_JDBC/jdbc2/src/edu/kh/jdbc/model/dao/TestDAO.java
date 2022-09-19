@@ -36,7 +36,7 @@ public class TestDAO {
 			prop.loadFromXML(new FileInputStream("test-query.xml"));
 			
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 	}
 	
