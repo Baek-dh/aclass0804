@@ -7,6 +7,7 @@ import java.util.Scanner;
 import edu.kh.jdbc.board.model.service.BoardService;
 import edu.kh.jdbc.board.model.service.CommentService;
 import edu.kh.jdbc.board.model.vo.Board;
+import edu.kh.jdbc.board.model.vo.Comment;
 import edu.kh.jdbc.main.view.MainView;
 
 public class BoardView {
@@ -121,7 +122,34 @@ public class BoardView {
 											// 				-> 자신의 글 조회수 증가 X
 			
 			
+
+			if (board != null) {
+				System.out.println(" --------------------------------------------------------");
+				System.out.printf("글번호 : %d | 제목 : %s\n", board.getBoardNo(), board.getBoardTitle());
+				System.out.printf("작성자ID : %s | 작성일 : %s | 조회수 : %d\n", 
+						board.getMemberName(), board.getCreateDate().toString(), board.getReadCount());
+				System.out.println(" --------------------------------------------------------");
+				System.out.println(board.getBoardContent());
+				System.out.println(" --------------------------------------------------------");
+
 			
+				// 댓글 목록
+				if(!board.getCommentList().isEmpty()) {
+					for(Comment c : board.getCommentList()) {
+						System.out.printf("댓글번호: %d   작성자: %s  작성일: %s\n%s\n",
+								c.getCommentNo(), c.getMemberName(), c.getCreateDate(), c.getCommentContent());
+						System.out.println(" --------------------------------------------------------");
+					}
+				}
+				
+				// 댓글 등록, 수정, 삭제
+				// 수정/삭제 메뉴
+//				subBoardMenu(board);
+				
+				
+			} else {
+				System.out.println("해당 번호의 게시글이 존재하지 않습니다.");
+			}
 			
 			
 		}catch (Exception e) {

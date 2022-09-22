@@ -119,6 +119,30 @@ public class BoardDAO {
 		
 		return board; // 조회 결과 결과
 	}
+
+	
+	
+	/** 조회 수 증가 DAO
+	 * @param conn 
+	 * @param boardNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int increaseReadCount(Connection conn, int boardNo) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("increaseReadCount");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	

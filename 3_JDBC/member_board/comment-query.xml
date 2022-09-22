@@ -2,4 +2,16 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>comment-query.xml file</comment>
+
+	<!-- 댓글 목록 조회 -->
+	<entry key="selectCommentList">
+		SELECT COMMENT_NO, COMMENT_CONTENT, 
+			   MEMBER_NO, MEMBER_NM, 
+			   TO_CHAR(CREATE_DT, 'YYYY-MM-DD HH24:MI:SS') CREATE_DT
+		FROM "COMMENT"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE DELETE_FL = 'N'
+		AND BOARD_NO = ?
+		ORDER BY COMMENT_NO
+	</entry>
 </properties>
