@@ -121,18 +121,16 @@ public class BoardView {
 											// 게시글번호,  로그인한 회원의 회원번호
 											// 				-> 자신의 글 조회수 증가 X
 			
-			
 
 			if (board != null) {
-				System.out.println(" --------------------------------------------------------");
-				System.out.printf("글번호 : %d | 제목 : %s\n", board.getBoardNo(), board.getBoardTitle());
-				System.out.printf("작성자ID : %s | 작성일 : %s | 조회수 : %d\n", 
-						board.getMemberName(), board.getCreateDate().toString(), board.getReadCount());
-				System.out.println(" --------------------------------------------------------");
+				System.out.println("--------------------------------------------------------");
+				System.out.printf("글번호 : %d \n제목 : %s\n", board.getBoardNo(), board.getBoardTitle());
+				System.out.printf("작성자 : %s | 작성일 : %s  \n조회수 : %d\n", 
+						board.getMemberName(), board.getCreateDate(), board.getReadCount());
+				System.out.println("--------------------------------------------------------\n");
 				System.out.println(board.getBoardContent());
-				System.out.println(" --------------------------------------------------------");
+				System.out.println("\n--------------------------------------------------------");
 
-			
 				// 댓글 목록
 				if(!board.getCommentList().isEmpty()) {
 					for(Comment c : board.getCommentList()) {
@@ -146,9 +144,8 @@ public class BoardView {
 				// 수정/삭제 메뉴
 //				subBoardMenu(board);
 				
-				
 			} else {
-				System.out.println("해당 번호의 게시글이 존재하지 않습니다.");
+				System.out.println("[\n해당 번호의 게시글이 존재하지 않습니다.]\n");
 			}
 			
 			
