@@ -67,8 +67,14 @@ public class BoardService {
 			if( memberNo != board.getMemberNo() ) {
 				int result = dao.increaseReadCount(conn, boardNo);
 				
-				// 트랜잭션 제어
-				if(result > 0)	commit(conn);
+				// 트랜잭션 제어  
+				if(result > 0) {
+					commit(conn);
+					
+					// 미리 조회된 board의 조회 수를 
+					// 증가된 DB의 조회 수와 동일 한 값을 가지도록 동기화
+					board.setReadCount( board.getReadCount() + 1 );
+				}
 				else			rollback(conn);
 			}
 		}
