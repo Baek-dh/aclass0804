@@ -14,4 +14,13 @@
 		AND BOARD_NO = ?
 		ORDER BY COMMENT_NO
 	</entry>
+	
+	<!-- 댓글 등록 -->
+	<entry key="insertComment">
+		INSERT INTO "COMMENT"
+		VALUES(SEQ_COMMENT_NO.NEXTVAL, ?, DEFAULT, DEFAULT, ?, ? )
+	</entry>
+	
+	
+	
 </properties>

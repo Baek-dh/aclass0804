@@ -69,6 +69,34 @@ public class CommentDAO {
 		
 		return commentList;
 	}
+ 
+	/** 댓글 등록 DAO
+	 * @param conn
+	 * @param comment
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertComment(Connection conn, Comment comment) throws Exception{
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("insertComment");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, comment.getCommentContent());
+			pstmt.setInt(2, comment.getMemberNo());
+			pstmt.setInt(3, comment.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	
