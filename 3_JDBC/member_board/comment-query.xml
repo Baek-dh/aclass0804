@@ -30,6 +30,14 @@
 	</entry>
 	
 	
+	<!-- 댓글 삭제 -->
+	<entry key="deleteComment">
+		UPDATE "COMMENT" SET
+		DELETE_FL = 'Y'
+		WHERE COMMENT_NO = ?
+	</entry>
+	
+	
 	
 	
 	

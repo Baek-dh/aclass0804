@@ -166,7 +166,15 @@ public class BoardView {
 			System.out.println("1) 댓글 등록");
 			System.out.println("2) 댓글 수정");
 			System.out.println("3) 댓글 삭제");
+			
+			// 로그인한 회원과 게시글 작성자가 같은 경우에만 출력되는 메뉴
+			if(MainView.loginMember.getMemberNo() == board.getMemberNo() ) {
+				System.out.println("4) 게시글 수정");
+				System.out.println("5) 게시글 삭제");
+			}
+			
 			System.out.println("0) 게시판 메뉴로 돌아가기");
+			
 			
 			System.out.print("\n서브 메뉴 선택 : ");
 			int input = sc.nextInt();
@@ -177,11 +185,28 @@ public class BoardView {
 			
 			switch(input) {
 			case 1 : insertComment(board.getBoardNo(), memberNo); break;
-			
 			case 2 : updateComment(board.getCommentList(), memberNo);  break;
-			
-			case 3 : break;
+			case 3 : deleteComment(board.getCommentList(), memberNo);  break;
 			case 0 : System.out.println("\n[게시판 메뉴로 돌아갑니다...]\n");  break;
+			
+			case 4: case 5:  // 4 또는 5 입력 시
+				
+				// 4 또는 5를 입력한 회원이 게시글 작성자인 경우
+				if(MainView.loginMember.getMemberNo() == board.getMemberNo()) {
+					
+					if(input == 4) {
+						// 게시글 수정 호출
+						updateBoard(board.getBoardNo());
+					}
+					
+					if(input == 5) {
+						// 게시글 삭제 호출
+						// deleteBoard(board.getBoardNo());
+					}
+					
+					break; // switch 문 종료
+				}
+			
 			default : System.out.println("\n[메뉴에 작성된 번호만 입력 해주세요.]\n");
 			}
 			
@@ -214,7 +239,6 @@ public class BoardView {
 				
 				subBoardMenu(board);
 			}
-			
 			
 			
 		}catch (InputMismatchException e) {
@@ -338,13 +362,115 @@ public class BoardView {
 				System.out.println("\n[번호가 일치하는 댓글이 없습니다.]\n");
 			}
 			
-			
-		
 		}catch (Exception e) {
 			System.out.println("\n<<댓글 수정 중 예외 발생>>\n");
 		}
 		
 	}
+	
+	
+	/** 댓글 삭제
+	 * @param commentList
+	 * @param memberNo
+	 */
+	private void deleteComment(List<Comment> commentList, int memberNo) {
+		
+		// 댓글 번호를 입력 받아
+		// 1) 해당 댓글이 commentList에 있는지 검사
+		// 2) 있다면 해당 댓글이 로그인한 회원이 작성한 글인지 검사
+		
+		try {
+			System.out.println("\n[댓글 삭제]\n");
+			
+			System.out.print("삭제할 댓글 번호 입력 : ");
+			int commentNo = sc.nextInt();
+			sc.nextLine();
+			
+			boolean flag = true;
+			
+			for(Comment c : commentList) {
+				
+				if(c.getCommentNo() == commentNo) { // 댓글 번호 일치
+					flag = false; 
+					
+					if(c.getMemberNo() == memberNo) { // 회원 번호 일치
+						
+						// 정말 삭제? y/n
+						// y인 경우 댓글 삭제 서비스 호출
+						
+						System.out.print("정말 삭제 하시겠습니까? (Y/N) : ");
+						char ch = sc.next().toUpperCase().charAt(0);
+						
+						if(ch == 'Y') {
+							int result = cService.deleteComment(commentNo);
+							
+							if(result > 0) {
+								System.out.println("\n[댓글 삭제 성공]\n");
+							}else {
+								System.out.println("\n[댓글 삭제 실패...]\n");
+							}
+								
+						}else {
+							System.out.println("\n[취소 되었습니다.]\n");
+						}
+						
+					} else {
+						System.out.println("\n[자신의 댓글만 삭제할 수 있습니다.]\n");
+					}
+					
+					break; // 더 이상의 검사 불필요
+				}
+				
+			} // for end
+			
+			if(flag) {
+				System.out.println("\n[번호가 일치하는 댓글이 없습니다.]\n");
+			}
+			
+		}catch (Exception e) {
+			System.out.println("\n<<댓글 삭제 중 예외 발생>>\n");
+		}
+		
+	}
+	
+	
+	/** 게시글 수정
+	 * @param boardNo
+	 */
+	private void updateBoard(int boardNo) {
+		
+		try {
+			System.out.println("\n[게시글 수정]\n");
+			
+			System.out.print("수정할 제목 : ");
+			String boardTitle = sc.nextLine();
+			
+			System.out.println("수정할 내용");
+			String boardContent = inputContent();
+			
+			// 수정된 제목/내용 + 게시글 번호를 한 번에 전달하기위한 Board 객체 생성
+			Board board = new Board();
+			board.setBoardNo(boardNo);
+			board.setBoardTitle(boardTitle);
+			board.setBoardContent(boardContent);
+			
+			// 수정 서비스 호출
+			int result = bService.updateBoard(board);
+			
+			if(result > 0) {
+				System.out.println("\n[게시글 수정 성공]\n");
+			}else {
+				System.out.println("\n[게시글 수정 실패...]\n");
+			}
+			
+			
+		}catch (Exception e) {
+			System.out.println("\n<<게시글 수정 중 예외 발생>>\n");
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	
 	
