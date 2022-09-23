@@ -186,8 +186,32 @@ public class BoardView {
 			}
 			
 			// 댓글 등록,수정,삭제 선택 시
-			// 각각의 서비스 메서드 종료 후 다시 서브메뉴 메서드 호출
+			// 각각의 서비스 메서드 종료 후 다시 서브메뉴 메서드 호출(재귀 호출)
 			if(input > 0) {
+				try {
+	               board = bService.selectBoard(board.getBoardNo(), MainView.loginMember.getMemberNo());
+	   
+	               System.out.println(" --------------------------------------------------------");
+	               System.out.printf("글번호 : %d | 제목 : %s\n", board.getBoardNo(), board.getBoardTitle());
+	               System.out.printf("작성자ID : %s | 작성일 : %s | 조회수 : %d\n", 
+	                     board.getMemberName(), board.getCreateDate().toString(), board.getReadCount());
+	               System.out.println(" --------------------------------------------------------");
+	               System.out.println(board.getBoardContent());
+	               System.out.println(" --------------------------------------------------------");
+	   
+	            
+	               // 댓글 목록
+	               if(!board.getCommentList().isEmpty()) {
+	                  for(Comment c : board.getCommentList()) {
+	                     System.out.printf("댓글번호: %d   작성자: %s  작성일: %s\n%s\n",
+	                           c.getCommentNo(), c.getMemberName(), c.getCreateDate(), c.getCommentContent());
+	                     System.out.println(" --------------------------------------------------------");
+	                  }
+	               }
+	            }catch (Exception e) {
+	               e.printStackTrace();
+	            }
+				
 				subBoardMenu(board);
 			}
 			

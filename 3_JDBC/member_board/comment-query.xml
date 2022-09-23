@@ -22,5 +22,17 @@
 	</entry>
 	
 	
+	<!-- 댓글 수정 -->
+	<entry key="updateComment">
+		UPDATE "COMMENT" SET
+		COMMENT_CONTENT = ?
+		WHERE COMMENT_NO = ?
+	</entry>
+	
+	
+	
+	
+	
+	
 	
 </properties>

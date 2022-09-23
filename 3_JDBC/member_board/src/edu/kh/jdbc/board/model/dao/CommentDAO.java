@@ -77,7 +77,6 @@ public class CommentDAO {
 	 * @throws Exception
 	 */
 	public int insertComment(Connection conn, Comment comment) throws Exception{
-		
 		int result = 0;
 		
 		try {
@@ -95,6 +94,32 @@ public class CommentDAO {
 			close(pstmt);
 		}
 		
+		return result;
+	}
+ 
+	/** 댓글 수정 DAO
+	 * @param conn
+	 * @param commentNo
+	 * @param content
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateComment(Connection conn, int commentNo, String content) throws Exception{
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateComment");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, content);
+			pstmt.setInt(2, commentNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
 		return result;
 	}
 	
