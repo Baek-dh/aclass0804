@@ -288,11 +288,24 @@ public class BoardView {
 					flag = false; 
 					
 					if(c.getMemberNo() == memberNo) { // 회원 번호 일치
+						
+						// 수정할 댓글 내용 입력 받기
+						String content = inputContent();
+						
 						// 댓글 수정 서비스 호출
+						int result = cService.updateComment(commentNo, content);
+						
+						if(result > 0) {
+							System.out.println("\n[댓글 수정 성공]\n");
+						}else {
+							System.out.println("\n[댓글 수정 실패...]\n");
+						}
 						
 					} else {
 						System.out.println("\n[자신의 댓글만 수정할 수 있습니다.]\n");
 					}
+					
+					break; // 더 이상의 검사 불필요
 				}
 				
 			} // for end
@@ -300,8 +313,6 @@ public class BoardView {
 			if(flag) {
 				System.out.println("\n[번호가 일치하는 댓글이 없습니다.]\n");
 			}
-			
-			
 			
 			
 		
