@@ -64,8 +64,69 @@
 	</entry>
 	
 	
+	<!-- 게시글 등록 -->
+	<entry key="insertBoard">
+		INSERT INTO "BOARD"(BOARD_NO, BOARD_TITLE, BOARD_CONTENT, MEMBER_NO)      
+		VALUES(?, ?, ?, ?)
+	</entry>
+	
+	
+	<!-- 게시글 번호 생성 -->
+	<entry key="nextBoardNo">
+		SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+	</entry>
+	
+	
+	
+	<!-- 게시글 검색1(WHERE절 시작 까지)
+		&lt; == "<" 
+	 -->
+	<entry key="searchBoard1">
+		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NM, READ_COUNT, 
+			CASE  
+				WHEN SYSDATE - CREATE_DT &lt; 1/24/60
+				THEN FLOOR( (SYSDATE - CREATE_DT) * 24 * 60 * 60 ) || '초 전'
+				WHEN SYSDATE - CREATE_DT &lt; 1/24
+				THEN FLOOR( (SYSDATE - CREATE_DT) * 24 * 60) || '분 전'
+				WHEN SYSDATE - CREATE_DT &lt; 1
+				THEN FLOOR( (SYSDATE - CREATE_DT) * 24) || '시간 전'
+				ELSE TO_CHAR(CREATE_DT, 'YYYY-MM-DD')
+			END CREATE_DT,
+			(SELECT COUNT(*) 
+			 FROM "COMMENT" C
+			 WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT		
+		FROM "BOARD" B
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE DELETE_FL = 'N'
+	</entry>
+	
+	<!-- 게시글 검색2(검색 조건) -->
+	<entry key="searchBoard2_1">  <!-- 제목 -->
+		AND BOARD_TITLE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchBoard2_2"> <!-- 내용 -->
+		AND BOARD_CONTENT LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchBoard2_3"> <!-- 제목 + 내용 -->
+		AND (BOARD_TITLE LIKE '%' || ? || '%'
+		OR BOARD_CONTENT LIKE '%' || ? || '%')
+	</entry>
+	<entry key="searchBoard2_4"> <!-- 작성자 -->
+		AND MEMBER_NM LIKE '%' || ? || '%'
+	</entry>
+	
+	
+	<!-- 게시글 검색3(ORDER BY) -->
+	<entry key="searchBoard3">
+		ORDER BY BOARD_NO DESC
+	</entry>
+	
+	
 	
 	
 	
 	
 </properties>
+
+
+
