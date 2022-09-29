@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_목록 관련 태그</title>
+</head>
+
+<body>
+    <h1>목록 관련 태그</h1>
+    <pre>
+        ul(Unordered List) 태그 : 순서가 없는 목록
+
+        ol(Ordered List) 태그 : 순서가 있는 목록(1,2,3,4)
+
+        li(List Item) 태그 : ul, ol 태그 내부에 들어가 목록의 요소를 나타내는 태그
+    </pre>
+
+    <h3>ul 태그</h3>
+    <ul>
+        여기다가 <br>
+        이렇게 <br>
+        써봤자 목록으로 인식이 안됩니다.
+
+        <li>김밥</li>
+        <li>서브웨이</li>
+        <li>백반</li>
+        <li>햄버거</li>
+    </ul>
+
+    <hr>
+
+    <h3>ol 태그</h3>
+    <pre>
+        * ol 태그의 type 속성
+        
+        type="a"    -> 소문자 알파벳
+        type="A"    -> 대문자 알파벳
+        type="i"    -> 소문자 로마 숫자
+        type="I"    -> 대문자 로마 숫자
+        type="1"    -> 숫자
+
+
+        * strat 속성 : 시작 번호 지정
+
+        * reversed 속성 : 순서 반대로
+        
+    </pre>
+
+    <ol type="1" start="5" reversed>
+        <li>김밥</li>
+        <li>서브웨이</li>
+        <li>백반</li>
+        <li>햄버거</li>
+    </ol>
+
+    <hr>
+
+    <ul>
+        <li>대분류 1</li>
+        <li>
+            대분류 2
+            <ul>
+                <li>소분류1</li>
+                <li>소분류2</li>
+                <li>소분류3</li>
+            </ul>
+        </li>
+
+        <li>대분류 3</li>
+    </ul>
+
+</body>
+
+</html>

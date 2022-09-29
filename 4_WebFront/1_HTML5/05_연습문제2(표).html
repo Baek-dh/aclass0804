@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_연습 문제 2(표)</title>
+
+    <style>
+        /* thead 태그의 배경색을 aqua로 출력 */
+        thead{
+            background-color: aqua;
+        }
+
+         /* tbody 태그의 배경색을 orange로 출력 */
+        tbody{
+            background-color: orange;
+        }
+
+         /* tfoot 태그의 배경색을 yellow로 출력 */
+        tfoot{
+            background-color: yellow;
+        }
+
+        /* tbody, tfoot 내부에 작성된 th의 배경색을 oreangered로 출력 */
+        tbody th, tfoot th{
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th colspan="5">하수정 컬렉션</th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+            <tr>
+                <th rowspan="5">제품리스트</th>
+                <th>코드</th>
+                <th>분류</th>
+                <th>가격</th>
+                <th>구매가능개수</th>
+            </tr>
+
+            <tr>
+                <td>01-468</td>
+                <td>가을</td>
+                <td>200,000원</td>
+                <td>1068</td>
+            </tr>
+            <tr>
+                <td>01-469</td>
+                <td>가을</td>
+                <td>150,000원</td>
+                <td>1700</td>
+            </tr>
+            <tr>
+                <td>01-470</td>
+                <td>여름</td>
+                <td>950,000원</td>
+                <td>2500</td>
+            </tr>
+            <tr>
+                <td>01-471</td>
+                <td>봄</td>
+                <td>120,000원</td>
+                <td>3200</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th colspan="3">총합</th>
+                <td>1,420,000원</td>
+                <td>8468</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+</html>

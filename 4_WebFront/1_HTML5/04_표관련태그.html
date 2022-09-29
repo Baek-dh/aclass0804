@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_표 관련 태그</title>
+
+    <!-- HTML 문서의 스타일(크기,색상,모양 등)을 지정하는 태그 == CSS -->
+    <style>
+        #tb3{
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+
+        #tb3 th, td{ border: 1px solid black;  }
+
+        #tb3 thead{ background-color: yellowgreen;  }
+
+        #tb3 tbody{ background-color: yellow; }
+
+        #tb3 tfoot{
+            background-color: orange;
+            color : white;
+        }
+    </style>
+</head>
+<body>
+    <h1>표 관련 태그</h1>
+
+    <pre>
+        <h3>table 태그</h3>
+        - 웹 문서에서 자료 정리를 위해 주로 사용하는 태그
+        - 행과 열로 이루어져 있으며, 행과 열이 교차하는 지점을 셀(cell) 이라고 함.
+
+        - table 태그는 테이블을 나타내는 행과 열이 작성될 수 있는 영역을 지정함. 
+    </pre>
+
+    <pre>
+        <h3>tr 태그</h3>
+        - Table Row의 약자로 한 행을 나타내는 태그
+    </pre>
+
+    <pre>
+        <h3>td 태그</h3>      
+        - Table Data의 약자로 한 행의 한 컬럼(==셀)을 나타내는 태그
+    </pre>
+
+    <pre>
+        <h3>th 태그</h3>
+        - Table Header의 약자로 컬럼명을 표시하는 용도의 태그
+        - 기본 성질은 td 태그와 같으나
+            추가적으로 굵은 글씨, 가운데 정렬이 이루어짐.
+    </pre>
+
+    <pre>
+        <h3>caption 태그</h3>
+        - 테이블의 제목이나 설명 내용을 추가하는 태그
+    </pre>
+
+    <hr>
+
+    <!-- border속성
+        table 태그와 내부에 작성되는 
+        td, th 태그에 검정 테두리를 추가
+
+        지정된 값에 따라 테두리 굵기(px) 지정
+    -->
+    <table border="1">
+        <caption>웹 브라우저의 종류</caption>
+
+        <!-- tr*4>td*3 -->
+        <tr> <!-- 1행 -->
+            <th>브라우저</th> <!-- 1행 1열 -->
+            <th>제조사</th> <!-- 1행 2열 -->
+            <th>제조사 홈페이지</th> <!-- 1행 3열 -->
+        </tr>
+       
+        <tr> <!-- 2행 -->
+            <td>Chrome</td> <!-- 2행 1열 -->
+            <td>Google</td> <!-- 2행 2열 -->
+            <td> <!-- 2행 3열 -->
+                https://www.google.com
+            </td>
+        </tr>
+
+        <tr>
+            <td>Edge</td>
+            <td>MS</td>
+            <td>https://www.microsoft.com</td>
+        </tr>
+        <tr>
+            <td>Safari</td>
+            <td>Apple</td>
+            <td>https://www.apple.com</td>
+        </tr>
+
+    </table>
+
+    <hr>
+
+    <h2>행 병합(rowspan), 열 병합(colspan) 속성</h2>
+
+    <pre>
+        * td/th 태그에만 작성 가능한 속성!
+        
+        행 병합(rowspan) : 상하 병합
+
+        열 병합(colspan) : 좌우 병합
+    </pre>
+
+    <!-- table[border="1"]>tr*4>td*3 -->
+    <!-- 
+        td 또는 th의 크기를 조절하는 속성
+        - width : 너비
+        - height : 높이
+     -->
+    <table border="1">
+        <tr>
+            <th width="70px">이름</th>
+            <td width="210px"></td>
+            <th width="140px" height="140px" rowspan="2">사진</th>
+        </tr>
+        <tr>
+            <th>연락처</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th height="35px">주소</th>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <th height="140px">자기소개</th>
+            <td colspan="2"></td>
+        </tr>
+    </table>
+
+
+    <hr>
+    <hr>
+
+
+    <h2>테이블 구조 설정 태그</h2>
+    <pre>
+        테이블 내부의 영역을 지정하는 역할로
+        thead, tbody, tfoot이 존재함
+        (미작성 시 테이블 내 모든 영역은 tbody 지정됨)
+    </pre>
+
+
+    <table id="tb3">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>홍길동</td>
+                <td>20</td>
+                <td>서울시 중구</td>
+            </tr>
+            <tr>
+                <td>김길동</td>
+                <td>25</td>
+                <td>경기도 부천시</td>
+            </tr>
+            <tr>
+                <td>박철수</td>
+                <td>27</td>
+                <td>서울시 구로구</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th colspan="2">총인원</th>
+                <th>3명</th>
+            </tr>
+        </tfoot>
+
+    </table>
+
+
+
+</body>
+</html>
