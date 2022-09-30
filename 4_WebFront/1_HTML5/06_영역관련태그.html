@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06_영역 관련 태그</title>
+
+    <style>
+        div, span{ 
+            border : 1px solid black;
+            /* div, span 태그에 검정색 1px 실선 테두리 추가 */
+        }
+
+        #div1, #span1{
+            background-color: red;
+            /* id속성(#)이 div1, span1이 태그에 red 배경 추가 */
+        }
+
+        #div2, #span2{
+            background-color: yellow;
+        }
+
+        #div3, #span3{
+            background-color: green;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1>영역 관련 태그</h1>
+
+    <pre>
+        <h3>block 형식(성질)</h3>
+        - 공간을 수직 분할 
+        -> 수직으로 되어있는 화면에
+           가로선을 그어 여러 행으로 분할하는 것
+
+        - 크기를 지정하는 css 속성인 width, height를 사용 할 수 있다.
+
+        ex) p/pre(문단 나누기), h1~h6(제목 영역 나누기),
+            hr(수평선을 넣어서 화면 나누기),
+            div(영역 나누기)
+
+            
+        <h3>inline 형식(성질)</h3>
+        - 공간을 수평 분할 
+        -> 수평으로 되어있는 화면에
+           세로선을 그어 여러 열(컬럼)로 분할하는 것
+
+        - 크기를 지정하는 css 속성인 width, height를 사용 할 수 없다!
+
+        ex) strong/b(영역 내 글자를 굵게),
+            em/i(영역 내 글자를 기울이기),
+            mark(글자에 노란 배경),
+            span(한 줄 내에서 열을 나누는 영역)
+
+    </pre>
+
+    <h2>테스트</h2>
+    <h3>테스트</h3>
+    <h4>테스트</h4>
+    <p>p태그 입니다.</p>
+    <pre>pre태그 입니다.</pre>
+
+    <p>
+        <strong>strong</strong>
+        <mark>mark</mark>
+        <i>i</i>
+        <del>del</del>
+    </p>
+
+
+    <hr>
+
+    <h2>block / inline 차이점 1 : 줄 바꿈(영역 분할 방식)</h2>
+
+    <h3>block(수직 분할)</h3>
+    
+    <div id="div1">첫 번째 영역</div>
+    <div id="div2">두 번째 영역</div>
+    <div id="div3">세 번째 영역</div>
+    <pre>
+        block 형식 태그는 한 줄을 모두 차지하기 때문에
+        뒤에 작성되는 내용은 다음 줄에 출력된다.
+    </pre>
+
+    <hr>
+
+    <h3>inline(수평 분할)</h3>
+    <span id="span1">첫 번째 영역</span>
+    <span id="span2">두 번째 영역</span>
+    <span id="span3">세 번째 영역</span>
+
+    <pre>
+        inline 형식 태그는 한 줄 내에서 
+        작성된 내용 만큼의 칸(열)을 차지하기 때문에
+        다음에 작성된 내용이 줄을 바꾸지 않고 뒤에 붙어서 출력된다.
+
+        <strong style="color:red">
+            * inline 형식의 태그 작성 시
+            html 문서에 엔터를 입력해서 작성하는 경우
+            출력되는 화면에서 한칸 띄어쓰기 된 형태로 출력된다!
+            -> 붙여서 출력 하고 싶으면 엔터, 띄어쓰기 없이
+            태그를 작성하면된다.
+        </strong>
+    </pre>
+
+    <hr>
+    
+    <h2>block/ inline을 이용한 화면 설계</h2>
+
+    <!-- div>span*5{$} -->
+    <div>
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+    </div>
+    <div>
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+    </div>
+    <div>
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+    </div>
+
+
+    <hr>
+
+    <h2>block / inline 차이점 2 : 영역 지정 방식</h2>
+
+    <ul>
+        <li>block : 사각형 박스 형태로 지정</li>
+        <li>inline : 내부에 작성된 내용(Content) 단위로 지정</li>
+    </ul>
+
+    <h3>block</h3>
+    <div style="background-color: pink;">
+        동해물과 백두산이 마르고 닳도록 <br>
+        하느님이 보우하사 우리나라 만세. <br>
+        무궁화 삼천리 화려강산 <br>
+        대한 사람, 대한으로 길이 보전하세. <br>
+        <br>
+        
+        남산 위에 저 소나무, 철갑을 두른 듯 <br>
+        바람서리 불변함은 우리 기상일세. <br>
+        무궁화 삼천리 화려강산 <br>
+        대한 사람, 대한으로 길이 보전하세. <br>
+        <br>
+        
+        가을 하늘 공활한데 높고 구름 없이 <br>
+        밝은 달은 우리 가슴 일편단심일세. <br>
+        무궁화 삼천리 화려강산 <br>
+        대한 사람, 대한으로 길이 보전하세. <br>
+        <br>
+        
+        이 기상과 이 맘으로 충성을 다하여 <br>
+        괴로우나 즐거우나 나라 사랑하세. <br>
+        무궁화 삼천리 화려강산 <br>
+        대한 사람, 대한으로 길이 보전하세. <br>  
+    </div>
+
+    <h3>inline</h3>
+    <span style="background-color: yellowgreen;">
+        동해물과 백두산이 마르고 닳도록 <br>
+        하느님이 보우하사 우리나라 만세. <br>
+        무궁화 삼천리 화려강산 <br>
+        대한 사람, 대한으로 길이 보전하세. <br>
+        <br>
+        
+        남산 위에 저 소나무, 철갑을 두른 듯 <br>
+        바람서리 불변함은 우리 기상일세. <br>
+        무궁화 삼천리 화려강산 <br>
+        대한 사람, 대한으로 길이 보전하세. <br>
+        <br>
+        
+        가을 하늘 공활한데 높고 구름 없이 <br>
+        밝은 달은 우리 가슴 일편단심일세. <br>
+        무궁화 삼천리 화려강산 <br>
+        대한 사람, 대한으로 길이 보전하세. <br>
+        <br>
+        
+        이 기상과 이 맘으로 충성을 다하여 <br>
+        괴로우나 즐거우나 나라 사랑하세. <br>
+        무궁화 삼천리 화려강산 <br>
+        대한 사람, 대한으로 길이 보전하세. <br>  
+    </span>
+
+    <hr>
+
+    <h2>block / inline 차이점 3 : 크기 지정(width/height)</h2>
+
+
+    <h3>block : 크기 지정 O</h3>
+    <div style="background-color: orange; width:200px; height: 200px;">Test</div>
+    
+    <h3>inline : 크기 지정 X</h3>
+    <span style="background-color: coral; width:200px; height: 200px;">Test</span>
+
+
+    <hr>
+
+    <h2>iframe 태그</h2>
+    <p>
+        웹 문서 내부에 다른 웹 문서를 추가하는 태그(inline 형식)
+    </p>
+
+    <iframe width="800px" height="1000px" src="04_표관련태그.html"></iframe>
+    
+    
+    <iframe width="500" height="250" src="https://www.youtube.com/embed/lI7TiNOyVI8" title="카메룬 전 하이라이트 | 2022 축구 국가대표 평가전 대한민국 vs 카메룬 하이라이트 | 디지털 독점 생중계 | 쿠팡플레이 | 쿠팡" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
+    <iframe width="1000px" height="1000px" src="https://www.khsmart.co.kr/main/index.jsp"></iframe>
+</body>
+</html>
