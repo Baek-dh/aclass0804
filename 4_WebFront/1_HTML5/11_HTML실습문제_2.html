@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_실습문제2</title>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>납품자 정보</legend>
+
+            <ol>
+                <li>
+                    <label> 납품자명 : </label>
+                    <input type="text" name="name">
+                    <br><br>
+                </li>
+                <li>
+                    <label> email : </label>
+                    <input type="email" placeholder="answer@naver.com" name="email">
+                    <br><br>
+                </li>
+                <li>
+                    <label> 홈페이지 : </label>
+                    <input type="url" value="http://" name="homepage">
+                    <br><br>
+                </li>
+                <li>
+                    <label>지역 : </label>
+                    <select name="lo">
+                        <option value="부산" selected>부산</option>
+                        <option value="서울">서울</option>
+                        <option value="경기">경기</option>
+                    </select>
+                </li>
+            </ol>
+
+        </fieldset>
+        <fieldset>
+            <legend>납품 정보</legend>
+            <ul>
+                <li>
+                    <label>
+                        상품명 : <input type="text" name="productName">
+                    </label>
+                </li>
+                <br>
+
+                <li>
+                    <label>
+                        납품수량 : <input type="number" min="100" placeholder="최소 100">
+                    </label>
+                </li>
+                <br>
+
+                <li>
+                    <label>
+
+                        납품등급 : <input type="range">
+                    </label>
+                </li>
+                <br>
+
+                <li>
+                    <label>
+                        기타사항 : <textarea name="etc" cols="20" rows="5"></textarea>
+                    </label>
+                </li>
+                <br>
+
+
+            </ul>
+
+        </fieldset>
+        <br>
+        <button>send message</button>
+
+
+
+    </form>
+</body>
+
+</html>
