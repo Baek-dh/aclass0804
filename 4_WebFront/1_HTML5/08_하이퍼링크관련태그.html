@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08_하이퍼링크 관련 태그</title>
+</head>
+<body>
+    <h1>하이퍼링크(하이퍼 텍스트) 관련 태그</h1>
+
+    <pre>
+        Hyperlink(Hypertest) : 다른 문서로 즉시 접근(이동)하는 텍스트
+
+        HTTP(HyperText Transfer Protocol) : 하이퍼텍스트로 이루어진 문서를 전송하는 규약
+                                            -> HTML
+    </pre>
+
+    
+    <h1> a(Anchor) 태그</h1>
+    <pre>
+        - a태그는 현재 HTML 문서와 
+        다른 HTML 문서를 연결해서 
+        이동할 수 있게하는 기능을 제공하는 태그.
+        (페이지 이동)
+
+        - a태그로 감싸진 문자열 또는 이미지 == 하이퍼링크
+
+        - a태그는 inline 형식의
+
+        
+        ** 하이퍼링크는 웹 문서가 다른 문서와 구분될 수 있는 핵심 기능.
+            1) 다른 페이지로 이동
+            2) 현재 페이지 내에서 이동
+    </pre>
+
+    <hr>
+
+    <h4>href 속성 : 참조할 페이지 주소(이동할 페이지 주소)를 작성하는 속성 </h4>
+   
+    <h4>target 속성 : 연결된 문서를 어디에 열 것인지 지정하는 속성</h4>
+
+    <h3>이전 수업 내용으로 이동</h3>
+    <ul>
+        <li>
+            <a href="01_글자관련태그.html">01_글자 관련 태그</a>
+        </li>
+        <li>
+            <a href="02_목록관련태그.html">02_목록 관련 태그</a>
+        </li>
+        <li>
+            <a href="03_연습문제1.html">03_연습문제1</a>
+        </li>
+        <li>
+            <!-- _self : 현재 탭 (기본값) -->
+            <a href="04_표관련태그.html" target="_self">04_표 관련 태그</a>
+        </li>
+
+        <li>
+            <!-- _blank : 새 탭(새 창) -->
+            <a href="05_연습문제2(표).html" target="_parent">05_연습문제2(표)</a>
+        </li>
+    </ul>
+
+
+    <hr>
+
+
+    <h3>이미지 클릭 시 페이지 이동</h3>
+    <a href="https://iei.or.kr">
+        <img src="https://iei.or.kr/resources/images/main/main_renewal/top_logo.jpg" >
+    </a>
+
+
+    <hr>
+
+    <h2>페이지 내 이동(점프)</h2>
+
+    <ul id="list">
+        <li><a href="#dog1">강아지1</a></li>
+        <li><a href="#dog2">강아지2</a></li>
+        <li><a href="#dog3">강아지3</a></li>
+    </ul>
+
+
+    <h3 id="dog1">강아지1</h3>
+    <img src="../images/dogs/dog1.jpg">  <br>
+    <a href="#list">목록으로 이동</a>
+
+
+    <h3 id="dog2">강아지2</h3>
+    <img src="../images/dogs/dog2.jpg">  <br>
+    <a href="#list">목록으로 이동</a>
+
+    
+    <h3 id="dog3">강아지3</h3>
+    <img src="../images/dogs/dog3.jpg">  <br>
+    <a href="#list">목록으로 이동</a>
+
+
+
+</body>
+</html>
