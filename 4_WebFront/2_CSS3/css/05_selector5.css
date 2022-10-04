@@ -1,0 +1,44 @@
+/* :only-child */
+#test1 > p:only-child{
+    /* #test1 자식이 하나 밖에 없고, 그 요소가 p태그인 경우 */
+    background-color: steelblue;
+}
+
+/* :only-of-type */
+#test2 > p:only-of-type{
+    background-color: crimson;
+}
+
+#test2 > pre:only-of-type{
+    background-color: springgreen;
+}
+
+
+/* :empty */
+#test3 > p:empty{
+    height: 30px;
+    background-color: orange;
+    border: 1px solid black;
+}
+
+
+/* 여러 선택자 동시 작성 */
+#test4, [name='test4'], .test4{
+    border: 2px solid black;
+    background-color: yellow;
+}
+
+/* 특정 요소 내부에있는 특정 클래스만 선택 */
+#test5 .test5{
+    /* id가 test5인 요소의 후손 중 
+    클래스가 test5인 요소만 선택 */
+    background-color: aquamarine;
+}
+
+/* 클래스가 여러 개인 요소 선택하는 방법 */
+/* .test6.c6{
+    background-color: red;
+} */
+.c6.test6{ /* 순서 관계 없음 */
+    background-color: red;
+}
