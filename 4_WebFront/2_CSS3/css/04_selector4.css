@@ -1,0 +1,115 @@
+/* 일반 구조 선택자 */
+/* 
+    :first-child : 형제 관계의 요소 중 첫 번째 요소
+    :last-child : 형제 관계의 요소 중 마지막 요소
+    :nth-child(숫자 또는 수열) : 형제 관계의 요소 중 숫자 번째 요소
+                                 또는 모든 수열 번째 요소 선택 
+    :nth-last-child(숫자 또는 수열) : 형제 관계의 요소 중 
+                                      뒤에서 부터 지정된 숫자 번째 요소
+                                      또는 뒤에서 부터 모든 수열 번째 요소 선택 
+*/
+
+
+/*  :first-child : 형제 관계의 요소 중 첫 번째 요소  */
+#test1 > p:first-child{
+    background-color: red;
+    color: white;
+}
+
+
+/* :last-child : 형제 관계의 요소 중 마지막 요소 */
+#test1 > p:last-child{
+    background-color: orange;
+}
+/* #test1의 자식 요소 중 마지막 자식이 p태그일 경우 선택 */
+
+
+/*  :nth-child(숫자 또는 수열) : 형제 관계의 요소 중 숫자 번째 요소
+                                 또는 모든 수열 번째 요소 선택  */
+/* 첫 번째 요소 == 1번 */
+#test1 > p:nth-child(2){  
+    /* #test1의 자식 요소 중 2번째 자식이 p태그가 맞을 경우 선택 */
+    background-color: yellow;
+}
+
+#test1 > p:nth-child(4){
+    /* #test1의 자식 요소 중 4번째 자식이 p태그가 맞을 경우 선택 */
+    background-color: pink;
+}
+
+#test1 > *:nth-child(6){
+    /* #test1의 자식 요소 중 6번째 자식이 있으면 선택 */
+    background-color: green;
+}
+
+/* n은 0보다 크거나 같은 정수(양수, 0) */
+#test1 > p:nth-child(2n + 3){
+    border: 3px solid black;
+}
+
+#test1 > p:nth-child(2n){
+    /* #test1의 자식 요소 중 2n번째(짝수) 자식이 p태그가 맞을 경우 선택 */
+    font-size: 30px;
+}
+
+
+/* :nth-last-child(숫자 또는 수열) : 형제 관계의 요소 중 
+                                      뒤에서 부터 지정된 숫자 번째 요소
+                                      또는 뒤에서 부터 모든 수열 번째 요소 선택  */
+
+#test1 > p:nth-last-child(2){
+    /* #test1의 자식 요소 중 뒤에서 두 번째 자식이 p태그가 맞을 경우 선택 */
+    color : silver;
+    font-weight: bold;
+}
+
+/* -------------------------------------------------------- */
+
+/* 형태 구조 선택자 */
+/*
+    :first-of-type  : 같이 선택된 형제 요소 중 첫 번째 요소
+    :last-of-type   : 같이 선택된 형제 요소 중 마지막 요소
+    
+    :nth-of-type(숫자 또는 수열) : 같이 선택된 형제 요소 중 숫자 번째 요소
+                                   또는 수열 번째 요소 모두 선택
+
+    :nth-last-of-type(숫자 또는 수열) : 같이 선택된 형제 요소 중 뒤에서 부터 숫자 번째 요소
+                                         또는 뒤에서 부터 수열 번째 요소 모두 선택
+*/
+
+
+/*  :first-of-type  : 같이 선택된 형제 요소 중 첫 번째 요소 */
+#test2 > p:first-of-type{
+    background-color: orange;
+}
+
+/* :last-of-type   : 같이 선택된 형제 요소 중 마지막 요소 */
+#test2 > p:last-of-type{
+    background-color: skyblue;
+}
+
+
+/* :nth-of-type(숫자 또는 수열) : 같이 선택된 형제 요소 중 숫자 번째 요소
+                                   또는 수열 번째 요소 모두 선택 */
+#test2 > p:nth-of-type(2n){
+    border: 1px solid red;
+}
+
+/*  :nth-last-of-type(숫자 또는 수열) : 같이 선택된 형제 요소 중 뒤에서 부터 숫자 번째 요소
+                                        또는 뒤에서 부터 수열 번째 요소 모두 선택 */
+#test2 > *:nth-last-of-type(2n+1){
+    border: 1px solid blue;
+}
+/* :nth-of-type 앞에 *을 작성하는 경우 각각의 요소 종류 별로 수열이 적용된다 */
+
+#test2 > *:nth-child(3n + 1){
+    background-color: pink;
+}
+
+
+/* 부정 선택자 */
+
+#test3 > li:not(:nth-of-type(3n)){
+    background-color: purple;
+    color : white;
+}

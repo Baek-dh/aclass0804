@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_CSS 선택자 3</title>
+
+    <link rel="stylesheet" href="css/03_selector3.css">
+
+</head>
+<body>
+    <h1>문자열 속성 선택자</h1>
+
+    <pre>
+        속성 값의 문자열을 확인하여 스타일 적용하는 방식의 선택자.
+
+
+        
+        1) 선택자[속성명 ~= "특정값"] { CSS 코드; }
+            -> 띄어쓰기로 구분되어있는 여러 속성 값이 작성된 속성 중
+            속성 값이 특정 값을 단어로 포함하는 요소를 선택
+
+
+        2) 선택자[속성명 |= "특정값"] { CSS 코드; }
+            -> 속성 값이 특정 값을 단어로 포함하는 요소를 선택
+              단, "-" 기호로 구분, "-" 앞의 내용이 동일해야 한다.
+
+
+        3) 선택자[속성명 ^= "특정값"] { CSS 코드; }   
+          (^ : 캐럿)
+            -> 속성 값이 특정 값으로 시작하는 요소를 선택
+
+
+        4) 선택자[속성명 $= "특정값"] { CSS 코드; }
+            -> 속성 값이 특정 값으로 끝나는 요소를 선택
+
+
+        5) 선택자[속성명 *= "특정값"] { CSS 코드; }
+            -> 속성 값이 특정 값을 포함하는 요소를 선택
+
+
+    </pre>
+
+    <div name="aaa bbb str-1" class="str-class"> div1 </div>
+    <div name="str-2 aaa" class="str-class"> div2 </div>
+    <div name="str" class="class-str"> div3 </div>
+    <div name="aaa str-3" class="str-class2"> div4 </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_CSS 선택자 2</title>
+
+    <!-- link 태그 : 외부 파일(CSS)과 연결하는 태그 -->
+    <link rel="stylesheet" href="css/02_selector2.css">
+
+</head>
+<body>
+    
+    <h3>기본 속성 선택자</h3>
+    <pre>
+        특정 속성이 작성된 요소를 선택하는 선택자.
+        (id, class도 선택은 가능하지만 #, . 기호를 사용하길 권장)
+
+        <strong>[작성법]</strong>
+        선택자[속성명="속성값"] {  CSS 코드;  }
+
+        (참고)
+        1) 선택자는 생략 가능
+            -> 특정 속성명="속성값" 을 지닌 모든 요소
+
+        2) "속성값" 에서 쌍따옴표("")는
+           홑따옴표('')로 변경하거나 생략할 수 있다
+    </pre>
+
+    <div name="name-1">div1</div>
+    <div name="name-1">div2</div>
+    <div name="name-2">div3</div>
+    <div name="name-2">div4</div>
+
+    <p name="name-1" class="test-1">p1</p>
+    <p name="name-1">p2</p>
+    <p name="name-2">p3</p>
+    <p name="name-2" class="test-1">p4</p>
+
+
+    <hr>
+
+    
+    <h3>자식 선택자 (>) </h3>
+    <pre>
+        지정된 요소 바로 하위에 존재하는 요소를 선택하는 선택자.
+
+        <strong>[작성법]</strong>
+
+        선택자1 > 선택자2{ CSS 코드; }
+        -> 선택자1 하위에 존재하는 선택자 2 요소를 모두 선택
+
+        선택자1 == 부모 요소
+        선택자2 == 자식 요소
+    </pre>
+
+    <ul id="parent-ul"> 부모
+        <li class="test-2">자식1</li>
+        <li>
+            <span>자식2</span>
+        </li>
+        <li>자식3</li>
+        <li>
+            <span class="test-2">자식4</span>
+        </li>
+    </ul>
+
+
+    <hr>
+
+    <h3>후손(자손) 선택자 ( 띄어쓰기 ) </h3>
+    <pre>
+        지정된 요소의 하위에 존재하는 모든 요소를 선택하는 선택자.
+
+        - 자식 : 1단계 아래(하위)
+        - 후손 : n단계 아래 모두
+
+        <strong>[작성법]</strong>
+        
+        선택자1 선택자2 { CSS 코드; }
+        -> 선택자1의 후손 중 선택자2를 모두 선택
+    </pre>
+
+    <div id="test-div">
+        <p>test-div의 자식 요소 입니다.</p>
+        <p class="test-3">test-div의 후손 요소 입니다.</p>
+
+        <div>
+            <p>
+                이것도 후손일까? <br>
+                <span class="test-3">안녕하세요</span>
+            </p>
+        </div>
+    </div>
+
+
+    <hr>
+    <hr>
+
+    <h1>반응 선택자</h1>
+    <pre>
+        사용자의 움직임에 반응하여 선택되는 선택자
+
+        - 선택자:active  -> 선택된 요소를 클릭하고 있을 경우
+
+        - 선택자:hover   -> 선택된 요소에 마우스를 올리고 내릴 경우
+                         -> 올릴 경우 선택자:hover에 작성된 CSS 코드가 적용
+                         -> 내릴 경우 이전 상태로 돌아감
+    </pre>
+
+    <div class="div-cls"  id="active-test">:active 테스트</div>
+
+    <div class="div-cls"  id="hover-test">:hover 테스트</div>
+
+
+    <hr>
+
+
+    <h1>상태 선택자</h1>
+    <pre>
+        입력 양식 관련 태그(input, input 관련 태그)
+        상태에 따라 선택하는 선택자.
+
+        :focus    -> 요소에 초점이 맞춰진 상태인 경우 선택
+
+        :checked  -> 요소가 체크 되었을 때 선택(radio, checkbox)
+
+        :enabled  -> 요소가 사용 가능한 상태일 때 선택
+        
+        :disabled -> 요소가 사용 불가능한 상태일 때 선택
+
+    </pre>
+
+    <h3>:focus</h3>
+    
+    <input type="text" id="focus-test">
+
+
+    <hr>
+
+
+    <h3>:checked</h3>
+
+    <label for="apple">사과</label>
+    <input type="checkbox" name="fruits" id="apple">  <br>
+
+    <label for="banana">바나나</label>
+    <input type="checkbox" name="fruits" id="banana">  <br>
+
+    <label for="melon">멜론</label>
+    <input type="checkbox" name="fruits" id="melon">  <br>
+
+
+    <hr>
+
+    <h3>:enabled / :disabled</h3>
+
+    <div id="test-div2">
+        <!-- 
+            enabled : 활성화 상태(사용 가능, 기본값)
+            disabled : 비활성화 상태(사용 불가능)
+         -->
+        사용 가능 : <input type="text" enabled> 
+        <br>
+        사용 불가능 : <input type="text" value="변경 X" disabled>
+    </div>
+
+
+
+    <hr>
+
+    <h1>동위 선택자</h1>
+    <pre>
+        동위 관계(동등한 위치의 관계 == 형제 관계)에서
+        다음에(뒤에) 위치한 요소를 선택하는 선택자.
+
+        A
+        B  (1)  
+        B  (2)
+
+        1) A를 기준으로 바로 다음에 존재하는 B 요소를 하나(1) 선택 : +
+        A + B { CSS 코드; }
+
+        2) A를 기준으로 다음에 오는 모든 B 요소(1), (2) 선택 :  ~ (Tilde)
+        A ~ B { CSS 코드; }
+    </pre>
+
+    <div id="div1">1번 입니다</div>
+    <div>2번 입니다</div>
+    <div id="div3">3번 입니다</div>
+    <div>4번 입니다</div>
+
+    <p>관련 없는 태그입니다~</p>
+
+    <div>5번 입니다</div>
+
+
+    <hr>
+
+
+    <h1 style="color:red;">checkbox 모양 바꾸기</h1>
+
+    <pre>
+        - 상태 선택자 :checked
+        - 동위 선택자 +
+        - input type="checkbox"
+        - label 태그(for 속성) 
+        - 체크박스 이미지
+    </pre>
+
+    <input type="checkbox" class="chk" id="check1">
+    <label for="check1"></label>
+    <span class="test-4">이메일 수신 동의</span>
+    <br>
+
+    <input type="checkbox" class="chk" id="check2">
+    <label for="check2"></label>
+    <span class="test-4">개인정도 이용 동의</span>
+    <br>
+
+    <input type="checkbox" class="chk" id="check3">
+    <label for="check3"></label>
+    <span class="test-4">마케팅 메세지 수신 동의</span>
+    
+
+</body>
+</html>

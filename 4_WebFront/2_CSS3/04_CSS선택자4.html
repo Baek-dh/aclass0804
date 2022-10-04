@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_CSS 선택자4</title>
+
+    <link rel="stylesheet" href="css/04_selector4.css">
+
+</head>
+<body>
+    <h3>일반 구조 선택자</h3>
+    <pre>
+        특정 요소의 자식 요소(형제 관계 요소)를 선택하는 선택자
+        - 형제 관계에 있는 요소 중 특정 요소만을 선택
+        - (중요) 위치를 기준 구분함
+    </pre>
+
+    <!-- div#test1>p*5{테스트$} -->
+    <div id="test1">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+
+
+    <hr>
+
+
+    <h3>형태 구조 선택자</h3>
+    <pre>
+        특정 요소의 자식 요소(형제 관계 요소)를 선택하는 선택자
+        - 형제 관계에 있는 요소 중 특정 요소만을 선택
+        - (중요) 선택된 요소를 기준으로 구분함
+    </pre>
+
+    <div id="test2">
+        <pre>테스트0</pre>
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+
+
+
+    <hr>
+
+    <h3>부정 선택자 ( 선택자1:not(선택자2) )</h3>
+    <pre>
+        괄호 내 선택자를 제외한 나머지 요소를 선택
+        (Java == !(논리 부정), 반대의 의미)
+    </pre>
+
+    <!-- ul#test3>li*10{$} -->
+    <ul id="test3">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+
+
+
+</body>
+</html>
