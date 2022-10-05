@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_레이아웃 스타일 1</title>
+
+    <link rel="stylesheet" href="css/07_layout1.css">
+</head>
+<body>
+    <h1>레이아웃(layout)</h1>
+
+    <pre>
+        사전적 의미 : 배치, 정리
+        기술적 의미 : 구성 요소를 제한된 공간에 효율적으로 배치하는 것        
+    </pre>
+
+    <hr>
+
+    <h1>화면 배치 방법(형식) : display 속성</h1>
+
+    <pre>
+        요소가 화면에 어떻게 보여질지 형식을 지정하는 속성
+
+        - block : 화면을 수직 분할(행을 나눔)
+                  + width, height 사용 O
+
+        - inline : 화면을 수평 분할(한 행의 열(컬럼)을 나눔)
+                  + width, height 사용 X
+
+        - inline-block : inline의 수평 분할 + block의 크기 조절
+
+        - none : 화면에 요소가 표시되지 않으나 존재는 하고 있는 상태
+
+        - flex : 요소의 정렬되는 방향, 간격을 유연하게 처리하는 형식
+    </pre>
+
+    <h3>block 형식의 요소(div)를 inline으로 변경</h3>
+    <!-- div.area$.block{$번 영역}*5 -->
+    <div class="area1 block inline">1번 영역</div>
+    <div class="area2 block inline">2번 영역</div>
+    <div class="area3 block inline">3번 영역</div>
+    <div class="area4 block inline">4번 영역</div>
+    <div class="area5 block inline">5번 영역</div>
+
+
+    <h3>inline 형식의 요소(span)를 block으로 변경</h3>
+    <!-- span.area${$번 영역}*5 -->
+    <span class="area1 block">1번 영역</span>
+    <span class="area2 block">2번 영역</span>
+    <span class="area3 block">3번 영역</span>
+    <span class="area4 block">4번 영역</span>
+    <span class="area5 block">5번 영역</span>
+
+
+    <h3>inline-block 확인하기</h3>
+    <!-- div.area$.block.inline-block{$번 영역}*5 -->
+    <pre>
+        inline, inline-block 요소 사이의 간격이 없게 하려면
+        html 코드 작성 시 띄어쓰기, 엔터 없이 작성
+
+    </pre>
+
+    <div class="area1 block inline-block">1번 영역</div>
+    <div class="area2 block inline-block">2번 영역</div>
+    <div class="area3 block inline-block">3번 영역</div>
+    <div class="area4 block inline-block">4번 영역</div>
+    <div class="area5 block inline-block">5번 영역</div>
+
+
+    <hr>
+
+    <h1>화면(영역) 분할</h1>
+
+    <h3>상하 2분할</h3>
+    <pre>
+        준비물
+        - 감싸고 있는 영역 요소
+        - 내부를 분할할 요소
+        - display : block 
+        - 크기 지정 단위(px, %)
+    </pre>
+
+    <!-- 감싸고 있는 영역 요소 -->
+    <div id="container-1">
+
+        <!-- 내부를 분할할 요소 -->
+        <div></div>
+        <div></div>
+    </div>
+
+
+    <hr>
+
+    <h3>상하 3분할</h3>
+    <pre>
+        1) 감싸는 영역
+          - id : container-2
+          - 높이 : 440px;
+          - 너비 : 300px;
+        
+        2) 내부 분할 영역 비율 :   15 : 35 : 50
+        3) 배경 색상은 자유롭게
+    </pre>
+
+    <div id="container-2">
+        <div class="area1"></div>
+        <div class="area2"></div>
+        <div class="area3"></div>
+    </div>
+
+              
+    <hr>
+
+    <h3>좌우 2분할</h3>
+    <pre>
+        준비물
+        - 감싸고 있는 영역 요소
+        - 내부를 분할할 요소
+        - display : inline-block 
+        - 크기 지정 단위(px, %)
+    </pre>
+
+    <div id="container-3">
+        <div class="area3">1</div><div class="area4">2</div>
+    </div>
+
+
+
+    <hr>
+
+
+    <h3>display : none</h3>
+    <pre>
+        - 화면에 요소가 표시되지 않으나 존재는 하고 있는 상태
+        
+        - visibility : hidden;  -> 요소를 투명한 상태로 표시
+    </pre>
+
+    <div class="test4">1</div>
+    <div class="test4 none">2</div>
+    <div class="test4">3</div>
+    <div class="test4 hidden">4</div>
+    <div class="test4">5</div>
+
+
+</body>
+</html>

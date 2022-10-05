@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09_레이아웃 스타일 3</title>
+
+    <link rel="stylesheet" href="css/09_layout3.css">
+</head>
+<body>
+    <h1>요소 정렬 스타일(float / clear)</h1>
+
+    <pre>
+        float(뜨다, 띄우다, 흐르다) : 요소를 띄워서 좌/우로 정렬하는 속성
+
+        clear : float로 인해 띄워져 있는 상태를 해제하는 속성
+                (float 사용 시 겹침 문제가 발생하는데 이를 해결할 때 사용)
+    </pre>
+    
+    <h3>기본 형태</h3>
+    <div class="test">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>Hello</div>
+        <div>World</div>
+        <div>5</div>
+    </div>
+    <hr>
+
+
+    <h3> float : left </h3>
+    <div class="test">
+        <div class="left">1</div>
+        <div class="left">2</div>
+        <div class="left">3</div>
+        <div class="left">4</div>
+        <div>Hello</div>
+        <div class="clear">World</div>
+
+        <div class="left">5</div>
+        <div class="left">6</div>
+    </div>
+    <hr>
+
+
+    <h3> float : right </h3>
+    <div class="test">
+        <div class="right">1</div>
+        <div class="right">2</div>
+        <div class="right">3</div>
+        <div class="right">4</div>
+
+        <div>Hello</div>
+        <div class="clear">World</div>
+
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <hr>
+
+    <h3>float를 이용한 좌우 2분할</h3>
+
+    <div class="container-1">
+        <div class="div-1 bg-1"></div>
+        <div class="div-1 bg-2"></div>
+    </div>
+
+
+    <hr>
+
+    <h3>4분할 하기</h3>
+
+    <div class="container-1">
+
+        <!-- 1행 -->
+        <div class="row-1">
+            <div class="col-1">
+                <img src="../images/flowers/flower2.jpg">
+            </div>
+            <div class="col-1 bg-4"></div>
+        </div>
+        
+        <!-- 2행 -->
+        <div class="row-1">
+            <div class="col-1 bg-6"></div>
+            <div class="col-1">
+                <img src="../images/flowers/flower4.jpg">
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

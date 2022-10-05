@@ -1,0 +1,89 @@
+div{
+    border : 1px solid black;
+    box-sizing: border-box; /* w/h가 padding + border + content의 합 
+                                                        -> content가 자동 조정됨 */
+}
+
+.test{
+    width: 300px;
+    height: 200px;
+    background-color: #ddd;
+}
+
+
+/* float : left */
+.left{
+    width: 50px;
+    height: 50px;
+    background-color: pink;
+
+    float : left;
+}
+
+.clear{
+    /* clear : left; */
+    /* float : left 상태를 해제 */
+
+    /* clear : right; */
+    /* float : right 상태를 해제 */
+
+    clear : both; /* 양쪽 */
+    /* float : left/right 상태를 동시에 해제 */
+    
+
+
+    background-color: red;
+    color : white;
+}
+
+
+.right{
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+    
+    float : right;
+    /* 요소를 띄워서 오른쪽 정렬
+        (중요) HTML에 먼저 작성된 요소를 먼저 정렬 시킨다
+    */
+}
+
+
+/* 좌우 2분할 */
+.container-1{
+    width: 400px;
+    height: 200px;
+}
+
+.div-1{
+    width: 50%;
+    height: 100%;
+    float : left;
+}   
+
+.bg-1{ background-color: #F675A8;}
+.bg-2{ background-color: #FFB3B3;}
+.bg-3{ background-color: #FFDBA4;}
+.bg-4{ background-color: #C1EFFF;}
+.bg-5{ background-color: #B1B2FF;}
+.bg-6{ background-color: #ECC5FB;}
+.bg-7{ background-color: #576F72;}
+
+
+
+/* 4분할 하기 */
+.row-1{ /* 행 분할 */
+    width: 100%;  /* block 형식 요소는 width가 기본 100% 이므로 생략 가능 */
+    height: 50%;
+}
+
+.col-1{ /* 열 분할 */
+    width: 50%;
+    height: 100%;
+    float : left;
+}
+
+.col-1 > img{ /* 열 내부의 이미지 크기 조정 */
+    width: 100%;
+    height: 100%;
+}
