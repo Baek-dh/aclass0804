@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14_flexbox1</title>
+
+    <link rel="stylesheet" href="css/flex-style.css">
+    <link rel="stylesheet" href="css/14_flexbox1.css">
+</head>
+<body>
+    <h1>FlexBox</h1>
+
+    <pre>
+        요소의 정렬되는 방향, 순서, 요소 간의 간격을
+        개발자가 수치적으로 처리하지 않아도
+        알아서 유연하게 처리해주는 형식.
+
+        * FlexBox 이용 시 반드시 알아야 할 것!
+
+        1. FlexBox의 구성
+        - flex-container : 정렬이 필요한 요소를 감싸는 요소 
+        - item : 정렬이 필요한 요소(정렬 적용 대상)
+        
+        -> flex 관련 css 속성이 flex-container, item 구문으로 나누어져 있음.
+
+
+        2. FlexBox의 축(axis)
+        - 중심축(main axis)
+        - 교차축, 반대축(cross axis)
+    </pre>
+
+
+    <hr>
+
+    <div class="flex-container">
+
+        <!-- div.item.item${item$}*9 -->
+        <div class="item item1">item1</div>
+        <div class="item item2">item2</div>
+        <div class="item item3">item3</div>
+        <div class="item item4">item4</div>
+        <div class="item item5">item5</div>
+        <div class="item item6">item6</div>
+        <div class="item item7">item7</div>
+        <div class="item item8">item8</div>
+        <div class="item item9">item9</div>
+
+    </div>
+
+
+    <hr>
+
+    <h1>FlexBox를 이용한 요소 정가운데 배치하기</h1>
+    <div id="con">
+        <div id="center"></div>        
+    </div>
+
+
+</body>
+</html>

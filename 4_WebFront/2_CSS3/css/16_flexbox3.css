@@ -1,0 +1,75 @@
+.flex-container{
+    height: 400px;
+    background-color: #ddd;
+    display: flex;
+}
+
+/*********/
+/* order */
+/*********/
+
+/* flex-container 내부의 item 배치 순서 지정 속성
+  (기본값 0, 정수만 가능(양수, 음수, 0) )
+*/
+
+.order1{ order : 1; }
+.order2{ order : 2; }
+.order3{ order : 3; }
+.order4{ order : 4; }
+.order5{ order : 5; }
+
+
+/*************/
+/* flex-grow */
+/*************/
+
+/* 
+    - item의 팽창 정도를 지정하는 속성 (기본값 0)
+    - 여러 item에 지정된 경우 각각의 비율에 맞게 팽창함
+*/
+.grow1{ flex-grow: 1;}
+.grow2{ flex-grow: 2;}
+.grow3{ flex-grow: 3;}
+.grow4{ flex-grow: 4;}
+
+
+/***************/
+/* flex-shrink */
+/***************/
+
+/* item이 수축하는 정도를 지정하는 속성(기본값 1) */
+.shrink0{ flex-shrink: 0;}
+.shrink1{ flex-shrink: 1;}
+.shrink2{ flex-shrink: 2;}
+.shrink3{ flex-shrink: 3;}
+
+
+/***************/
+/* flex-basis */
+/***************/
+
+/* main-axis 방향으로 item이 차지하는 크기를 지정하는 속성 */
+
+.b-150px{ flex-basis: 150px;}
+.b-10p  { flex-basis: 10%; }
+.b-25p  { flex-basis: 25%; }
+.b-50p  { flex-basis: 50%; }
+
+
+/********/
+/* flex */
+/********/
+
+/* grow + shrink + basis */
+.flex-1{ flex : 0 0 100px }
+
+
+
+/**************/
+/* align-self */
+/**************/
+
+/* 각 item별로 교차축 배치를 지정하는 속성 */
+.start { align-self: flex-start; }
+.end   { align-self: flex-end; }
+.center{ align-self: center; }
