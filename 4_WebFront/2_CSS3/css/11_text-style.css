@@ -1,0 +1,51 @@
+/* color 속성 */
+#color-ul > li{
+    font-size : 24px;
+    font-weight: bold;
+}
+
+#color-ul > li:first-child {color : red;}
+
+#color-ul > li:nth-child(2){ 
+    /* color : #f39; */
+            /*  RGB */
+ 
+    color : #8918f5;
+            /*  R G B  */
+}
+
+#color-ul > li:nth-child(3){
+    /* rgb 색상을 10진수로 작성 */
+    /* 0~255 */
+    color : rgb(255, 0, 0);
+}
+
+#color-ul > li:nth-child(4){
+    /* a : 투명도(0~1) */
+    color : rgba(255, 0, 0, 0.5);
+}
+
+#color-ul > li:nth-child(5){
+    /* hsl : 색조, 채도, 밝기 */
+    /* 색조 : 0(red), 120(green), 240(blue) */
+    /* 밝기 : 50% 기준 */
+    color : hsl(1, 100%, 50%);
+}
+
+#color-ul > li:nth-child(6){
+    /* hsla : 색조, 채도, 밝기, 투명도 */
+    color : hsla(240, 40%, 50%, 0.5);
+}
+
+
+/* text-decoration */
+#deco-ul > li:nth-child(1){ text-decoration: underline; }
+#deco-ul > li:nth-child(2){ text-decoration: line-through; }
+#deco-ul > li:nth-child(3){ text-decoration: overline; }
+#deco-ul > li:nth-child(4) > a{ text-decoration: none; color:black; }
+
+
+/* text-align */
+#align-test > p:nth-child(1){ text-align: left; }
+#align-test > p:nth-child(2){ text-align: right; }
+#align-test > p:nth-child(3){ text-align: center; }

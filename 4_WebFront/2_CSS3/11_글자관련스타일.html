@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_글자 관련 스타일</title>
+
+    <link rel="stylesheet" href="css/11_text-style.css">
+</head>
+<body>
+    <h3>color : 글자 색을 지정하는 속성</h3>
+    <pre>
+        color : 색상명(영문) | 16진수 숫자 RGB (#fff, #ffffff)
+              | rgb(255, 255, 255) | rgba(255, 255, 255, 1)
+              | hsl(360, 100%, 100%) | hsla(360, 100%, 100%, 1)
+
+       * 16진수(0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f),
+       * rgb(빛의 삼원색), hsl(색조, 채도, 밝기)  
+       * rgba, hsla에서 a는 투명도( 0(투명) ~ 1(불투명) )   
+       * 6가지의 색 지정 방식은 모든 색상 관련 속성에서 사용 가능
+    </pre>
+
+    <ul id="color-ul">
+        <li>색상명</li>
+        <li>16진수</li>
+        <li>rgb</li>
+        <li>rgba</li>
+        <li>hsl</li>
+        <li>hsla</li>
+    </ul>
+
+    <hr>
+
+    <h3>text-decoration : 텍스트에 줄을 긋는 속성</h3>
+    <ul id="deco-ul">
+        <li>아랫줄 긋기</li>
+        <li>중간줄 긋기</li>
+        <li>윗줄 긋기</li>
+        <li> <a href="#">줄 없애기</a> </li>
+    </ul>
+
+    <hr>
+    
+    <!-- align : 맞추다 -->
+    <h3>text-align : 내부에 작성된 글 또는 inline요소를 정렬하는 속성</h3>
+
+    <pre>
+        text-align은 dispaly가 inline인 경우 적용되지 않는다.
+    </pre>
+
+    <div id="align-test">
+        <p>안녕하세요?  <span>abcdef</span>  졸지마세요!</p>
+        
+        <p>안녕하세요?  <span>abcdef</span>  졸지마세요!</p>
+
+        <p>안녕하세요?  <span>abcdef</span>  졸지마세요!</p>
+    </div>
+
+</body>
+</html>
