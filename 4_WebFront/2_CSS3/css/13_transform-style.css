@@ -1,0 +1,175 @@
+img{
+    width: 250px;
+    height: auto; /* 생략 가능 */
+
+    /* 이미지는 원래 자신만의 너비/높이를 가지고있어
+        한 방향의 크기만 지정해도 
+        남은 방향은 자동으적으로 비율에 맞춰서 지정된다.
+        == 이 상태가 height : auto / width : auto/
+    */
+}
+
+
+/* transform : 변형과 관련된 속성 */
+
+/* css 속성 작성 시 크로스 브라우저(브라우저가 달라지는 경우) 처리 방법
+    -ms- : 마이크로 소프트(익스플로러, 엣지)
+    -webkit- : 크롬, 사파리
+    -o- : 오페라
+    -moz- : 파이어폭스
+*/
+
+
+/* -----2차원 변형----- */
+/* 좌우 이동 */
+.trans-x-2d:hover{
+    -ms-transform: translateX(100px);
+    -webkit-transform: translateX(100px);
+    -o-transform: translateX(100px);
+    -moz-transform: translateX(100px);
+    transform : translateX(100px); /* X축 방향으로 100px 만큼 이동 */
+    /* +는 오른쪽, -는 왼쪽 */
+}
+
+
+/* 상하 이동 */
+.trans-y-2d:hover{
+    -ms-transform: translateY(100px);
+    -webkit-transform: translateY(100px);
+    -o-transform: translateY(100px);
+    -moz-transform: translateY(100px);
+    transform : translateY(100px); /* Y축 방향으로 100px 만큼 이동 */
+    /* +는 아랫쪽, -는 윗쪽 */
+}
+
+
+/* 대각선 이동 */
+.trans-d-2d:hover{
+    
+    transform : translate(100px, -100px);
+                        /*  X      Y  */
+}
+
+
+/* scale(배율) */
+/* 가로 방향 확대/축소 */
+.trans-x-scale-2d:hover{
+    transform : scaleX(2); /* 가로 방향으로 2배만큼 확대 */
+    margin-left : 125px;
+}
+
+
+/* 세로 방향 확대/축소 */
+.trans-y-scale-2d:hover{
+    transform : scaleY(2); /* 세로 방향으로 2배만큼 확대 */
+    margin-top : 75px;
+    margin-bottom : 75px;
+}
+
+/* 요소 확대/축소 */
+.trans-scale-2d:hover{
+    transform: scale(0.5, 0.5);
+                    /* X   Y */
+
+}
+
+/* 요소 회전 */
+/* rotate(각도deg) */
+.trans-rotate:hover{
+    transform: rotate(90deg);
+    /* +는 시계 방향, -는 반시계 방향 */
+}
+
+
+
+/* -----3차원 변형----- */
+
+/* x,y,z 축 이동 */
+.trans-3d:hover{
+    /* perspective(관점, 원근법) : 원근법 적용 
+        perspective(길이) 
+         - 길이는 원근법 적용 거리
+    */
+
+    transform: perspective(300px) translate3d(50px, 50px, 100px);
+                                            /* X , Y , Z */
+}
+
+
+/* x축 회전 */
+.trans-rotate-x-3d{
+    transform: perspective(500px) rotateX(180deg); /* 상하 반전 */
+}
+
+/* y축 회전 */
+.trans-rotate-y-3d{
+    transform: perspective(500px) rotateY(180deg); /* 좌우 반전 */
+}
+
+/* z축 회전 */
+.trans-rotate-z-3d{
+    transform: perspective(500px) rotateZ(45deg);
+}
+
+/* x,y,z축 회전 */
+.trans-rotate-3d{
+     /* rotate3d(x, y, z, 회전각도)  
+        - x, y, z는 0 ~ 1(벡터) 사이 값
+     */
+    transform: perspective(500px) rotate3d(0.5, 0.5, 0.5, 45deg);
+    
+}
+
+
+
+
+/* -----변형 사이에 지연(transition)----- */
+
+.box{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    background-color: deeppink;
+
+    /* 변형 기간(변형 되는데 걸리는 시간 지정) */
+    transition-duration: 1s;  /* 1초 */
+}
+
+.test1:hover{
+    background-color: yellow;
+}
+
+
+.test2{
+    transition-duration: 10s;
+}
+
+.test2:hover{
+    background-color: skyblue;
+    transform: rotate(720deg);
+    border-radius: 50%;
+}
+
+
+.test3{
+    /*  linear | ease(기본값) | ease-in | ease-out | ease-in-out | cublic-bezier(n,n,n,n) */
+    /* transition-timing-function: cubic-bezier(0.3, 0.3, 1, 0.5);   */
+    transition-duration: 5s;
+    transition-timing-function: linear; 
+
+}
+
+.test3:hover{
+    transform: perspective(100px) rotateY(720deg);
+}
+
+
+.test4{
+    /* 변형되는 시간을 지연(늦게 변하기 시작) */
+    transition-delay: 1s;
+    border-radius: 50%;
+}
+
+.test4:hover{
+   transform: translateX(100px) rotate(90deg);
+}

@@ -46,7 +46,7 @@
     <h3>text-align : 내부에 작성된 글 또는 inline요소를 정렬하는 속성</h3>
 
     <pre>
-        text-align은 dispaly가 inline인 경우 적용되지 않는다.
+        text-align은 감싸는 요소가 display가 inline인 경우 적용되지 않는다.
     </pre>
 
     <div id="align-test">
@@ -55,7 +55,58 @@
         <p>안녕하세요?  <span>abcdef</span>  졸지마세요!</p>
 
         <p>안녕하세요?  <span>abcdef</span>  졸지마세요!</p>
+
+        <p>
+            Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! 
+            Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! 
+            Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! 
+        </p>
+
+        <p>
+            <!-- inline-block도 정렬이 될까? 된다! -->
+            <span>inline-block</span>
+        </p>
     </div>
+
+
+    <hr>
+
+    <h3>line-height : 줄 간격(장평)을 지정하는 속성</h3>
+
+    <pre>
+        한 줄의 높이를 지정하는 속성    
+        (줄 사이 간격 지정 X)
+
+        * 줄의 높이(line-height)가 글자의 크기(font-size)보다 큰 경우
+        글자는 해당 줄 세로 가운데에 배치된다
+    </pre>
+
+    <div id="line-test">
+        <p>
+            동해물과 백두산이 마르고 닳도록<br>
+            하느님이 보우하사 우리 나라 만세<br>
+            무궁화 삼천리 화려 강산<br>
+            대한 사람 대한으로 길이 보전하세
+        </p>
+
+        <p>
+            동해물과 백두산이 마르고 닳도록<br>
+            하느님이 보우하사 우리 나라 만세<br>
+            무궁화 삼천리 화려 강산<br>
+            대한 사람 대한으로 길이 보전하세
+        </p>
+    </div>
+
+
+    <hr>
+
+    <h3>letter-spacing : 글자 사이 간격(자간) 지정 속성</h3>
+
+    <h3 id="letter-test">
+        Hello World!!!
+    </h3>
+
+
 
 </body>
 </html>

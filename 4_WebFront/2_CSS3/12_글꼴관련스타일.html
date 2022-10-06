@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_글꼴 관련 스타일</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/12_font-style.css">
+</head>
+<body>
+    <h3>font-size : 글꼴의 크기를 지정하는 속성</h3>
+
+    <pre>
+        * 고정 크기 단위
+        px : 픽셀(화면 해상도)
+        pt : 포인트(1pt = 0.35mm)
+
+        * 가변 크기 단위
+        % : 상위 요소 크기에 대한 백분율
+        em : 상위 요소의 글꼴 크기에 대한 비율(1em == 100%, 
+                                               1.2em == 120%)
+    </pre>
+
+    <ul id="size-test">
+        <li>픽셀(px)</li>
+        <li>포인트(pt)</li>
+        <li>퍼센트(%)</li>
+        <li>em</li>
+    </ul>
+
+
+    <hr>
+
+
+    <h3>font-weight : 글꼴의 굵기(두께)를 지정하는 속성</h3>
+
+    <pre>
+        bold : 굵게(700)
+        normal : 보통(기본값, 400)
+
+        bolder : 부모 요소보다 굵게
+        lighter : 부모 요소보다 얇게
+
+        number(100~900, 100단위) : 가중치
+            - 숫자가 클수록 두꺼움
+            - 폰트에서 지원하는 가중치에 따라 표현되는 굵기가 다름
+
+            -> normal, bold만 지원하는 폰트가 있을 경우
+            100~500 : normal
+            600~900 : bold로 처리
+    </pre>
+
+    <ul id="weight-test">
+        <li>테스트1</li>
+        <li>테스트2</li>
+        <li>테스트3</li>
+        <li>테스트4</li>
+        <li>테스트5</li>
+    </ul>
+
+    <hr>
+
+    <h3>font-family : 글꼴을 지정하는 속성</h3>
+
+    <ul id="family-test1">
+        <li>가나다라, 백동현, ABCD, abcd, 1234, !@#$%^&*()</li>
+        <li>가나다라, 백동현, ABCD, abcd, 1234, !@#$%^&*()</li>
+        <li>가나다라, 백동현, ABCD, abcd, 1234, !@#$%^&*()</li>
+    </ul>
+
+    <hr>
+
+    <h3>웹 폰트 사용하기</h3>
+    <p>웹 폰트 제공 사이트1 : <a href="https://fonts.google.com" target="_blank">구글 웹폰트 사이트로</a> </p>
+    <p>웹 폰트 제공 사이트2 : <a href="https://noonnu.cc/" target="_blank">눈누 상업용 무료 한글폰트 사이트로</a>  </p>
+
+    <ul id="family-test2">
+        <li>가나다라, 백동현, ABCD, abcd, 1234, !@#$%^&*()</li>
+        <li>가나다라, 백동현, ABCD, abcd, 1234, !@#$%^&*()</li>
+        <li>가나다라, 백동현, ABCD, abcd, 1234, !@#$%^&*()</li>
+    </ul>
+
+</body>
+</html>

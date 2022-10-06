@@ -49,3 +49,34 @@
 #align-test > p:nth-child(1){ text-align: left; }
 #align-test > p:nth-child(2){ text-align: right; }
 #align-test > p:nth-child(3){ text-align: center; }
+#align-test > p:nth-child(4){ text-align: justify; } /* 양쪽 정렬 */
+
+
+#align-test > p:nth-child(5) > span{
+    display: inline-block;
+    border: 1px solid black;
+    width: 100px;
+    height: 30px;
+    background-color: gold;
+}
+
+#align-test > p:nth-child(5){
+    text-align: center;
+}
+
+
+/* line-height */
+#line-test > p:first-child{
+    line-height: 10px;
+}
+
+#line-test > p:last-child{
+    line-height: 30px;
+}
+
+
+/* letter-spacing */
+/* 음수 값을 지정해서 글자 사이의 간격을 줄일 때 많이 사용 */
+#letter-test{
+    letter-spacing: -1px;
+}
