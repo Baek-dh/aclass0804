@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네비게이터</title>
+
+    <style>
+        * {box-sizing: border-box;}
+        nav, li {border : 1px solid black;}
+        nav{
+            width: 1140px;
+            height: 50px;
+        }
+
+
+        /* ul 스타일 지정 */
+        nav > ul{
+            margin: 0;
+            padding : 0;
+            list-style: none;  /* li 태그 앞에 점 삭제 */
+
+            display: flex;   
+            height: 100%;         
+        }
+
+        /* 네비게이터 메뉴 */
+        nav li{
+            /* 둘 다 같은 결과 */
+            /* width: 150px; */
+            flex-basis: 150px;
+        }
+
+        /* 메뉴 내부 a태그 */
+        nav li > a{
+            text-decoration: none; /* 밑줄 없애기 */
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+
+            display: block;
+            height: 100%;
+
+            /* 글자를 정가운데 배치 */
+
+                    /* 세로 가로  */
+           /*  padding : 11px 0;
+            text-align: center; */
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 내부에 작성된 글자를 요소로 취급해서 정가운데 배치*/
+
+            border-radius: 5px;
+            transition-duration: 0.1s;
+        }
+
+
+        /* 메뉴에 마우스가 올라왔을 때 */
+        nav li > a:hover{
+            background-color: #455ba8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li><a href="#">공지사항</a></li>
+            <li><a href="#">자유 게시판</a></li>
+            <li><a href="#">질문 게시판</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">1:1문의</a></li>
+        </ul>
+    </nav>
+    
+</body>
+</html>

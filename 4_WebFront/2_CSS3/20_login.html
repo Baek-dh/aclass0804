@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+
+    <style>
+        * {box-sizing: border-box;}
+        /* section, article{ border : 1px solid black; } */
+        .content-2{
+            width: 340px;
+            height: 800px;
+        }
+
+
+        /* login 폼 */
+        form[name='login-frm']{
+            height: 140px;
+            padding: 10px;
+
+            display: flex;
+
+            /* 중심축을 세로로 변경 */
+            flex-direction: column;
+
+            /* 중심축 가운데 배치 */
+            justify-content: center;
+        }
+
+
+        /* 아이디, 비밀번호, 로그인 버튼 영역 */
+        #id-pw-area{
+            margin : 0;
+            padding : 0;
+
+            border : 1px solid #ddd;
+
+            display: flex;
+
+            /* form태그 내부에서 중심축 방향으로 60% 만큼 차지 */
+            flex-basis: 60%; 
+        }
+
+        /* id,pw 영역 */
+        #id-pw-area > section:first-child{
+            flex-basis: 75%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* id/pw input 태그 */
+        #id-pw-area > section:first-child > input{
+            flex-basis: 50%;
+            border : none;
+            outline : none;
+            padding : 5px;
+
+            border-right: 1px solid #ddd;
+        }
+
+        /* id, pw 사이 선 */
+        #id-pw-area > section:first-child > input:first-child{
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* id, pw input 태그에 포커스가 맞춰졌을 때 */
+        #id-pw-area > section:first-child > input:focus{
+            border : 2px solid #455ba8;
+        }
+
+
+
+        /* 로그인 버튼 영역 */
+        #id-pw-area > section:last-child{
+            flex-basis: 25%;
+            /* display: flex; */
+        }
+
+        /* 로그인 버튼 */
+        #id-pw-area > section:last-child > button{
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        #id-pw-area > section:last-child > button:hover{
+            background-color: #455ba8;
+            color : white;
+        }
+
+
+        /* 회원가입 / ID/PW 찾기 영역 */
+        #signUp-find-area{
+            margin-top: 10px;
+            padding-left: 5px;
+        }
+
+        #signUp-find-area > a{
+            text-decoration: none;
+            color : black;
+            font-size: 14px;
+        }
+
+        #signUp-find-area > span{
+            padding : 0 10px;
+                 /* 세로 가로  */
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+    <section class="content-2">
+
+        <form action="#" name="login-frm">
+
+            <!-- 아이디, 비밀번호, 로그인 버튼 -->
+            <fieldset id="id-pw-area">
+                <section>
+                    <input type="text" name="inputId"
+                     placeholder="아이디" autocomplete="off">
+                    <!-- autocomplete="off" : 자동완성 사용 X -->
+
+                    <input type="password" name="inputPw" placeholder="비밀번호">
+                </section>
+
+                <section>
+                    <!-- type="submit"이 기본값 -->
+                    <button>로그인</button>
+                </section>
+            </fieldset>
+
+
+            <!-- label 태그 내부에 input태그를 작성하면 자동 연결됨 -->
+            <label>
+                <input type="checkbox" name="saveId"> 아이디 저장
+            </label>
+
+
+            <!-- 회원가입 / ID/PW 찾기 -->
+            <article id="signUp-find-area">
+                <a href="#">회원가입</a>
+                <span>|</span>
+                <a href="#">ID/PW찾기</a>
+            </article>
+
+
+        </form>
+
+
+    </section>
+
+</body>
+</html>
