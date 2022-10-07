@@ -23,7 +23,32 @@ main{
 footer{
     height: 200px;
     background-color: #a3add342;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+footer > p{
+    font-weight: bold;
+    margin: 16px 0;
+}
+
+footer > article > *{
+    font-size: 14px;
+}
+
+footer a{
+    text-decoration: none;
+    color : black;
+}
+
+footer span{
+    padding : 0 10px;
+}
+
+
 
 
 
@@ -118,7 +143,18 @@ header > section:nth-child(2){
 nav{
     height: 50px;
     border-bottom: 2px solid black;
+
+    position : sticky;
+    /* 화면 밖으로 요소가 벗어 났을 때 지정된 위치에 고정 */
+
+    /* 어디 고정할지 지정 */
+    top : 0;
+
+    background-color: white;
+
 }
+
+
 
 /* ul 스타일 지정 */
 nav > ul{
