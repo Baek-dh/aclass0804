@@ -43,7 +43,7 @@
 
 	<form action="/ServletProject1/example1.do">
 		<!-- 제출 시 ServletProject1 프로젝트에 있는 
-			example1.do라는 서비스를 요청한다.
+			/example1.do라는 서비스를 요청한다.
 			단, 요청 시 내부에 작성된 input 태그의 값도 같이 전달한다.
 		-->
 
@@ -52,6 +52,66 @@
 		<button type="submit">서버로 제출하기</button>
 
 	</form>
+
+
+	<hr>
+
+	<h1>Get 방식 요청 및 응답</h1>
+
+	<pre>
+		Get방식 : 요청하는 주소 뒤에
+			전달하려는 값을 key=value 형태로 붙여서 전달하는 방식
+
+		/ServletProject1/example1.do?inputName=홍길동&inputAge=20
+		/프로젝트 이름 / 서비스 요청 주소 ?key=value&key=value&.....
+										 -> 전달하려는 값이 작성된 문자열
+										 	: QueryString (쿼리스트링)
+
+		- 장점 : 단순함, 주소창에 값을 임의로 작성할 수 있다.
+				 캐싱 가능(요청 주소 저장 == 북마크, 즐겨찾기, 링크 공유)
+
+		- 단점 : 보안에 취약함.
+		         글자 수 제한이 있다.
+
+		* 검색, 게시글, 뉴스 공유 등을 이용할 때 좋음
+	</pre>
+
+
+	<!-- method 속성 : 데이터 전달 방식 지정 속성 -->
+	<form action="/ServletProject1/example2.do" method="get">
+
+		주문자 : <input type="text" name="orderer"> <br>
+
+		hot <input type="radio" name="type" value="hot"> 
+		ice <input type="radio" name="type" value="ice"> 
+
+		<br>
+		<br>
+
+		커피 : 
+		<select name="coffee">
+			<option>아메리카노</option>
+			<option>카페라떼</option>
+			<option>초코칩 프라페</option>
+			<option>민초 프라페</option>
+		</select>
+
+		<br>
+		<br>
+
+		옵션 : <br>
+		1샷 추가 <input type="checkbox" name="opt" value="shot1">
+		<br>
+		2샷 추가 <input type="checkbox" name="opt" value="shot2">
+		<br>
+		연하게 <input type="checkbox" name="opt" value="softly">
+
+		<br>
+		<br>
+		<!-- type="submit" 기본값 -->
+		<button>주문하기</button>
+	</form>
+
 
 	
 </body>

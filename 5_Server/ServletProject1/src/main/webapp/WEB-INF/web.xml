@@ -1,37 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>ServletProject1</display-name>
-  
-  <!-- 메인 페이지 목록 -->
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-  </welcome-file-list>
-  
-  
-  <!-- 특정 클래스를 Servlet으로 등록하고 이름을 지정하는 태그 -->
-  <servlet>
-  	<!-- 해당 Servlet을 부르기 위한 이름 지정 -->
-    <servlet-name>ex1</servlet-name>
-    
-    <!-- Servlet으로 등록하고자 하는 클래스의 패키지명 + 클래스명 -->
-    <servlet-class>edu.kh.servlet.controller.ServletEx1</servlet-class>
-  </servlet>
-  
-  <!-- 요청 주소를 처리할 Servlet을 지정 -->
-  <servlet-mapping>
-  
-  	<!-- 요청을 처리할 Servlet의 이름 -->
-    <servlet-name>ex1</servlet-name>
-    
-    <!-- 요청 주소 작성(앞에 프로젝트명 까지는 제외 -->
-    <!-- [/ServletProject1] (제외) /example1.do -->
-    <url-pattern>/example1.do</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>ServletProject1</display-name>
+
+	<!-- 메인 페이지 목록 -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+
+
+	<!-- 특정 클래스를 Servlet으로 등록하고 이름을 지정하는 태그 -->
+	<servlet>
+		<!-- 해당 Servlet을 부르기 위한 이름 지정 -->
+		<servlet-name>ex1</servlet-name>
+
+		<!-- Servlet으로 등록하고자 하는 클래스의 패키지명 + 클래스명 -->
+		<servlet-class>edu.kh.servlet.controller.ServletEx1</servlet-class>
+	</servlet>
+
+	<!-- 요청 주소를 처리할 Servlet을 지정 -->
+	<servlet-mapping>
+
+		<!-- 요청을 처리할 Servlet의 이름 -->
+		<servlet-name>ex1</servlet-name>
+
+		<!-- 요청 주소 작성(앞에 프로젝트명 까지는 제외 -->
+		<!-- [/ServletProject1] (제외) /example1.do -->
+		<url-pattern>/example1.do</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- example2.do 요청에 대한 Servlet 연결 -->
+
+	<servlet>
+		<servlet-name>ex2</servlet-name>
+		<servlet-class>edu.kh.servlet.controller.ServletEx2</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ex2</servlet-name>
+		<url-pattern>/example2.do</url-pattern>
+	</servlet-mapping>
+
+
+
+
+
 </web-app>
 
 
