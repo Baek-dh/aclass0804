@@ -113,6 +113,31 @@
 	</form>
 
 
+	<hr>
+
+	<h1>POST 방식 요청 및 응답</h1>
+
+	<pre>
+		POST 방식 : GET 방식과는 다르게
+			주소 뒤에 전달하는 값이 붙는게 아닌
+			HTTP Protocol의 Body 부분에 숨겨져서 전달되는 방식
+
+		- 장점 : 길이 제한 X, 보안성 향상(데이터가 직접적으로 보이지 않음)
+
+		- 단점 : 캐싱 불가능, 추가적인 문자 인코딩 처리가 필요.
+	</pre>
+
+	<form action="/ServletProject1/signUp" method="POST">
+		아이디 : <input type="text" name="inputId">  <br>
+		비밀번호 :      <input type="password" name="inputPw"> <br>
+		비밀번호 확인 : <input type="password" name="inputPw"> <br>
+
+		이메일 : <input type="email" name="inputEmail"> <br>
+
+		이메일 수신 동의(선택) <input type="checkbox" name="agree"> <br>
+		
+		<button>가입하기</button>
+	</form>
 	
 </body>
 </html>
