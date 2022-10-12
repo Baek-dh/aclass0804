@@ -21,5 +21,99 @@
     </form>
 
     <a href="temp/test1.html">이동</a>
+
+
+    <hr>
+
+    <h3>JSP 테스트 2</h3>
+
+    <form action="/JSPProject/pizzaOrder" method="post">
+        피자 선택(1만원) :
+        <select name="pizza">
+            <option>치즈 피자</option>
+            <option>고구마 피자</option>
+            <option>콤비네이션 피자</option>
+            <option>쉬림프 피자</option>
+            <option>하와이안 피자</option>
+        </select>
+
+        <br><br>
+
+        사이즈
+        <br>
+        <label>
+        R <input type="radio" name="size" value="R">
+        </label>
+        
+        <br>
+        
+        <label>
+        L(+2,000) <input type="radio" name="size" value="L">
+        </label>
+
+        <br><br>
+
+        수량 : <input type="number" name="amount" min="1" max="10" value="1">
+
+        <br><br>
+
+        <button>주문하기</button>
+    </form>
+
+    <hr>
+
+    <h3>회원 가입(JSP 버전)</h3>
+
+    <form action="/JSPProject/signUp" method="POST">
+
+        <table>
+            <tr>
+                <th>아이디</th>                
+                <td><input type="text" name="memberId"></td>
+            </tr>
+
+            <tr>
+                <th>비밀번호</th>                
+                <td><input type="password" name="memberPw"></td>
+            </tr>
+
+            <tr>
+                <th>비밀번호 확인</th>                
+                <td><input type="password" name="memberPw"></td>
+            </tr>
+
+            <tr>
+                <th>이름</th>                
+                <td><input type="text" name="memberName"></td>
+            </tr>
+
+            <tr>
+                <th>이메일</th>                
+                <td><input type="text" name="memberEmail"></td>
+            </tr>
+            
+            <tr>
+                <th>취미</th>                
+                <td>
+                    공부 <input type="checkbox" name="hobby" value="공부">
+                    게임 <input type="checkbox" name="hobby" value="게임">
+                    헬스 <input type="checkbox" name="hobby" value="헬스">
+                    <br>
+                    독서 <input type="checkbox" name="hobby" value="독서">
+                    영화 <input type="checkbox" name="hobby" value="영화">
+                    코딩 <input type="checkbox" name="hobby" value="코딩">
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="2">
+                    <button>회원 가입</button>
+                </th>
+            </tr>
+        </table>
+
+
+    </form>
+
 </body>
 </html>
