@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+
+	<!-- web.xml : 배포 서술자(DD) 파일 
+		프로젝트 배포와 관련된 내용을 작성하는 파일
+		* 서버 구동(start) 시 가장 먼저 읽어들이는 파일 *
+	-->
+
+	<display-name>JSPProject</display-name>
+
+
+	<!-- 메인페이지 목록
+		먼저 작성된 파일이 없으면 다음 파일을 찾아 메인 페이지로 사용
+		만약 생략한 경우 webapp 폴더에 있는 index라는 이름의 파일을 찾아서 메인 페이지로 사용
+	 -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+
+	<!-- Servlet 등록 + 이름 지정 -->
+<!-- 	<servlet>
+		<servlet-name>loginServlet</servlet-name>
+		<servlet-class>edu.kh.jsp.controller.LoginServlet</servlet-class>
+	</servlet> -->
+	
+	<!-- 요청 주소에 따라 처리할 Servlet을 지정 -->
+<!-- 	<servlet-mapping>
+		<servlet-name>loginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping> -->
+
+
+
+
+
+
+
+</web-app>
