@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
  * */
 
 @WebServlet("/signUp")
-public class SerlvetEx3 extends HttpServlet{
+public class ServletEx3 extends HttpServlet{
 	
 	// doPost() : POST 방식 요청을 처리하는 메서드
 	@Override
