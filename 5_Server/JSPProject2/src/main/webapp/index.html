@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSP 전용 언어/태그</title>
+</head>
+<body>
+    
+    <ul>
+        <li>
+            <!-- form 태그를 제외한 모든 요청 방식은 GET -->
+            <a href="/JSPProject2/elTest">1. EL(Expression Language)</a>
+                    <!-- 절대 경로 방식 -->
+        </li>
+
+
+        <li>
+            <!-- /JSPProject2/scope 와 같은 주소 -->
+            <a href="scope">2. Servlet/JSP 내장 객체와 범위(scope)</a>
+                <!-- 상대 경로 방식 -->
+            <!-- 
+            현재 페이지 주소 : /JSPProject2/index.html
+
+            목표 페이지 주소 : /JSPProject2/scope
+
+            * 폴더 구조처럼 생각하자! *
+          
+            JSPProject2 폴더
+              - index.html
+              - scope
+
+            ** 형제 요소는 이름만 부르면 접근할 수 있다!
+
+             -->
+        </li>
+    </ul>
+
+
+</body>
+</html>
