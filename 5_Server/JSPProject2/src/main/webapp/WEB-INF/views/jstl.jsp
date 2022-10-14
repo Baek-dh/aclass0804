@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%-- 
 	prefix : 접두사 
 	uri(Uniform Resource Identifier) : 자원을 구분하는 식별자(주소 형태)
@@ -14,6 +14,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3. JSTL</title>
+    
+    <style>
+    	.first{  background-color: yellow;  }
+    	
+    	.last{  
+    		background-color: black; 
+    		color : white;
+    	}
+    		
+    </style>
+    
 </head>
 <body>
     <h1>JSTL(Jsp Standard Tag Library)  </h1>
@@ -230,6 +241,74 @@
 	<c:forEach var="i" begin="1" end="6" step="1">
 		<h${i}> 현재 i 값 : ${i} </h${i}>
 	</c:forEach>
+	
+	
+	
+	<h3>일반 for문 + varStatus</h3>
+	
+	<table border="1">
+
+		<c:forEach var="n" begin="1" end="10" varStatus="vs">
+		
+			<c:choose>
+				<%-- choose 내부에는 무조건 JSP 주석만 작성 --%>
+				
+				<%-- 첫 번째 반복일 경우 --%>
+				<c:when test="${vs.first}">
+					<tr>
+						<th class="first"> ${n} </th>
+						<td class="first"> ${n}번 게시글 입니다. </td>
+					</tr>
+				</c:when>
+				
+				<%-- 마지막 반복일 경우 --%>
+				<c:when test="${vs.last}">
+					<tr>
+						<th class="last"> ${n} </th>
+						<td class="last"> ${n}번 게시글 입니다. </td>
+					</tr>
+				</c:when>
+				
+				<c:otherwise>
+					<tr>
+						<th> ${n} </th>
+						<td> ${n}번 게시글 입니다. </td>
+					</tr>
+				</c:otherwise>
+			
+			</c:choose>
+
+
+		</c:forEach>
+		
+	</table>
+	
+	
+	
+	<hr>
+	
+	
+	<h3>향상된 for문 형식으로 사용</h3>
+   
+   	<!-- 
+   		현재 페이지 주소 : /JSPProject2/jstl
+   		목표 페이지 주소 : /JSPProject2/forEach
+   	 -->
+   
+	<form action="forEach" method="get">
+   
+		<input type="checkbox" name="lang" value="java"> java <br>
+		<input type="checkbox" name="lang" value="sql"> sql <br>
+		<input type="checkbox" name="lang" value="jdbc"> jdbc <br>
+		<input type="checkbox" name="lang" value="html"> html <br>
+		<input type="checkbox" name="lang" value="css"> css <br>
+		<input type="checkbox" name="lang" value="javascript"> javascript <br>
+		<input type="checkbox" name="lang" value="jQuery"> jQuery <br>
+		<input type="checkbox" name="lang" value="servlet"> servlet <br>
+		<input type="checkbox" name="lang" value="jsp"> jsp <br>
+		
+		<button>제출</button>
+	</form>
 	
 	
 	

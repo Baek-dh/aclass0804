@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	
+	<entry key="selectAll">
+		SELECT STUDENT_NO, STUDENT_NAME, STUDENT_ADDRESS, DEPARTMENT_NAME
+		FROM TB_STUDENT
+		JOIN TB_DEPARTMENT USING(DEPARTMENT_NO)
+	</entry>
+	
+	<entry key="selectDepartment">
+		SELECT STUDENT_NO, STUDENT_NAME, STUDENT_ADDRESS, DEPARTMENT_NAME
+		FROM TB_STUDENT
+		JOIN TB_DEPARTMENT USING(DEPARTMENT_NO)
+		WHERE DEPARTMENT_NAME = ?
+	</entry>
+
+</properties>

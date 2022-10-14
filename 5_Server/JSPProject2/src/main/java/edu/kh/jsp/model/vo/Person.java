@@ -9,6 +9,14 @@ public class Person {
 	
 	public Person() { } // 기본 생성자
 	
+	public Person(String name, int age, String address) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.address = address;
+	}
+
+
 	// getter/setter
 	public String getName() {
 		return name;
