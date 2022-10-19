@@ -13,4 +13,16 @@
 		AND MEMBER_PW = ? 
 	</entry>
 	
+	<!-- 회원 가입 -->
+	<entry key="signUp">
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, ?	,DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+	</entry>
+	
+	
+	
+	
+	
+	
+	
 </properties>

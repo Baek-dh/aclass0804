@@ -50,7 +50,7 @@
             </div>
 
             <p class="text-area">
-                <a href="#">회원가입</a>
+                <a href="/member/signUp">회원가입</a>
                 |
                 <a href="#">ID/PW 찾기</a>
             </p>
