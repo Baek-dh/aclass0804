@@ -9,4 +9,21 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <error-page>
+  <!--	1. 요청주소가 잘못됨
+		2. jsp 경로가 잘못됨
+		3. 프로젝트가 컴파일 안됨  -->
+  	<error-code>404</error-code>
+  	<location>/WEB-INF/views/common/404error.jsp</location>
+  </error-page>
+  
 </web-app>
+
+
+
+
+
+
+
+

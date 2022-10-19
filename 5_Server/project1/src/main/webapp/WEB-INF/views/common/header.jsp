@@ -31,9 +31,31 @@
 
             <!-- 헤더 오른쪽 상단 메뉴 -->
             <div id="header-top-menu">
-                <a href="/"> 메인 페이지 </a> 
-                |
-                <a href="#">로그인</a>
+                <c:choose>
+                    <%-- 로그인 X인 경우 --%>
+                    <c:when test="${empty sessionScope.loginMember}">
+                        <a href="/"> 메인 페이지 </a> 
+                        |
+                        <a href="/member/login">로그인</a>
+                    </c:when>
+                
+                    <%-- 로그인 O인 경우 --%>
+                    <c:otherwise>
+                        <label for="header-menu-toggle">
+                            ${loginMember.memberNickname}
+                            <i class="fa-solid fa-caret-down"></i>
+                        </label>
+
+                        <input type="checkbox" id="header-menu-toggle">
+
+                        <div id="header-menu">
+                            <a href="#">내정보</a>
+                            <a href="/member/logout">로그아웃</a>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+
+                
             </div>
 
         </header>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+
+    <link rel="stylesheet" href="../resources/css/login-style.css">
+
+    <!--  fontawesome 사이트 아이콘 이용   -->
+    <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <main>
+        <section class="logo-area">
+            <a href="/">
+                <img src="../resources/images/logo.jpg">
+            </a>
+        </section>
+
+
+        <form action="/member/login" method="post">
+            <section class="input-box">
+                <!-- required 속성 : form태그 제출 시 해당 input태그에 값이 존재하는 검사 -->
+                <input type="text" name="inputEmail" placeholder="Email" required>
+            </section>
+
+            <section class="input-box">
+                <!-- required 속성 : form태그 제출 시 해당 input태그에 값이 존재하는 검사 -->
+                <input type="password" name="inputPw" placeholder="Password" required>
+            </section>
+
+            <button class="login-btn">Login</button>
+
+            <div class="saveId-area">
+                <input type="checkbox" name="saveId" id="saveId">
+                <label for="saveId">
+                    <i class="fas fa-check"></i> 아이디 저장
+                </label>
+            </div>
+
+            <p class="text-area">
+                <a href="#">회원가입</a>
+                |
+                <a href="#">ID/PW 찾기</a>
+            </p>
+        </form>
+    </main>
+</body>
+</html>

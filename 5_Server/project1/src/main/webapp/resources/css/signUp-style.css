@@ -1,0 +1,39 @@
+.signUp-content{
+    display: flex;
+    justify-content: center;
+    height: auto;
+}
+
+#signUp-frm{
+    margin-top: 30px;
+}
+
+#signUp-frm > label{
+    display: block;
+    margin-top: 40px;
+    font-size: 18px;
+}
+
+#signUp-frm > span{
+    display: block;
+    height: 20px;
+}
+
+/* 필수 작성 */
+.required{
+    color: red;
+    padding: 0 5px;
+}
+
+/* input 태그를 감싸고 있는 div 태그 */
+.signUp-input-area{
+    width: 500px;
+    height: 50px;
+
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+
+    display: flex;
+    align-items: center;
+}
+
