@@ -33,7 +33,9 @@
                 <h1 class="myPage-title">내 정보</h1>
                 <span class="myPage-subject">원하는 회원 정보를 수정할 수 있습니다.</span>
 
-                <form action="#" method="POST" name="myPage-frm">
+                <%-- 절대경로 : /member/myPage/info --%>
+                <%-- 상대경로 : info --%>
+                <form action="info" method="POST" name="myPage-frm">
 
                     <div class="myPage-row">
                         <label>닉네임</label>
