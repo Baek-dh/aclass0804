@@ -285,6 +285,10 @@ WHERE MEMBER_NO = 4;
 				--> 로그인한 회원의 번호
 
 
+SELECT * FROM "MEMBER"
+WHERE MEMBER_NO = 4;
+
+
 
 
 

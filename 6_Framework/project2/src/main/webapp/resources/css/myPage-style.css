@@ -1,0 +1,166 @@
+/* 회원 페이지 전체를 감싸고 있는 요소 */
+.myPage-content{
+    display: flex;
+    width: 1000px;
+    min-height: 700px;
+    margin: 50px auto;
+    /* 
+        width / height 관련 속성
+
+        1) width / height
+            - 지정된 크기로 고정
+
+        2) min-width / min-height    
+            - 내부 요소가 부모 크기보다 작아도 지정된 최소 크기를 유지
+            - 단, 내부 요소가 부모크기를 초과화면 부모의 크기가 늘어남
+
+        3) max-width / max-height    
+            - 내부 요소가 부모 크기보다 커도 지정된 크기를 유지 
+            - 단, 내부 요소가 부모 크기보다 작다면 부모의 크기가 줄어듬
+    */
+
+}
+
+/* 사이드메뉴 */
+.left-side{
+    width: 25%;
+    border-right: 2px solid #ddd;
+}
+
+.list-group{
+    width: 100%;
+    list-style: none;
+    padding-right: 20px;
+}
+
+.list-group > li{
+    height: 50px;
+    font-size: 18px;
+}
+
+.list-group > li > a{
+    color:black;
+    text-decoration: none;
+
+    display: flex;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    border-bottom : 2px solid #ddd;
+}
+
+.list-group > li > a:hover{
+    background-color: #ccc;
+}
+
+/* ********************************* */
+/* 마이페이지 공통 */
+.myPage-main{
+    width: 75%;
+    padding: 0 50px;
+}
+
+/* 마이페이지 제목 */
+.myPage-title{
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+/* 마이페이지 부제 */
+.myPage-subject{
+    display: block;
+    margin-bottom: 30px;
+
+    font-size: 14px;
+    letter-spacing: -1px;
+}
+
+/* 마이페이지 행 단위 스타일 지정 */
+.myPage-row{
+    width: 500px;
+    height: 50px;
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    border-bottom : 2px solid #ddd;
+}
+
+.myPage-row > * {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 행 제목 */
+.myPage-row > label{
+    width: 30%;
+    color: #455ba8;
+}
+
+.myPage-row > span{
+    width: 70%;
+    color: #455ba8;
+}
+
+/* 행 내부 input 태그 */
+.myPage-row > input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-weight: normal;
+}
+
+/* 제출 버튼 */
+.myPage-submit{
+    width: 100%;
+    padding: 10px;
+    margin: 50px 0;
+    
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+
+    background-color: #455ba8;
+    color: white;
+    cursor: pointer;
+}
+
+/* form태그 */
+form[name='myPage-frm']{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* 내부 input 요소 focus 시 */
+.myPage-row:focus-within{ 
+    border-bottom-color: #455ba8;
+}
+
+
+/* ******************************************* */
+/* 내 정보 페이지 전용 스타일 */
+
+.info-title{
+    border: none;
+}
+
+.info-address{
+    margin: 0;
+}
+
+.info-address > button{
+    width: 30%;
+    height: 70%;
+
+    font-size: 14px;
+    font-weight: normal;
+
+    background-color: white;
+    border : 1px solid gray;
+    cursor: pointer;
+}
