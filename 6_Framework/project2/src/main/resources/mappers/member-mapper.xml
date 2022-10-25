@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="memberMapper">
+	<!-- namespace 속성 : 현재 공간(영역)에 대한 이름 (반드시 지정!) -->
+	
+  <!-- <cache-ref namespace=""/>  무조건 삭제!   -->
+  
+  <!-- resultMap 태그
+  	
+  	- 마이바티스에서 select를 진행하는 경우
+  	  기본적으로 java 객체 필드명과 ResultSet 컬럼명이 같을 때
+  	  자동으로 객체에 세팅이 되는데
+  	  
+  	  다를 경우
+  	 	컬럼 값을 어떤 필드에 세팅할지를 지정하는 태그
+  	 	
+  	- 속성 
+  		type : 연결할 VO 객체의 타입(패키지+클래스명 or 별칭)
+																						mybatis-confing.xml 에서 지정
+			id : resultMap을 식별할 이름
+			
+   -->
+   
+<!--<resultMap type="edu.kh.project.member.model.vo.Member" id="member_rm"> -->
+   	<resultMap type="Member" id="member_rm">
+   		
+   		<!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그 -->
+   		<id	property="memberNo"	 column="MEMBER_NO"/>
+   	
+   		<!-- 나머지 일반 컬럼 -->
+ 		  <result property="memberEmail" column="MEMBER_EMAIL" />
+      <result property="memberPw" column="MEMBER_PW" />
+      <result property="memberNickname" column="MEMBER_NICKNAME" />
+      <result property="memberTel" column="MEMBER_TEL" />
+      <result property="memberAddress" column="MEMBER_ADDRESS" />
+      <result property="profileImage" column="PROFILE_IMG" />
+      <result property="enrollDate" column="ENROLL_DATE" />
+      <result property="memberDeleteFlag" column="MEMBER_DEL_FL" />
+      <result property="authority" column="AUTHORITY" />
+      
+   	</resultMap>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!--  속성 
+  	parameterType : SQL 호출 시 전달 받은 매개변수의 자료형
+  									(자료형은 패키지명 + 클래스명   또는   별칭으로 작성)
+  									ex) java.lang.String										string
+  
+  -->
+  
+  <!-- 
+  	** 마이바티스에서 SQL에 전달 받은 값을 추가하는 방법 ** 
+  	
+  	#{value} : ?(placeholder) 역할 +  pstmt.set자료형()
+  		
+  	ex) parameterType이 String인 경우 ("user01")
+  		#{value} == 'user01'   (pstmt.setString())
+  		
+ 		ex) parameterType이 int/Integer인 경우 (100)
+ 			#{value} == 100				 (pstmt.setInt())
+ 			
+ 			
+ 		${value} : Statement 역할의 구문으로 SQL 구문 자체를 의미
+ 		
+ 		ex) value == "MEMBER_NAME"
+ 			
+ 			SELECT ${value} FROM "MEMBER";
+ 			
+ 			-> SELECT MEMBER_NAME FROM "MEMBER";
+   -->
+  
+ 	<!-- 로그인 -->																	<!-- resultMap 의 id  -->
+  <select id="login"  parameterType="string"  resultMap="member_rm">
+  	SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NICKNAME,
+			MEMBER_TEL, MEMBER_ADDRESS, PROFILE_IMG, AUTHORITY,
+			TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_EMAIL = #{memberEmail}
+  </select>
+  
+  
+  
+  
+  
+  
+  
+</mapper>

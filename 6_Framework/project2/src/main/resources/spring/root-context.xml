@@ -1,8 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+
+	<!-- root-context.xml 파일 - web.xml에서 가장 먼저 읽어들이는 설정 파일 - 하나의 프로젝트에서 공용으로 
+		사용되는 자원들은 정의하는 것이 목적 - 자원 : DBCP(DB 연결정보), 트랜잭션, AOP, 파일 업로드 등 -->
+
+
+	 <!-- 1. DBCP 사용을 위한 DataSource를 bean 등록 -->
+   
+   <!-- DataSource : java에서 Connection Pool을 지원하기 위한 인터페이스(Connection 상위호환) -->
+   <!-- destroy-method="close" : 주어진 세션을 자동으로 반환(close)하는 설정 -->
+   <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+   
+      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+      																					<!-- 115.90.212.22:9000 -->
+      <property name="username" value="project"/>
+      <property name="password" value="project1234"/>
+      
+      <!-- SQL이 수행된 후 자동으로 Commit 되는것을 지정 -->
+      <property name="defaultAutoCommit" value="false"/>
+      
+      <!-- 커넥션 풀 설정 -->
+      <property name="initialSize" value="10" /> <!-- 초기 커넥션 수, 기본 0 -->
+      <property name="maxTotal" value="50" /> <!-- 최대 커넥션 수, 기본 8 -->
+      <property name="maxIdle" value="20" /> <!-- 유휴 상태로 존재할 수 있는 커넥션 최대 수, 기본 8 -->
+      <property name="minIdle" value="10" /> <!-- 유휴 상태로 존재할 수 있는 커넥션 최소 수, 기본 0 -->
+      <property name="maxWaitMillis" value="-1" /> <!-- 예외 발생 전 커넥션이 반환 될 때 까지 대기하는 최대 시간(ms), 기본 -1(무기한) -->
+   </bean>
+   
+   
+   <!-- MyBatis 관련 Bean 생성 -->
+   
+   <!-- 
+   		SqlSession : sql구문을 DB에 전달, 실행하는 객체 
+   		
+      SqlSessionFactory : SqlSession을 만드는 객체 
+      
+      sqlSessionFactoryBean : mybatis 설정 파일(mybatis-config.xml)과 Connection Pool 정보를 이용하여 SqlSessionFactory를 만드는 객체 
+      
+      sqlSessionTemplate : SqlSession 객체에 트랜잭션 처리 역할이 가능하도록 하는 객체 -->
+   
+   
+   <!-- 마이바티스 SqlSession 등록하기 (xml 방식으로 bean 등록) -->
+   <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <!-- mybatis-config.xml 설정 불러오기 -->
+      <property name="configLocation" value="classpath:mybatis-config.xml" />
+      <property name="dataSource" ref="dataSource" />
+   </bean>
+   
+   
+   <!-- SqlSessionTemplate : 기본 SQL 실행 + 트랜잭션 관리 역할을 하는 SqlSession을 생성할 수 있게 하는 객체(Spring bean으로 등록해야함.) -->
+   <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg ref="sqlSessionFactoryBean" />
+   </bean>
+   
+   
+   
+   <!-- 스프링에서 사용하는 proxy를 이용한 트랜잭션 제어가 안될 경우 추가적인 트랜잭션 매니저를 추가해서 문제 해결 -->
+   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource" />
+   </bean>
+      
+   
+   <!-- 트랜잭션 처리 시 @Transactional 어노테이션 사용할 예정 
+      @Transactional : 클래스 또는 메서드 수행 후 트랜잭션 처리를 하라고 알려주는 어노테이션
+      -> 해당 어노테이션을 인식하라는 설정이 필요함
+        -> annotation-driven
+   -->
+   <tx:annotation-driven transaction-manager="transactionManager"  />
+
+
+
 </beans>

@@ -7,8 +7,12 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		
+		<!-- 서버가 start 되자 마자 적용할 설정 파일을 작성 -->
 		<!-- spring폴더 이동 후 경로 변경 -->
-		<param-value>classpath:spring/root-context.xml</param-value>
+		<param-value>
+			classpath:spring/root-context.xml
+			classpath:spring/spring-security.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->

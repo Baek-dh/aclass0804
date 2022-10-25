@@ -16,7 +16,6 @@ public class MainController {
 	// == Handler Mapping
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainPage(){
-		
 		// 메인 페이지 요청 시 필요한 코드 작성 ....
 		
 		// * forward 방법 *
