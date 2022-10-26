@@ -88,6 +88,29 @@
   
   
   
+  <!-- insert / update / delete는
+  	항상 반영된 행의 개수(int type)가 반환되기 때문에
+  	별도의 resultType 지정이 필요 없다!
+	-->  
+  
+  <!-- 회원 가입 -->								<!-- 별칭 : Member(mybatis-config.xml) -->
+  <insert id="signUp" parameterType="edu.kh.project.member.model.vo.Member">
+  	INSERT INTO "MEMBER"
+  	VALUES(SEQ_MEMBER_NO.NEXTVAL, 
+  		#{memberEmail} , 
+  		#{memberPw}, 
+  		#{memberNickname}, 
+  		#{memberTel},
+  		#{memberAddress},
+  		DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+  </insert>
+  
+  
+  
+  
+  
+  
+  
   
   
   
