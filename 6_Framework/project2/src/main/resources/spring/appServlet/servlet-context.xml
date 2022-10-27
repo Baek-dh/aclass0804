@@ -3,17 +3,35 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
+	
+	<!-- Handler Mapping 어노테이션을 인식하는 태그 -->
+	<!-- @RequesetMapping, @GetMapping, @PostMapping, @ExceptionHandler -->
 	<annotation-driven />
+	
+	
+  <!-- 트랜잭션 처리 시 @Transactional 어노테이션 사용할 예정 
+    @Transactional : 클래스 또는 메서드 수행 후 트랜잭션 처리를 하라고 알려주는 어노테이션
+    -> 해당 어노테이션을 인식하라는 설정이 필요함
+      -> annotation-driven
+  -->
+  <tx:annotation-driven transaction-manager="transactionManager"  />
+	
+	
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- /webapp/resources 폴더 경로를 웹에서 요청했을 때 접근 가능하게 하는 태그 -->
 	<resources mapping="/resources/**" location="/resources/" />
+
+
 
 	<!-- View Resolver 객체(bean) 생성 구문 -->
 	<!-- 
@@ -30,6 +48,13 @@
 	
 	
 	
+	<!-- component-scan : base-package에 명시된 패키지 아래에
+			@Component 관련 어노테이션을 찾아 인식하여 bean으로 등록하는 태그
+			(bean을 찾아서 등록하는 과정이라고 하여 bean scanning 이라고도 함)
+	
+		부모 : @Component 
+		자식 : @Controller, @Service, @Repository
+	 -->
 	<context:component-scan base-package="edu.kh.project" />
 	
 	

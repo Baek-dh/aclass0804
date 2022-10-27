@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="myPageMapper">
+   	<resultMap type="Member" id="member_rm">
+   		
+   		<!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그 -->
+   		<id	property="memberNo"	 column="MEMBER_NO"/>
+   	
+   		<!-- 나머지 일반 컬럼 -->
+ 		  <result property="memberEmail" column="MEMBER_EMAIL" />
+      <result property="memberPw" column="MEMBER_PW" />
+      <result property="memberNickname" column="MEMBER_NICKNAME" />
+      <result property="memberTel" column="MEMBER_TEL" />
+      <result property="memberAddress" column="MEMBER_ADDRESS" />
+      <result property="profileImage" column="PROFILE_IMG" />
+      <result property="enrollDate" column="ENROLL_DATE" />
+      <result property="memberDeleteFlag" column="MEMBER_DEL_FL" />
+      <result property="authority" column="AUTHORITY" />
+      
+   	</resultMap>
+   	
+   	
+   	<!-- 회원 정보 수정 -->
+   	<update id="updateInfo" parameterType="Member">
+   		UPDATE "MEMBER" SET
+   		MEMBER_NICKNAME = #{memberNickname} ,
+   		MEMBER_TEL = #{memberTel} ,
+   		MEMBER_ADDRESS = #{memberAddress}
+   		WHERE MEMBER_NO = #{memberNo}
+   	</update>
+   	
+   	
+   	<!-- 암호화된 비밀번호 조회 -->
+   	<select id="selectEncPw" parameterType="_int" resultType="string">
+   		SELECT MEMBER_PW
+   		FROM "MEMBER"
+   		WHERE MEMBER_NO = #{memberNo}
+   	</select>
+   	
+   	
+   	<!--
+   		parameterType 속성은
+   		
+   		<select> : 필수
+   		<insert> / <update> / <delete> : 선택 (Type Handler가 알아서 판단)
+   	 -->
+   	
+   	<!-- 비밀번호 변경 (parameterType="map") -->
+   	<update id="changePw">
+   		UPDATE "MEMBER" SET
+   		MEMBER_PW = #{newPw}
+   		WHERE MEMBER_NO = #{memberNo}
+   	</update>
+   	<!--  파라미터가 Map인 경우 key값만 작성하면 값을 얻어옴 -->
+   	
+   	
+   	
+   	<!-- 회원 탈퇴 -->
+   	<update id="memberDelete">
+   		UPDATE "MEMBER" SET
+   		MEMBER_DEL_FL = 'Y'
+   		WHERE MEMBER_NO = #{memberNo}
+   	</update>
+   	
+   	
+   	
+   	
+   	
+   	
+   	
+   	
+</mapper>
