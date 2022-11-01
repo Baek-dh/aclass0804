@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_데이터입출력</title>
+
+    <style>
+        .box{ border: 1px solid black; }
+
+        .red{ color : red; }
+
+
+        #area1{
+            width: 500px;
+            height: 300px;
+            border: 1px solid black;
+            background-color: mediumseagreen;
+
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+
+            overflow: auto; 
+            /* 내부요소가 부모 초과 시 초과된 방향으로 스크롤 자동 추가 */
+        }
+
+        .area1-box{
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            border: 2px solid red;
+        }
+
+
+
+
+    </style>
+
+
+</head>
+<body>
+    <h3>innerHTML</h3>
+    <pre>
+        자바스크립트에서 요소 전체를 읽어들이거나 변경하는 속성
+
+        - 내용을 읽어올 때 태그+속성+내용을 모두 포함함.
+
+        - 내용을 변경할 때 태그는 HTML 요소로 해석됨. (HTML 해석 O)
+    </pre>
+
+    <button onclick="getInnerHTML1()">innerHTML로 읽어오기</button>
+
+    <button onclick="setInnerHTML1()">innerHTML로 변경하기</button>
+
+    <p id="test1" class="box">
+        테스트1 입니다. <br>
+        <b class="red">안녕하세요?</b>
+    </p>
+
+    <hr>
+
+    <h3>innerHTML 응용</h3>
+
+    <button onclick="add()">추가하기</button>
+    <div id="area1">
+        <div class="area1-box"></div>
+    </div> 
+
+
+    <hr>
+
+    <h3>innerText</h3>
+    <pre>
+        자바스크립트에서 요소에 작성된 내용만을 읽어들이거나 변경하는 속성
+
+        - 내용을 읽어올 때 요소의 태그, 속성은 무시함
+        - 내용을 변경할 때 대입되는 태그는 모두 문자열로 해석됨
+            (HTML 태그로 해석 X)
+    </pre>
+
+    <button onclick="getInnerText1()">innerText로 읽어오기</button>
+
+    <button onclick="setInnerText1()">innerText로 변경하기</button>
+
+    <p id="test2" class="box">
+        테스트2 입니다. <br>
+        <b class="red">배고파요</b>
+    </p>
+
+
+    <hr>
+    
+    <h3>window.alert("내용")</h3>
+    <pre>
+        - alert(알리다, 경보, 경고)
+        - 브라우저에 대화상자(알림창)를 띄우는 함수
+    </pre>
+
+    <button onclick="window.alert('alert 버튼이 클릭됨')"> alert </button>
+
+    
+    <hr>
+
+    <h3>window.confirm("내용")</h3>
+    <pre>
+        질문에 대한 "예" / "아니오" 결과를 얻고자 할 때 사용하는 대화 상자
+        - 예/확인     : true 반환
+        - 아니오/취소 : false 반환
+    </pre>
+
+    <div id="confirmTest" class="area1-box"></div>
+    <button onclick="fnConfirm()">confirm 확인하기</button>
+    
+
+    <hr>
+
+    <h3>window.prompt("내용")</h3>
+    <pre>
+        텍스트를 작성할 수 있는 대화 상자
+
+        - 확인 : 입력한 값을 반환
+        - 취소 : null 반환
+    </pre>
+
+    
+    <button id="promptTest" onclick="fnPrompt()"> 버튼 </button>
+
+
+
+
+
+
+    <!-- external 방식 -->
+    <script src="../js/02_데이터입출력.js"></script>
+</body>
+</html>
