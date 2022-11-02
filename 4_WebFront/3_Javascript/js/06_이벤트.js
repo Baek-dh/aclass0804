@@ -49,3 +49,39 @@ document.getElementById("btn1").onclick = function(){
 }
 
 
+
+
+// 표준 이벤트 모델
+const btn2 = document.getElementById("btn2");
+
+// btn2.addEventListener("이벤트명" , 함수);
+
+btn2.addEventListener("click" , function(){
+    
+    // 이벤트 핸들러 내부에 작성된 this == 이벤트가 발생한 요소
+    console.log(this);
+
+    this.style.backgroundColor = "pink";
+    this.style.border = "3px solid red";
+    this.style.padding = "10px";
+    this.style.display = "block";
+});
+
+// 고전 이벤트 모델 단점 보완 확인
+btn2.addEventListener("click", function(){
+    this.style.fontSize = "20px";
+    this.style.fontWeight = "bold";
+    this.style.fontFamily = "궁서";
+});
+
+
+// 배경색이 입력한 값으로 변하는 박스
+
+document.getElementById("input1").addEventListener("keyup", function(){
+    
+    // 박스 요소 선택
+    const div1 = document.getElementById("div1");
+
+    // 배경색 변경
+    div1.style.backgroundColor = this.value;
+});
