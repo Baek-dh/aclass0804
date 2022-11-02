@@ -303,8 +303,7 @@ WHERE MEMBER_DEL_FL = 'N'
 AND MEMBER_EMAIL = 'user04@kh.or.kr';
 
 
-
-
+SELECT * FROM "MEMBER";
 
 
 
