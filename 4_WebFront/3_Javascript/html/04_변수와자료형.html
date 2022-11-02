@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_변수와자료형</title>
+
+    <link rel="stylesheet" href="../css/04_변수와자료형.css">
+</head>
+<body>
+
+    <h1>변수 선언 위치에 따른 구분</h1>
+
+    <h4>Java</h4>
+    <pre>
+        public class Student{
+
+            // 필드 (멤버 변수)
+            private String name; // 인스턴스 변수
+            public static String schoolName; // 클래스 변수, static 변수
+
+            // 메서드
+            public void method( String name ){
+                                // 매개변수 (메서드 지역 변수)
+                
+                int num = 10; // 메서드 지역 변수
+                
+                if(num > 10){
+                    int a = 20;  // if문 지역 변수
+                }
+            }
+        }
+    </pre>
+
+    <hr>
+
+    <h4>JavaScript</h4>
+
+    <pre>
+        (js파일 / script태그 내부)
+
+        var num1;   // 전역 변수
+        num2;       // 전역 변수 (변수명 앞에 아무런 키워드 없으면 전역 변수)
+
+        function test(){
+
+            var num3;   // function 지역 변수
+            num4;       // 전역 변수 (function이 끝나도 사용 가능함)
+
+            if(조건식){
+                var num5;   // function 지역 변수
+                            // (if 내부 선언 후 ~ function 끝까지 사용 가능 )
+                
+                num6;       // 전역 변수
+            }
+        }
+    </pre>
+
+
+    <hr>
+
+    <h1>변수 선언 방식</h1>
+    <pre>
+        JavaScript는 변수 선언 시 자료형이 아닌
+        var, let, const, (미작성) 중 하나를 골라서 작성함
+
+        var    : 변수, 변수명 중복 O(덮어쓰기), 함수 레벨 scope
+        let    : 변수, 변수명 중복 X, 블록{} 레벨 scope
+        const  : 상수, 변수명 중복 X, 블록{} 레벨 scope
+        
+        1순위 : const
+                (JS는 HTML상에서 특정 요소를 선택해 지속적으로 추적하는 경우가 많아
+                상수형 변수에 저장해 고정적으로 사용)
+
+        2순위 : let
+        3순위 : var
+        비추천 : 미작성
+    </pre>
+
+
+    <hr>
+
+    <h1>JavaScript의 자료형</h1>
+    <pre>
+        JS는 변수 선언 시 별도의 자료형을 지정하지 않음.
+        -> 변수에 대입되는 값(리터럴)에 의해서 자료형이 결정됨.
+
+        - string (문자열 / "abc", 'abc')
+        - number (숫자 / 100(정수), -3.14(실수))
+        - boolean (논리값 / true, false)
+        - object (객체 /  배열(Array), JS객체 {K:V, K:V}  )
+        - function (함수)
+        - undefined (자료형이 정의되지 않은 변수)
+            -> 값이 대입되지 않은 변수
+
+
+        * null은 참조하는게 없음을 나타내는 리터럴 (자료형 X)
+    </pre>
+
+
+    <button onclick="typeTest()">자료형 확인</button>
+
+    <div id="typeBox"></div>
+    
+
+    <script src="../js/04_변수와자료형.js"></script>
+</body>
+</html>

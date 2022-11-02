@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_간이 계산기3</title>
+</head>
+<body>
+    <h1>간이 계산기 만들기3</h1>
+
+    첫 번째 값 : <input type="number" id="num1"><br>
+    두 번째 값 : <input type="number" id="num2"><br>
+
+    <!-- 여기서 this == 클릭이 된 버튼 (이벤트가 발생한 요소)  -->
+    <button onclick="calc(this)">+</button>
+    <button onclick="calc(this)">-</button>
+    <button onclick="calc(this)">*</button>
+    <button onclick="calc(this)">/</button>
+    <button onclick="calc(this)">%</button>
+
+    <br><br>
+
+    계산 결과 : <span id="result"></span>
+
+    <script src="../js/05_간이계산기3.js"></script>
+</body>
+</html>
