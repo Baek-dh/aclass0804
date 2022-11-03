@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_정규표현식</title>
+
+    <link rel="stylesheet" href="../css/07_정규표현식.css">
+</head>
+<body>
+    <h1>정규 표현식(Regular Expression)</h1>
+    <pre>
+        특정한 규칙을 가진 문자열 집합을 표현하는데 사용하는 형식 언어.
+
+        정규 표현식을 이용하면 
+        입력된 문자열에 대한 특정 조건 검색, 일치 여부 판단, 치환에 대한
+        조건문을 간단히 처리할 수 있다.
+    </pre>
+
+
+    <h3>정규 표현식 참고 사이트</h3>
+	<ul>
+		<li><a href="https://regexper.com/" target="_blank">작성한 정규표현식을 그림으로 나타내주는 사이트</a></li>
+		<li><a href="https://regexr.com/" target="_blank">정규표현식 테스트 사이트</a></li>
+		<li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/%EC%A0%95%EA%B7%9C%EC%8B%9D"
+				target="_blank">
+				MDN - 정규표현식 설명
+			</a></li>
+	</ul>
+
+    <hr>
+
+    <h1>정규 표현식 객체 생성 및 확인하기</h1>
+
+    <pre>
+        1. 정규 표현식 객체 생성 방법
+
+        1) const regExp = new RegExp("정규표현식");
+        2) const regExp = /정규표현식/;
+            -> 양쪽 '/' 기호 정규 표현식의 리터럴 표기법
+
+
+        2. 문자열 패턴 확인 메서드(함수)
+
+        1) regExp.test(문자열)
+            -> 문자열에 정규표현식과 일치하는 패턴이 있을 경우 true, 없으면 false
+
+        2) regExp.exec(문자열)
+            -> 문자열에 정규표현식과 일치하는 패턴이 있을 경우
+                처음 매칭되는 문자열을 반환
+                없으면 null 반환
+    </pre>
+
+    <button id="check1">확인하기(콘솔)</button>
+
+    <hr>
+
+    <h1>정규 표현식의 메타 문자</h1>
+
+    <pre>
+        문자열의 패턴을 나타내는 문자.
+        문자마다 지정된 특별한 뜻이 담겨있다.
+        
+        a (일반문자열) : 문자열 내에 a라는 문자열이 존재하는 검색 
+        [abcd] : 문자열 내에 a,b,c,d 중 하나라도 일치하는 문자가 있는지 검색
+        ^(캐럿) : 문자열의 시작을 의미
+        $(달러) : 문자열의 끝을 의미
+
+        \w (word, 단어) : 아무 글자(단, 띄어쓰기, 특수문자, 한글 X)
+        \d (digit, 숫자) : 아무 숫자(0~9 중 하나)
+        \s (space, 공간) : 아무 공백 문자(띄어쓰기, 엔터, 탭 등)
+
+        [0-9]  : 0부터 9까지 모든 숫자
+        [ㄱ-힣] : ㄱ부터 힣까지  모든 한글(자음, 모음, 자+모음, + 받침)
+        [가-힣] : 자음, 모음만 작성되는 경우를 제외한 한글
+
+        [a-z] : 모든 영어 소문자
+        [A-Z] : 모든 영어 대문자
+
+        * 특수문자의 경우 각각을 입력하는 방법밖엔 없음
+        단, 메타문자와 중복되는 특수문자는 
+        앞에 \(백슬래시)를 추가하여 탈출 문자(Escape)로 만들어 사용
+
+
+        * 수량 관련 메타 문자
+        a{5} : a문자가 5개 존재 == aaaaa
+        a{2,5} : a가 2개 이상 5개 이하 ==  aa, aaa, aaaa, aaaaa
+        a{2,} : a가 2개 이상 
+        a{,5} : a가 5개 이하
+
+
+        * : 0개 이상 == 0번 이상 반복 == 있어도되고, 없어도 되고
+
+        + : 1개 이상 == 1번 이상 반복
+
+        ? : 0개 또는 1개
+
+        . : 1칸 (개행문자를 제외한 문자 하나)
+    </pre>
+
+    <button id="check2">확인하기</button>
+
+    <div class="area" id="div1"></div>
+
+
+    <hr>
+
+    <h3>이름 유효성 검사</h3>
+    <pre>
+        - 한글 2글자 이상 6글자 이하의 문자열
+        - 단자음/모음 경우는 제외
+        - 유효한 경우 초록색 글씨로 "유효한 이름 형식입니다." 출력
+        - 유효하지 않은 경우 빨간색 글씨로 "잘못된 형식 입니다." 출력
+    </pre>
+
+    이름 : <input type="text" id="inputName">
+    <span id="result1">결과</span>
+
+
+
+
+    <script src="../js/07_정규표현식.js"></script>
+    
+</body>
+</html>
