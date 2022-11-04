@@ -306,6 +306,10 @@ AND MEMBER_EMAIL = 'user04@kh.or.kr';
 SELECT * FROM "MEMBER";
 
 
+UPDATE "MEMBER" SET
+MEMBER_DEL_FL = 'N';
+
+COMMIT;
 
 
 

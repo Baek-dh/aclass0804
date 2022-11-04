@@ -32,12 +32,12 @@
 
                 <div class="signUp-input-area">
                     <input type="text" name="memberEmail" id="memberEmail" 
-                    placeholder="아이디(이메일)" maxlength="20" autocomplete="off" required
+                    placeholder="아이디(이메일)" maxlength="30" autocomplete="off" required
                     value="${tempMember.memberEmail}">
                     
                     <button type="button">인증번호 받기</button>
                 </div>
-                <span class="signUp-message">메일을 받을 수 있는 이메일을 입력해주세요.</span>
+                <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
 
 
 
@@ -70,7 +70,7 @@
                     placeholder="비밀번호 확인" maxlength="20" required>
                 </div>
 
-                <span class="signUp-message error">비밀번호가 일치하지 않습니다.</span>
+                <span class="signUp-message" id="pwMessage">영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</span>
 
 
                 <!-- 닉네임 입력 -->
@@ -161,6 +161,9 @@
             }).open();
         }
     </script>
+
+
+    <script src="/resources/js/member/signUp.js"></script>
 
 </body>
 </html>
