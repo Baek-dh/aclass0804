@@ -84,7 +84,7 @@
                     value="${tempMember.memberNickname}">
                 </div>
 
-                <span class="signUp-message confirm">사용 가능한 닉네임 입니다.</span>
+                <span class="signUp-message" id="nickMessage">한글,영어,숫자로만 2~10글자</span>
 
 
                 <!-- 전화번호 입력 -->

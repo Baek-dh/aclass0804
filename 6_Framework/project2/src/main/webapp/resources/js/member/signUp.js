@@ -183,3 +183,40 @@ memberPwConfirm.addEventListener("input",function(){
     }
     
 });
+
+
+
+// 닉네임 유효성 검사
+const memberNickname = document.getElementById("memberNickname");
+const nickMessage = document.getElementById("nickMessage");
+
+memberNickname.addEventListener("input", function(){
+
+    // 닉네임에 문자가 입력되지 않은 경우
+    if(memberNickname.value.trim().length == 0){
+        nickMessage.innerText = "한글,영어,숫자로만 2~10글자";
+        nickMessage.classList.remove("confirm", "error");
+        checkObj.memberNickname = false;
+        return;
+    }
+
+    // 닉네임 정규표현식 검사
+    // \w == [A-Za-z0-9]
+    const regEx = /^[가-힣\w]{2,10}$/;
+
+    if(regEx.test(memberNickname.value)){ // 유효한 경우
+
+        //** 닉네임 중복검사 코드 추가 예정 ** 
+        nickMessage.innerText = "유효한 닉네임 형식 입니다.";
+        nickMessage.classList.add("confirm");
+        nickMessage.classList.remove("error");
+        checkObj.memberNickname = true;
+
+    } else{ // 유효하지 않을 경우
+        nickMessage.innerText = "닉네임 형식이 유효하지 않습니다.";
+        nickMessage.classList.add("error");
+        nickMessage.classList.remove("confirm");
+        checkObj.memberNickname = false;
+    }
+
+});
