@@ -98,7 +98,7 @@
                     value="${tempMember.memberTel}">
                 </div>
 
-                <span class="signUp-message error">전화번호 형식이 올바르지 않습니다.</span>
+                <span class="signUp-message" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
 
 
 

@@ -220,3 +220,37 @@ memberNickname.addEventListener("input", function(){
     }
 
 });
+
+
+// 전화번호 유효성 검사
+const memberTel = document.getElementById("memberTel"); // input
+const telMessage = document.getElementById("telMessage"); // span
+
+memberTel.addEventListener("input", function(){
+
+    // 문자가 입력되지 않은 경우
+    if(memberTel.value.trim().length == 0){
+        telMessage.innerText = "전화번호를 입력해주세요.(- 제외)";
+        telMessage.classList.remove("confirm", "error");
+        checkObj.memberTel = false;
+        return;
+    }
+
+    // 전화번호 정규표현식 검사
+    const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
+
+    if(regEx.test(memberTel.value)){ // 유효한 경우
+        telMessage.innerText = "유효한 전화번호 형식입니다.";
+        telMessage.classList.add("confirm");
+        telMessage.classList.remove("error");
+        checkObj.memberTel = true;
+
+    } else{
+        telMessage.innerText = "전화번호 형식이 유효하지 않습니다.";
+        telMessage.classList.add("error");
+        telMessage.classList.remove("confirm");
+        checkObj.memberTel = false;
+    }
+
+})
+
