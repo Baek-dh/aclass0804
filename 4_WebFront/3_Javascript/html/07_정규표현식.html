@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>07_정규표현식</title>
 
-    <link rel="stylesheet" href="../css/07_정규표현식.css">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>07_정규표현식</title>
+
+  <link rel="stylesheet" href="../css/07_정규표현식.css" />
 </head>
+
 <body>
-    <h1>정규 표현식(Regular Expression)</h1>
-    <pre>
+  <h1>정규 표현식(Regular Expression)</h1>
+  <pre>
         특정한 규칙을 가진 문자열 집합을 표현하는데 사용하는 형식 언어.
 
         정규 표현식을 이용하면 
@@ -18,22 +20,26 @@
         조건문을 간단히 처리할 수 있다.
     </pre>
 
+  <h3>정규 표현식 참고 사이트</h3>
+  <ul>
+    <li>
+      <a href="https://regexper.com/" target="_blank">작성한 정규표현식을 그림으로 나타내주는 사이트</a>
+    </li>
+    <li>
+      <a href="https://regexr.com/" target="_blank">정규표현식 테스트 사이트</a>
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/%EC%A0%95%EA%B7%9C%EC%8B%9D" target="_blank">
+        MDN - 정규표현식 설명
+      </a>
+    </li>
+  </ul>
 
-    <h3>정규 표현식 참고 사이트</h3>
-	<ul>
-		<li><a href="https://regexper.com/" target="_blank">작성한 정규표현식을 그림으로 나타내주는 사이트</a></li>
-		<li><a href="https://regexr.com/" target="_blank">정규표현식 테스트 사이트</a></li>
-		<li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/%EC%A0%95%EA%B7%9C%EC%8B%9D"
-				target="_blank">
-				MDN - 정규표현식 설명
-			</a></li>
-	</ul>
+  <hr />
 
-    <hr>
+  <h1>정규 표현식 객체 생성 및 확인하기</h1>
 
-    <h1>정규 표현식 객체 생성 및 확인하기</h1>
-
-    <pre>
+  <pre>
         1. 정규 표현식 객체 생성 방법
 
         1) const regExp = new RegExp("정규표현식");
@@ -52,13 +58,13 @@
                 없으면 null 반환
     </pre>
 
-    <button id="check1">확인하기(콘솔)</button>
+  <button id="check1">확인하기(콘솔)</button>
 
-    <hr>
+  <hr />
 
-    <h1>정규 표현식의 메타 문자</h1>
+  <h1>정규 표현식의 메타 문자</h1>
 
-    <pre>
+  <pre>
         문자열의 패턴을 나타내는 문자.
         문자마다 지정된 특별한 뜻이 담겨있다.
         
@@ -99,28 +105,24 @@
         . : 1칸 (개행문자를 제외한 문자 하나)
     </pre>
 
-    <button id="check2">확인하기</button>
+  <button id="check2">확인하기</button>
 
-    <div class="area" id="div1"></div>
+  <div class="area" id="div1"></div>
 
+  <hr />
 
-    <hr>
-
-    <h3>이름 유효성 검사</h3>
-    <pre>
+  <h3>이름 유효성 검사</h3>
+  <pre>
         - 한글 2글자 이상 6글자 이하의 문자열
         - 단자음/모음 경우는 제외
         - 유효한 경우 초록색 글씨로 "유효한 이름 형식입니다." 출력
         - 유효하지 않은 경우 빨간색 글씨로 "잘못된 형식 입니다." 출력
     </pre>
 
-    이름 : <input type="text" id="inputName">
-    <span id="result1">결과</span>
+  이름 : <input type="text" id="inputName" />
+  <span id="result1" class="cofirm">결과</span>
 
-
-
-
-    <script src="../js/07_정규표현식.js"></script>
-    
+  <script src="../js/07_정규표현식.js"></script>
 </body>
+
 </html>

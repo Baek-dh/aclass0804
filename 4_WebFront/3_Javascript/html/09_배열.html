@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09_배열</title>
+</head>
+
+<body>
+    <h1>배열(Array)</h1>
+
+    <pre>
+        배열 : 변수를 묶음으로 다루는 것(변수가 연속적으로 나열됨)
+
+        JS 변수 특징 : 값이 저장되기 전 까지 자료형이 지정되지 않음.
+
+        * JS 배열 특징
+        1. 자료형 제한 X
+        2. 길이 제한 X
+        == Java의 Collection List와 비슷
+
+        JS 배열 선언 방법
+        1) const arr1 = new Array(); //  0칸짜리 배열 생성
+
+        2) const arr2 = new Array(3); // 3칸짜리 배열 생성
+
+        3) const arr3 = []; // 0칸짜리 배열 생성
+
+        4) const arr4 = ['사과', '딸기', '바나나'];
+                    // 3칸짜리 초기화된 배열 생성
+    </pre>
+
+    <button id="btn1">배열 + for문 확인</button>
+
+
+    <ul id="test">
+        <li>10</li>
+        <li>20</li>
+        <li>30</li>
+        <li>40</li>
+        <li>50</li>
+    </ul>
+
+    <hr>
+
+    <h1>배열 관련 함수</h1>
+
+    <pre>
+        (Stack 구조 관련 함수)
+        push() : 배열 마지막 요소로 추가
+        pop() : 배열 마지막 요소를 꺼내옴
+
+
+        배열.indexOf("값") : 일치하는 값을 가진 요소의 index를 반환
+                            없으면 -1 반환
+
+
+        배열.sort([정렬기준 함수])  : 배열 내 요소를 오름차순 정렬(문자열)                 
+                                    단, [정렬기준 함수]가 작성되면 정렬 결과가 달라짐
+
+
+
+        배열.toString()  : 배열 요소를 하나의 문자열로 출력
+                            -> 요소 사이에 "," 추가
+
+        배열.join("구분자") : 배열 요소를 하나의 문자열로 출력
+                            -> 요소 사이에 "구분자" 추가
+
+    </pre>
+
+
+    <button id="btn2">배열 관련 함수 확인</button>
+
+
+    <button id="btn3">로또 번호 생성</button>
+
+    <script src="../js/09_배열.js"></script>
+</body>
+
+</html>

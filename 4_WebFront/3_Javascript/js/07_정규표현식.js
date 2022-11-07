@@ -2,12 +2,12 @@
 
 // 정규 표현식 객체 생성 및 확인하기
 
-document.getElementById("check1").addEventListener("click", function(){
+document.getElementById("check1").addEventListener("click", function () {
 
     // 정규 표현식 객체 생성
     const regEx1 = new RegExp("script");
     //  "script"와 일치하는 문자열이 있는지 검사하는 정규식 객체
-    
+
     const regEx2 = /java/;
     //  "java"와 일치하는 문자열이 있는지 검사하는 정규식 객체
 
@@ -19,33 +19,33 @@ document.getElementById("check1").addEventListener("click", function(){
 
 
     // 확인하기
-    console.log( "regEx1.test(str1) : "  + regEx1.test(str1) );
-    console.log( "regEx1.exec(str1) : "  + regEx1.exec(str1) );
+    console.log("regEx1.test(str1) : " + regEx1.test(str1));
+    console.log("regEx1.exec(str1) : " + regEx1.exec(str1));
 
-    console.log( "regEx1.test(str2) : "  + regEx1.test(str2) );
-    console.log( "regEx1.exec(str2) : "  + regEx1.exec(str2) );
-    
-    console.log( "regEx1.test(str3) : "  + regEx1.test(str3) );
-    console.log( "regEx1.exec(str3) : "  + regEx1.exec(str3) );
+    console.log("regEx1.test(str2) : " + regEx1.test(str2));
+    console.log("regEx1.exec(str2) : " + regEx1.exec(str2));
 
-   
-    console.log( "regEx2.test(str1) : "  + regEx2.test(str1) );
-    console.log( "regEx2.exec(str1) : "  + regEx2.exec(str1) );
+    console.log("regEx1.test(str3) : " + regEx1.test(str3));
+    console.log("regEx1.exec(str3) : " + regEx1.exec(str3));
 
-    console.log( "regEx2.test(str2) : "  + regEx2.test(str2) );
-    console.log( "regEx2.exec(str2) : "  + regEx2.exec(str2) );
 
-    console.log( "regEx2.test(str3) : "  + regEx2.test(str3) );
-    console.log( "regEx2.exec(str3) : "  + regEx2.exec(str3) );
+    console.log("regEx2.test(str1) : " + regEx2.test(str1));
+    console.log("regEx2.exec(str1) : " + regEx2.exec(str1));
 
-    console.log(  regEx2.exec(str3) );
+    console.log("regEx2.test(str2) : " + regEx2.test(str2));
+    console.log("regEx2.exec(str2) : " + regEx2.exec(str2));
+
+    console.log("regEx2.test(str3) : " + regEx2.test(str3));
+    console.log("regEx2.exec(str3) : " + regEx2.exec(str3));
+
+    console.log(regEx2.exec(str3));
 });
 
 
 
 // 메타문자 확인하기
 
-document.getElementById("check2").addEventListener("click", function(){
+document.getElementById("check2").addEventListener("click", function () {
 
     // 결과 출력용 div
     const div1 = document.getElementById("div1");
@@ -78,7 +78,7 @@ document.getElementById("check2").addEventListener("click", function(){
 
     div1.innerHTML += "/team$/  , team-A : " + regEx4.test("team-A") + "<hr>"; // t
 
-    
+
     // https://regexr.com/ 에서 확인
 
     // ^[ABCD]-team$
@@ -97,18 +97,18 @@ document.getElementById("check2").addEventListener("click", function(){
 
 
 // 이름 유효성 검사
-document.getElementById("inputName").addEventListener("keyup",function(){
+document.getElementById("inputName").addEventListener("keyup", function () {
 
     //- 한글 2글자 이상 6글자 이하의 문자열
     //- 단자음/모음 경우는 제외
     const regEx = /^[가-힣]{2,6}$/;
 
-    
+
     const result1 = document.getElementById("result1");
-    
+
     // 유효성 검사
     // 여기서 this == document.getElementById("inputName")
-    if( regEx.test(this.value) ){ // 유효하면
+    if (regEx.test(this.value)) { // 유효하면
         result1.innerText = "유효한 이름 형식입니다.";
         //result1.style.color = "green";
 
@@ -121,8 +121,8 @@ document.getElementById("inputName").addEventListener("keyup",function(){
         result1.classList.add("confirm");
         result1.classList.remove("error");
 
-        
-    } else{
+
+    } else {
         result1.innerText = "잘못된 형식입니다.";
         //result1.style.color = "red";
 

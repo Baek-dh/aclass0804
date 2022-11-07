@@ -1,17 +1,18 @@
-.area{
+.area {
     width: 500px;
-    min-height: 300px; /* 최소 높이 300px */
+    min-height: 300px;
+    /* 최소 높이 300px */
     border: 1px solid black;
 }
 
-.confirm{
-    color:green; 
+.confirm {
+    color: green;
     font-weight: bold;
     text-decoration: underline;
 }
 
-.error{ 
-    color:red; 
+.error {
+    color: red;
     font-weight: bold;
     font-family: '궁서';
 }
