@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_window내장객체</title>
+
+    <link rel="stylesheet" href="../css/11_window내장객체.css">
+</head>
+
+<body>
+    <h1>window 객체</h1>
+    <pre>
+        - 브라우저 창 자체를 나타내는 객체
+
+        - window 객체는 JS에서 최상위 객체이며
+            DOM, BOM으로 분류된다.
+
+        DOM(Document Object Model) : HTML문서 자체를 나타내는 객체(document)
+
+        BOM(Browser Object Model) : location, history, screen, navigator
+
+        * window 객체는 창 자체를 나타내고 있으므로
+        브라우저 창 내에서 어디서든 접근 가능
+        그래서 window 객체의 속성과 기능 호출 시
+        window 단어를 생략할 수 있다.
+        ex) window.alert()  ==  alert()
+    </pre>
+
+    <hr>
+
+    <h2>window.setTimeout(함수, 지연시간(ms))</h2>
+    <pre>
+        지정된 지연시간 후 함수를 실행하게 만드는
+        window 객체의 함수
+
+        * 시간 관련된 함수는 비동기
+        (코드 인식은 순서대로 진행되지만, 수행은 동시에 진행된다.)
+    </pre>
+
+    <button id="btn1">setTimeout() 확인</button>
+
+    <hr>
+
+    <h2>window.setInterval(함수, 지연시간(ms))</h2>
+    <pre>
+        지정된 지연 시간마다 함수를 수행
+        (첫 실행도 지연시간 후에 진행)
+    </pre>
+
+    <div id="clock">00 : 00 : 00</div>
+
+
+    <hr>
+
+    <h2>window.clearInterval(setInterval()이 저장된 변수)</h2>
+    <button id="stop">STOP</button>
+
+    <hr>
+
+    <h2>window.open("URL", "팝업창 이름", "팝업창 특성(옵션)")</h2>
+
+    <ol>
+        <li>
+            <h3>url</h3>
+            <pre>
+                새 창에서 요청할 URL
+            </pre>
+        </li>
+        <li>
+            <h3>팝업창 이름</h3>
+            <pre>
+                사용자 임의 지정 : 새 창 이름 지정
+                _blank : 새 탭 또는 새 창(기본값)
+                _self : 현재 탭 또는 현재 창
+                _parent : 부모페이지
+                _top : 최상위 페이지
+            </pre>
+        </li>
+        <li>
+            <h3>팝업창 특성(옵션)</h3>
+            <pre>
+                쉼표로 구분된 창 기능 목록을 포함하는 문자열 name=value또는 부울 기능의 경우 name. 
+                이러한 기능에는 창의 기본 크기 및 위치, 최소 팝업 창을 열지 여부 등과 같은 옵션이 포함됩니다.
+        
+                popup
+                최소한의 팝업창 사용
+                팝업 창에 포함된 UI 기능은 일반적으로 주소 표시줄만 포함하여 브라우저에서 자동으로 결정됩니다.
+                활성화 popup되지 않고 창 기능이 선언되지 않은 경우 새 탐색 컨텍스트는 탭이 됩니다.
+        
+                width또는innerWidth
+                스크롤 막대를 포함하여 콘텐츠 영역의 너비를 지정합니다. 최소 필수 값은 100입니다.
+        
+                height또는innerHeight
+                스크롤 막대를 포함하여 콘텐츠 영역의 높이를 지정합니다. 최소 필수 값은 100입니다.
+        
+                left또는screenX
+                새 창이 생성될 사용자의 운영 체제에서 정의한 대로 작업 영역의 왼쪽에서 픽셀 단위로 거리를 지정합니다.
+        
+                top또는screenY
+                새 창이 생성될 사용자의 운영 체제에서 정의한 대로 작업 영역의 위쪽에서 픽셀 단위로 거리를 지정합니다.
+
+            </pre>
+        </li>
+    </ol>
+
+    <button id="openPopup1">팝업창 열기1</button>
+    <button id="openPopup2">팝업창 열기2</button>
+    <button id="openPopup3">팝업창 열기3</button>
+
+
+    <hr>
+
+    <h2>팝업창으로 데이터 전달하고 받아오기</h2>
+
+    팝업창으로 전달 :
+    <input type="text" id="parentInput">
+    <button id="sendChild">전달</button>
+
+    <br><br>
+    팝업창으로 부터 전달 받은 값 :
+    <input type="text" id="result" readonly>
+
+
+
+    <script src="../js/11_window내장객체.js"></script>
+</body>
+
+</html>

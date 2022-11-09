@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_JS객체</title>
+
+    <style>
+        .area {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>자바스크립트 객체</h1>
+
+    <pre>
+        자바스크립트의 객체는 {} 내에 Key:Value 가 모여있는 형태로 작성된다.
+                                    (Map 형식)
+
+        { K:V , K:V , K:V } // 자바스크립트 객체            
+        
+        (참고) 자바스크립트 객체 모양의 문자열
+        == JSON(JavaScript Object Notation, 자바스크립트 객체 표기법)
+        -> "{ K:V , K:V , K:V }"  
+
+
+        - 자바스크립트에서 객체를 생성하는 방법
+
+        1. {}  : 객체 리터럴 표기법을 이용한 생성
+        2. 생성자 + new 생성자()를 이용한 생성
+    </pre>
+
+    <button id="btn1">객체 생성1</button>
+    <div class="area" id="div1"></div>
+
+    <hr>
+    <button id="btn2">객체 생성2</button>
+    <div class="area" id="div2"></div>
+
+    <hr>
+
+    <h1>JSON(JavaScript Object Notation, 자바스크립트 객체 표기법)</h1>
+    <pre>
+        JS 객체 : {"memberId":"user01","memberPw":"pass01","age":20}
+        JSON 문자열 : '{"memberId":"user01","memberPw":"pass01","age":20}'
+
+        - 간단한 포맷
+        괄호 {} 내에 key : value 쌍으로 구성  { “key” : value }
+        key  : 반드시 문자열 사용 (쌍 따옴표(“”) 표기 필수)
+        value : String, Number, Boolean, Array, Object, null 데이터 저장 가능
+
+        -  객체{} 또는 배열[] 데이터를 효율적으로 표시 가능
+
+        - 경량 데이터 교환 방식
+
+        - 간단한 포맷을 가지고 있어 이해하기 쉬움
+
+        - 순수 TEXT 기반
+        구조화된 TEXT 형식
+        대부분의 프로그래밍 언어에서 JSON 포맷 데이터를 핸들링 할 수 있는 라이브러리를 제공  
+        시스템간 객체 교환에 용이
+    </pre>
+
+    <h2>Javascript JSON 내장 객체</h2>
+    <pre>
+        JSON 포멧의 데이터를 간편하게 다룰 수 있도록 내장된 객체
+
+        JSON.stringify(JS객체) : JS객체 -> JSON문자열 변환
+
+        JSON.parse(JSON문자열) : JSON문자열 -> JS 객체 변환
+    </pre>
+
+    <button id="btn3">확인하기</button>
+
+
+    <script src="../js/12_JS객체.js"></script>
+</body>
+
+</html>

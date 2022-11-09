@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13_DOM</title>
+</head>
+
+<body>
+    <h1 name="123">제목</h1>
+
+    <h1>DOM(Document Object Model)</h1>
+
+    <pre>
+        HTML(웹문서, 웹페이지) 문서를 객체 기반으로 표현한 것
+        -> HTML 문서에 작성된 내용을 트리구조(계층형으로 표현)로 나타냈을 때
+        각각의 태그, TEXT, COMMENT 등을 Node라고 한다.
+
+        document : { 
+            DOCTYPE : html,
+            HTML : {
+                HEAD : {
+                    TITLE : { TEXT : "문서 제목" },
+                    STYLE : {...},
+                    META : {...}
+                } ,
+                BODY : {
+                    H1 : { TEXT : "제목", ATTRIBUTE : "속성" },
+                    COMMNET : {TEXT : "주석 내용"},
+                    DIV : {...}
+                }
+            }
+        }
+    </pre>
+
+    <hr>
+    <h1>Node 확인하기</h1>
+
+    <ul id="test">
+        <!-- Node 확인 테스트 주석입니다. -->
+
+        <li id="li1">1번</li>
+        <li class="cls">2번</li>
+        <!-- 중간 주석 -->
+        <li style="background-color: yellow;">3번</li>
+        <li>
+            <a href="#">4번</a>
+        </li>
+    </ul>
+
+    <button id="btn1">확인하기</button>
+
+    <h1>Node와 Element의 차이</h1>
+
+    <pre>
+        Node : 태그(요소 노드), 속성, 주석, 내용(텍스트 노드) 등을 모두 표현.
+
+        Element : Node의 하위 개념으로 요소 노드만을 표현
+
+
+        [Element만 탐색하는 방법] 
+
+        children : 자식 요소만 모두 선택
+        parentElement : 부모 요소 선택
+
+        firstElementChild : 첫 번째 자식 요소 선택
+        lastElementChild  : 마지막 자식 요소 선택
+
+        previousElementSibling : 이전 형제 요소 선택
+        nextElementSibling     : 다음 형제 요소 선택
+
+    </pre>
+
+    <button id="btn2">Element 확인하기</button>
+
+
+
+    <script src="../js/13_DOM.js"></script>
+</body>
+
+</html>

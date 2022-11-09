@@ -1,0 +1,18 @@
+#clock {
+    border: 1px solid black;
+    width: 300px;
+    height: 100px;
+    background-color: pink;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 50px;
+    font-weight: bold;
+
+    position: fixed;
+    top: 5px;
+    right: 5px;
+
+}

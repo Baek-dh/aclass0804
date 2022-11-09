@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업</title>
+</head>
+
+<body>
+
+    <h3>팝업창 입니다</h3>
+    <h4>부모로 부터 전달 받은 값 : <span id="result"></span></h4>
+
+    부모창으로 전달 :
+    <input type="text" id="childInput">
+    <button id="sendParent">전달하고 닫기</button>
+
+    <script>
+        // span 요소
+        const result = document.getElementById("result");
+
+        // 부모창에 작성된 값 읽어오기
+        // 부모창을 나타내는 객체 : opener
+        const parentValue = opener.document.getElementById("parentInput").value;
+        result.innerText = parentValue; // 화면 출력
+
+
+        // -----------------------------
+
+        // 부모창으로 값 전달
+        const childInput = document.getElementById("childInput");
+        const sendParent = document.getElementById("sendParent");
+
+        sendParent.addEventListener("click", function () {
+            opener.document.getElementById("result").value = childInput.value;
+
+            // 현재 창 닫기
+            window.close();
+        })
+
+    </script>
+
+</body>
+
+</html>
