@@ -6,6 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>13_DOM</title>
+
+    <style>
+        .area {
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+        }
+
+        .area>div {
+            height: 10%;
+            box-sizing: border-box;
+            border: 2px solid red;
+            background-color: yellow;
+        }
+    </style>
 </head>
 
 <body>
@@ -74,6 +89,33 @@
     </pre>
 
     <button id="btn2">Element 확인하기</button>
+
+
+    <hr>
+
+    <h2>요소 생성 및 추가</h2>
+
+    <h3>innerHTML을 이용한 요소 생성 및 추가</h3>
+    <pre>
+        * innerHTML 원리
+        1) 특정 요소의 내부 내용을 새로운 내용으로 덮어씌움
+            (기존 내용이 사라지는 문제 발생)
+
+        2) 덮어씌워지는 새로운 내용을 단순 문자열로 추가하는 것이 아닌
+            HTML 요소가 포함되어 있으면 이를 해석할 수 있도록
+            HTMLParser를 이용함
+            (추가적인 해석을 진행하기 때문에 속도가 느림)
+    </pre>
+    <button id="btn3">innerHTML로 생성</button>
+    <div class="area" id="div3"></div>
+
+
+    <hr>
+
+    <h3>DOM 요소 생성(document.createElement()) 및 추가</h3>
+
+    <button id="btn4">createElement로 생성</button>
+    <div class="area" id="div4"></div>
 
 
 
