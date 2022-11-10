@@ -311,6 +311,20 @@ MEMBER_DEL_FL = 'N';
 
 COMMIT;
 
+-- 탈퇴하지 않은 회원 중 이메일이 같은 사람의 수 조회
+-- 0 : 중복 x  / 1 : 중복 o
+SELECT COUNT(*) 
+FROM "MEMBER"
+WHERE MEMBER_EMAIL = 'user01111@kh.or.kr'
+AND MEMBER_DEL_FL = 'N';
+
+
+
+
+
+
+
+
 
 
 
