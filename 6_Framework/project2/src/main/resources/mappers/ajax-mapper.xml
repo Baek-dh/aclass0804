@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ajaxMapper">
+
+	<!-- 이메일 중복 검사 -->
+	<select id="emailDupCheck" parameterType="string"  resultType="_int">
+		SELECT COUNT(*) 
+		FROM "MEMBER"
+		WHERE MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_DEL_FL = 'N'
+	</select>
+	
+</mapper>

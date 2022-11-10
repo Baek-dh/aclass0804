@@ -24,6 +24,7 @@
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml" />
 		<mapper resource="/mappers/myPage-mapper.xml" />
+		<mapper resource="/mappers/ajax-mapper.xml" />
 	</mappers>
 
 
