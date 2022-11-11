@@ -102,6 +102,15 @@
     </dependency>
 
 
+		<!-- GSON 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.10</version>
+		</dependency>
+				
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

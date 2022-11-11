@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
 
     /* HTML 요소가 가지고 있는 고유한 padding, margin을 모두 없앰 */
@@ -13,14 +13,15 @@
 
 
 /* main */
-main{
+main {
     width: 1140px;
-    margin: auto; /* body태그 가로방향 가운데 배치 */
+    margin: auto;
+    /* body태그 가로방향 가운데 배치 */
 }
 
 
 /* footer */
-footer{
+footer {
     height: 200px;
     background-color: #a3add342;
 
@@ -30,22 +31,22 @@ footer{
     align-items: center;
 }
 
-footer > p{
+footer>p {
     font-weight: bold;
     margin: 16px 0;
 }
 
-footer > article > *{
+footer>article>* {
     font-size: 14px;
 }
 
-footer a{
+footer a {
     text-decoration: none;
-    color : black;
+    color: black;
 }
 
-footer span{
-    padding : 0 10px;
+footer span {
+    padding: 0 10px;
 }
 
 
@@ -53,7 +54,7 @@ footer span{
 
 
 /* header */
-header{
+header {
     height: 200px;
 
     display: flex;
@@ -70,17 +71,25 @@ header{
     align-items의 기본값 stretch를 이용해서 
     item의 높이(cross-axis 방향)를 부모만큼 늘어나게 함
 */
-header > section:nth-child(1){ flex-basis : 15%; }
-header > section:nth-child(2){ flex-basis : 70%; }
-header > section:nth-child(3){ flex-basis : 15%; }
+header>section:nth-child(1) {
+    flex-basis: 15%;
+}
+
+header>section:nth-child(2) {
+    flex-basis: 70%;
+}
+
+header>section:nth-child(3) {
+    flex-basis: 15%;
+}
 
 
 /* 로고 */
-#home-logo{
+#home-logo {
     width: 120px;
 }
 
-header > section:nth-child(1){
+header>section:nth-child(1) {
     /* 선택자가 중복 작성되어도 오류 X,  모든 CSS 속성이 적용됨 */
     display: flex;
     justify-content: center;
@@ -90,12 +99,14 @@ header > section:nth-child(1){
 
 /* 검색창 */
 /* 검색창 전체 너비 지정 */
-.search-area{ width: 500px;}
+.search-area {
+    width: 500px;
+}
 
 /* 검색창 테두리 */
-.search-area fieldset{
-    padding : 2px;
-    margin : 0;
+.search-area fieldset {
+    padding: 2px;
+    margin: 0;
     border: 2px solid #455ba8;
     border-radius: 5px;
 
@@ -103,35 +114,37 @@ header > section:nth-child(1){
 }
 
 /* 검색어 입력 상자 */
-#query{
+#query {
     padding: 10px;
     font-size: 18px;
     font-weight: bold;
 
     /* 테두리 없애기 */
     /* border : 0; */
-    border : none;
+    border: none;
 
     /* outline : input 요소에 포커스가 맞춰 졌을 때 이를 표현하기 위한 바깥 선 */
-    outline : none;  /* 0도 가능! */
+    outline: none;
+    /* 0도 가능! */
 
     width: 92%;
 }
 
 /* 검색 버튼 */
-#search-btn{
+#search-btn {
     width: 8%;
     background-color: white;
     border: none;
 
     /* icon은 보통 특수문자 같은 문자로 취급되서 글자, 글꼴 스타일 적용 가능 */
     font-size: 1.2em;
-    color : #455ba8;
-    cursor: pointer; /* 마우스 커서 손가락 모양 */
+    color: #455ba8;
+    cursor: pointer;
+    /* 마우스 커서 손가락 모양 */
 }
 
 /* 검색창 정가운데 배치 */
-header > section:nth-child(2){
+header>section:nth-child(2) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,15 +153,15 @@ header > section:nth-child(2){
 
 
 /* nav */
-nav{
+nav {
     height: 50px;
     border-bottom: 2px solid black;
 
-    position : sticky;
+    position: sticky;
     /* 화면 밖으로 요소가 벗어 났을 때 지정된 위치에 고정 */
 
     /* 어디 고정할지 지정 */
-    top : 0;
+    top: 0;
 
     background-color: white;
 
@@ -157,25 +170,27 @@ nav{
 
 
 /* ul 스타일 지정 */
-nav > ul{
+nav>ul {
     margin: 0;
-    padding : 0;
-    list-style: none;  /* li 태그 앞에 점 삭제 */
+    padding: 0;
+    list-style: none;
+    /* li 태그 앞에 점 삭제 */
 
-    display: flex;   
-    height: 100%;         
+    display: flex;
+    height: 100%;
 }
 
 /* 네비게이터 메뉴 */
-nav li{
+nav li {
     /* 둘 다 같은 결과 */
     /* width: 150px; */
     flex-basis: 150px;
 }
 
 /* 메뉴 내부 a태그 */
-nav li > a{
-    text-decoration: none; /* 밑줄 없애기 */
+nav li>a {
+    text-decoration: none;
+    /* 밑줄 없애기 */
     font-size: 18px;
     font-weight: bold;
     color: black;
@@ -185,8 +200,8 @@ nav li > a{
 
     /* 글자를 정가운데 배치 */
 
-            /* 세로 가로  */
-   /*  padding : 11px 0;
+    /* 세로 가로  */
+    /*  padding : 11px 0;
     text-align: center; */
 
     display: flex;
@@ -200,7 +215,7 @@ nav li > a{
 
 
 /* 메뉴에 마우스가 올라왔을 때 */
-nav li > a:hover{
+nav li>a:hover {
     background-color: #455ba8;
     color: white;
 }
@@ -211,16 +226,21 @@ nav li > a:hover{
 
 
 /* content */
-section.content{
+section.content {
     height: 800px;
     display: flex;
 }
 
-.content-1{ flex-basis: 70%;}
-.content-2{ flex-basis: 30%;}
+.content-1 {
+    flex-basis: 70%;
+}
+
+.content-2 {
+    flex-basis: 30%;
+}
 
 /* login 폼 */
-form[name='login-frm']{
+form[name='login-frm'] {
     height: 150px;
     padding: 10px;
     margin-top: 10px;
@@ -236,54 +256,54 @@ form[name='login-frm']{
 
 
 /* 아이디, 비밀번호, 로그인 버튼 영역 */
-#id-pw-area{
-    margin : 0;
-    padding : 0;
+#id-pw-area {
+    margin: 0;
+    padding: 0;
 
-    border : 1px solid #ddd;
+    border: 1px solid #ddd;
 
     display: flex;
 
     /* form태그 내부에서 중심축 방향으로 60% 만큼 차지 */
-    flex-basis: 60%; 
+    flex-basis: 60%;
 }
 
 /* id,pw 영역 */
-#id-pw-area > section:first-child{
+#id-pw-area>section:first-child {
     flex-basis: 75%;
     display: flex;
     flex-direction: column;
 }
 
 /* id/pw input 태그 */
-#id-pw-area > section:first-child > input{
+#id-pw-area>section:first-child>input {
     flex-basis: 50%;
-    border : none;
-    outline : none;
-    padding : 5px;
+    border: none;
+    outline: none;
+    padding: 5px;
 
     border-right: 1px solid #ddd;
 }
 
 /* id, pw 사이 선 */
-#id-pw-area > section:first-child > input:first-child{
+#id-pw-area>section:first-child>input:first-child {
     border-bottom: 1px solid #ddd;
 }
 
 /* id, pw input 태그에 포커스가 맞춰졌을 때 */
-#id-pw-area > section:first-child > input:focus{
-    border : 2px solid #455ba8;
+#id-pw-area>section:first-child>input:focus {
+    border: 2px solid #455ba8;
 }
 
 
 /* 로그인 버튼 영역 */
-#id-pw-area > section:last-child{
+#id-pw-area>section:last-child {
     flex-basis: 25%;
     /* display: flex; */
 }
 
 /* 로그인 버튼 */
-#id-pw-area > section:last-child > button{
+#id-pw-area>section:last-child>button {
     width: 100%;
     height: 100%;
     border: none;
@@ -291,31 +311,31 @@ form[name='login-frm']{
     cursor: pointer;
 }
 
-#id-pw-area > section:last-child > button:hover{
+#id-pw-area>section:last-child>button:hover {
     background-color: #455ba8;
-    color : white;
+    color: white;
 }
 
 
 /* 회원가입 / ID/PW 찾기 영역 */
-#signUp-find-area{
+#signUp-find-area {
     margin-top: 10px;
     padding-left: 5px;
 }
 
-#signUp-find-area > a{
+#signUp-find-area>a {
     text-decoration: none;
-    color : black;
+    color: black;
     font-size: 14px;
 }
 
-#signUp-find-area > span{
-    padding : 0 10px;
-         /* 세로 가로  */
+#signUp-find-area>span {
+    padding: 0 10px;
+    /* 세로 가로  */
 }
 
 /* 아이디 저장 영역 */
-form[name='login-frm'] > label{
+form[name='login-frm']>label {
     margin-top: 5px;
     font-size: 14px;
 }
@@ -325,59 +345,66 @@ form[name='login-frm'] > label{
 
 /* 헤더 오른쪽 상단 메뉴 */
 
-header{ position : relative;  /* 상대적 기준 제공 */ }
+header {
+    position: relative;
+    /* 상대적 기준 제공 */
+}
 
-#header-top-menu{
+#header-top-menu {
     position: absolute;
     right: 0;
     top: 5px;
 }
 
-#header-top-menu a{
+#header-top-menu a {
     text-decoration: none;
     color: black;
 }
 
-#header-top-menu *{
+#header-top-menu * {
     font-size: 15px;
     font-weight: bold;
 }
 
 
 /* 메뉴 on/off 체크박스 */
-#header-menu-toggle{
+#header-menu-toggle {
     display: none;
 }
 
 /* 오른쪽 상단 닉네임 */
 /* label 태그 중 for 속성 값이 header-menu-toggle */
-label[for='header-menu-toggle']{
+label[for='header-menu-toggle'] {
     cursor: pointer;
 }
 
-label[for='header-menu-toggle']:hover{
+label[for='header-menu-toggle']:hover {
     text-decoration: underline;
 }
 
 /* 체크박스 다음 div */
-#header-menu-toggle + div{ display: none; }
+#header-menu-toggle+div {
+    display: none;
+}
 
 /* 체크박스가 체크된 경우 다음 div */
-#header-menu-toggle:checked + div{ display: block; }
+#header-menu-toggle:checked+div {
+    display: block;
+}
 
 /* 닉네임 클릭 시 보이는 메뉴 */
-#header-menu{
+#header-menu {
     position: absolute;
     z-index: 500;
     width: 100px;
     height: 80px;
     right: 0;
     margin-top: 5px;
-    border: 1px solid black;  
+    border: 1px solid black;
 }
 
 
-#header-menu > a{
+#header-menu>a {
     display: flex;
     height: 50%;
     justify-content: center;
@@ -385,40 +412,42 @@ label[for='header-menu-toggle']:hover{
 }
 
 
-#header-menu > a:first-child{
-    border-bottom : 1px solid #ccc;
+#header-menu>a:first-child {
+    border-bottom: 1px solid #ccc;
 }
 
-#header-menu > a:hover{
+#header-menu>a:hover {
     background-color: #455ba890;
 }
 
 
- 
+
 
 /* *************************************************************** */
 
 /* 로그인 성공 시 화면 */
-.login-area{
+.login-area {
     height: 120px;
-    padding: 30px 10px;  
+    padding: 30px 10px;
     margin: 10px 0;
-    border : 1px solid black;
+    border: 1px solid black;
     border-radius: 10px;
     display: flex;
-    align-items: center;  /* cross axis 방향으로 가운데 정렬 */
+    align-items: center;
+    /* cross axis 방향으로 가운데 정렬 */
 }
 
 
 /* 프로필 이미지 */
-#member-profile{
+#member-profile {
     width: 64px;
     height: 64px;
-    border-radius: 50%;  /* 원형 모양 */
+    border-radius: 50%;
+    /* 원형 모양 */
 }
 
 /* 프로필 이미지를 감싸고 있는 a 태그 */
-.login-area > a{
+.login-area>a {
     display: block;
     width: 70px;
     height: 70px;
@@ -428,21 +457,23 @@ label[for='header-menu-toggle']:hover{
 
 
 /* 회원정보 + 로그아웃 버튼 영역 */
-.my-info{
+.my-info {
     width: 100%;
     height: 100%;
     margin-left: 20px;
 }
 
-.my-info > div{
+.my-info>div {
     display: flex;
     justify-content: space-between;
 }
 
-.my-info a{   text-decoration: none;  }
+.my-info a {
+    text-decoration: none;
+}
 
 /* 닉네임 */
-#nickname{
+#nickname {
     color: black;
     font-size: 20px;
     font-weight: bold;
@@ -450,27 +481,43 @@ label[for='header-menu-toggle']:hover{
 }
 
 /* 로그아웃 버튼 */
-#logout-btn{
-    color : gray;
+#logout-btn {
+    color: gray;
     font-size: 14px;
     font-weight: bold;
 
-    border : 2px solid gray;
-    padding : 3px 5px;
+    border: 2px solid gray;
+    padding: 3px 5px;
     border-radius: 10px;
 }
 
-#logout-btn:hover{
-    color : white;
+#logout-btn:hover {
+    color: white;
     background-color: gray;
 }
 
-#logout-btn:active{
+#logout-btn:active {
     transform: scale(0.8);
 }
 
-.my-info > p{
+.my-info>p {
     margin: 0;
     color: gray;
 }
 
+
+
+#content-1-2 {
+    width: 500px;
+    margin: 50px auto;
+}
+
+
+.secession {
+    background-color: #ccc;
+}
+
+.secession>td:first-of-type {
+    /* 가운데 선 */
+    text-decoration: line-through;
+}
