@@ -54,11 +54,22 @@
                         (단, 서버에서 파일/문자열에 대한 별도 처리가 필요)
                 -->
                 <form action="updateProfile" method="POST" 
-                    name="myPage-frm" enctype="multipart/form-data">
+                    name="myPage-frm" enctype="multipart/form-data" 
+                    onsubmit="return profileValidate()">
 
                     <div class="profile-image-area">
-                        <img id="profile-image" src="/resources/images/user.png">
+
+                        <c:if test="${empty loginMember.profileImage}">    
+                            <img id="profile-image" src="/resources/images/user.png">
+                        </c:if> 
+
+                        <c:if test="${not empty loginMember.profileImage}">    
+                            <img id="profile-image" src="${loginMember.profileImage}">
+                        </c:if> 
+
                     </div>
+
+
                     <span id="delete-image">&times;</span>
 
                     <div class="profile-btn-area">
@@ -73,12 +84,12 @@
 
                     <div class="myPage-row">
                         <label>이메일</label>
-                        <span>user01@kh.or.kr</span>
+                        <span>${loginMember.memberEmail}</span>
                     </div>
 
                     <div class="myPage-row">
                         <label>가입일</label>
-                        <span>2022년 10월 27일 10시 39분 12초</span>
+                        <span>${loginMember.enrollDate}</span>
                     </div>
 
                 </form>

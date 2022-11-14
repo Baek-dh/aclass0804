@@ -237,10 +237,13 @@ public class MyPageController {
 		
 		int result = service.updateProfile(webPath, filePath, profileImage, loginMember);
 		
+		String message = null;
+		if(result > 0)	message = "프로필 이미지가 변경되었습니다.";
+		else			message = "프로필 이미지 변경 실패";
 		
+		ra.addFlashAttribute("message", message);
 		
-		
-		return null;
+		return "redirect:/member/myPage/profile";
 	}
 	
 	
