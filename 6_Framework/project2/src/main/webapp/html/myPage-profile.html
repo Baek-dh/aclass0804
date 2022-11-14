@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="../resources/css/myPage-style.css">
 
 </head>
+
 <body>
     <main>
         header.jsp include
@@ -19,7 +21,7 @@
             <section class="left-side">
                 사이드메뉴
                 <ul class="list-group">
-                                <!-- 절대경로 -->
+                    <!-- 절대경로 -->
                     <li><a href="/member/myPage/profile">프로필</a></li>
                     <li><a href="/member/myPage/info">내정보</a></li>
                     <li><a href="/member/myPage/changePw">비밀번호 변경</a></li>
@@ -36,17 +38,17 @@
                 </span>
 
                 <form action="#" method="POST" name="myPage-frm">
-                   
+
                     <div class="profile-image-area">
                         <img id="profile-image" src="../resources/images/user.png">
-                        <span id="delete-image">&times;</span>
                     </div>
+                    <span id="delete-image">&times;</span>
 
                     <div class="profile-btn-area">
-                        <label for="image-input">이미지 선택</label> 
+                        <label for="image-input">이미지 선택</label>
 
                         <!-- accept 속성 : 업로드 가능한 파일의 타입을 제한하는 속성 -->
-                        <input type="file" name="profileImage" id="image-input" accept="image/*">                      
+                        <input type="file" name="profileImage" id="image-input" accept="image/*">
 
                         <button>변경하기</button>
                     </div>
@@ -64,7 +66,7 @@
 
                 </form>
 
-               
+
 
             </section>
 
@@ -76,6 +78,7 @@
     footer.jsp include
 
     <!-- 다음 주소 api 추가 -->
-    
+
 </body>
+
 </html>

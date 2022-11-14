@@ -140,7 +140,7 @@
                         <article class="login-area">
 
                             <!-- 회원 프로필 이미지-->
-                            <a href="#">
+                            <a href="/member/myPage/profile">
                                 <img id="member-profile" src="/resources/images/user.png">    
                             </a>
 
@@ -149,7 +149,7 @@
 
                                 <div>
                                     <a href="/member/myPage/info" id="nickname">${loginMember.memberNickname}</a>
-                                   
+                                
                                     <a href="/member/logout" id="logout-btn">로그아웃</a>
                                 </div>
 
