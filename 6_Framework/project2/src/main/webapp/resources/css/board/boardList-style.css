@@ -1,0 +1,243 @@
+/* section, div{ border : 1px solid black;} */
+
+.board-name{
+	font-size : 2em;
+	margin : 20px 0;
+}
+
+a{
+    text-decoration: none;
+    color : black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.board-list{
+    /* display: flex; */
+    width: 1000px;
+    /* height: 800px; */
+    margin : 50px auto;
+}
+
+.board-title{
+    margin-left : 30px;
+    font-size: 2.5em;
+}
+
+
+.list-wrapper{
+    min-height: 670px;
+    width: 100%;
+}
+
+.list-table{
+    width: 100%;
+    padding: 20px;
+    border-collapse: collapse;
+}
+
+.list-table > thead{ background-color: #455ba8; color: white;}
+
+
+.list-table tr{
+    height: 60px;
+}
+
+.list-table > tbody > tr{
+    border-bottom: 1px solid gray;
+
+}
+
+
+.list-table tr > *{ text-align: center; }
+.list-table tr > *:nth-of-type(1){ width: 10%; }
+
+.list-table tr > td:nth-of-type(2){
+     width: 50%; 
+     text-align: left;
+     padding-left: 50px;
+     text-decoration: none;
+}
+
+.list-table tr > *:nth-of-type(3){ width: 13%; }
+.list-table tr > *:nth-of-type(4){ width: 10%; }
+.list-table tr > *:nth-of-type(5){ width: 8%; }
+.list-table tr > *:nth-of-type(6){ width: 8%; }
+
+
+.btn-area{
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.btn-area > button{
+    margin-right: 50px;
+    
+    width: 80px;
+    height: 40px;   
+    background-color: white;
+
+    font-weight: bold;
+    color: #455ba8;
+    border: 2px solid #455ba8;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+}
+
+
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.pagination li{
+    width: 20px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.pagination a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.current{
+    font-weight: bold;
+    background-color: #455ba8;
+    border-radius: 50%;
+    color: white !important;
+    letter-spacing: 0 !important;
+}
+
+#boardSearch{
+    text-align: center;
+    width: 500px;
+    height: 30px;
+    margin: 30px auto;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#boardSearch * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#boardSearch select{
+    width: 100px;
+}
+
+#boardSearch input{
+    flex-grow: 1;
+    margin: 0 10px;
+    padding-left: 10px;
+}  
+
+#boardSearch button{
+    
+    width: 100px;
+
+    font-weight: bold;
+    background-color: #455ba8;
+    border: none;
+    color: white;
+
+    cursor: pointer;
+    
+
+}
+
+
+/* 썸네일 */
+.list-table .list-thumbnail{
+    position: absolute;
+    max-height: 30px;
+    max-width: 50px;
+    left: -15px;
+    top: 17px;
+}
+
+.list-table tr > td:nth-of-type(2){
+    position: relative;
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+    z-index: 50;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal.show {
+    display: flex;
+    animation-name: show;
+    animation-duration: 0.5s;
+  }
+
+.modal.hide{
+    animation-name: hide;
+    animation-duration: 0.5s;
+}
+
+  
+#modal-image {
+    background-color: white;
+    margin: auto;
+    border-radius: 10px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* @keyframes : 
+애니메이션 중간중간의 특정 지점들을 거칠 수 있는 키프레임들을 설정함으로써 CSS 애니메이션 과정의 중간 절차를 제어할 수 있게 합니다.  */
+@keyframes show {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes hide {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+ 
+/* 닫기 버튼 꾸미기 */
+#modal-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+#modal-close:hover{
+    transform: scale(1.2);
+}
+
+

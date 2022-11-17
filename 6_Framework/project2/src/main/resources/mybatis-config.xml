@@ -17,6 +17,7 @@
 	<!-- VO클래스의 패키지명 + 클래스명 작성하는 것이 불편하기 때문에 짧은 별칭 부여 -->
 	<typeAliases>
 		<typeAlias type="edu.kh.project.member.model.vo.Member"  alias="Member" />
+		<typeAlias type="edu.kh.project.board.model.vo.Board"  alias="Board" />
 	</typeAliases>
 
 
@@ -25,6 +26,7 @@
 		<mapper resource="/mappers/member-mapper.xml" />
 		<mapper resource="/mappers/myPage-mapper.xml" />
 		<mapper resource="/mappers/ajax-mapper.xml" />
+		<mapper resource="/mappers/board-mapper.xml" />
 	</mappers>
 
 
