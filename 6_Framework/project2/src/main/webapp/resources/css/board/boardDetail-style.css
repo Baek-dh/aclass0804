@@ -1,0 +1,136 @@
+/* 상세조회 전체 영역 */
+.board-detail{
+    width: 1000px;
+    min-height: 700px;
+    border:  1px solid #ccc;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+
+/* 게시글 제목 */
+.board-title{
+    margin : 0;
+    padding: 20px 0;
+    font-size: 2em;
+    border-bottom : 3px solid #ccc;
+}
+
+.board-title > span{
+    font-size: 16px;
+    color: gray;
+}
+
+
+/* 게시글 헤더 */
+.board-header{
+    padding: 20px 0;
+    border-bottom : 3px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 작성자 영역 */
+.board-writer{
+    display: flex;
+    align-items: center;
+}
+
+/* 프로필 */
+.board-writer > img{
+    width: 40px;
+    height: 40px;
+}
+
+/* 닉네임 */
+.board-writer > span{
+    font-weight: bold;
+    margin-left : 10px;
+}
+
+/* 게시글 정보 */
+.board-info{
+    width: 320px;
+    font-size: 0.8em;
+}
+
+.board-info > p{
+    margin: 0;
+}
+
+.board-info span{
+    width: 120px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+
+.img-box{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* 이미지를 감싸는 div */
+.boardImg{
+    width: 230px;
+    height: 230px;
+    display: inline-block;
+    text-align: center;
+}
+
+/* 이미지 */
+.boardImg img{
+    max-width: 90%;
+    max-height: 90%;
+}
+
+/* 썸네일만 이미지 크게 */
+.thumbnail{
+    width: 300px;   
+    height: 300px;
+}
+
+/* 다운로드 a태그 */
+.boardImg a{
+    display: block;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* 내용 */
+.board-content{
+    padding: 30px 0;
+    margin: 30px 0;
+    border-top : 3px solid #ccc;
+    border-bottom : 3px solid #ccc;
+
+    font-size: 18px;
+}
+
+/* 버튼 영역 */
+.board-btn-area{
+    text-align: right;
+}
+
+/* 버튼 */
+.board-btn-area button{
+    width: 80px;
+    height: 30px;
+
+    font-weight: bold;
+    border: 0;
+    background-color: #455ba8;
+    color : white;
+
+    cursor: pointer;
+}
+
+.board-btn-area button:hover{
+    background-color: white;
+    color : #455ba8;
+    border: 2px solid #455ba8;
+}

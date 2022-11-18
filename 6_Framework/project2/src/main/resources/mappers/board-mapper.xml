@@ -16,7 +16,54 @@
       <result property="memberNo" column="MEMBER_NO"/>
       <result property="profileImage" column="PROFILE_IMG"/>
       <result property="thumbnail" column="THUMBNAIL"/>
+      
+      <!-- resultMap의 collection 태그 
+      	-	조회 결과를 지정된 컬렉션 형태로 필드에 대입하는 태그
+      	- 별도로 지정된 select 구문을 수행해서 수행 결과를
+      	  해당 필드에 대입
+      	  
+      	  property : 대입될 필드명
+      	  javaType : 컬렉션 객체 타입
+      	  ofType : 제네릭(타입제한)
+      	  select : 수행할 select 태그의 id
+      	  column : select 수행 시 전달할 파라미터를 가지고있는 컬럼
+    	 -->
+      <collection property="imageList" 
+      	javaType="java.util.ArrayList" ofType="BoardImage"
+        select="selectImageList" 
+        column="BOARD_NO"/>
+        
+      <collection property="commentList"  
+       	javaType="java.util.ArrayList" ofType="Comment"
+       	select="selectCommentList"
+       	column="BOARD_NO"
+      />
+       
+	</resultMap>
 	
+	
+	<!-- BoardImage resultMap -->
+	<resultMap type="BoardImage" id="boardImage_rm">
+		<id property="imageNo" column="IMG_NO"/>
+		<result property="imagePath" column="IMG_PATH"/>
+		<result property="imageReName" column="IMG_RENAME"/>
+		<result property="imageOriginal" column="IMG_ORIGINAL"/>
+		<result property="imageOrder" column="IMG_ORDER"/>
+		<result property="boardNo" column="BOARD_NO"/>
+	</resultMap>
+	
+	
+	<!-- Comment resultMap -->
+	<resultMap type="Comment" id="comment_rm">
+		<id property="commentNo" column="COMMENT_NO"/>
+		<result property="commentContent" column="COMMENT_CONTENT"/>
+		<result property="commentCreateDate" column="C_CREATE_DATE"/>
+		<result property="boardNo" column="BOARD_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="commentDeleteFlag" column="COMMENT_DEL_FL"/>
+		<result property="parentNo" column="PARENT_NO"/>
+		<result property="memberNickname" column="MEMBER_NICKNAME"/>
+		<result property="profileImage" column="PROFILE_IMG"/>
 	</resultMap>
 	
 	
@@ -68,6 +115,42 @@
 		WHERE BOARD_CODE = #{boardCode}
 		AND BOARD_DEL_FL = 'N'
 		ORDER BY BOARD_NO DESC
+	</select>
+	
+	
+	<!-- 게시글 상세 조회 -->
+	<select id="selectBoardDetail" resultMap="board_rm">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, READ_COUNT, 
+		TO_CHAR(B_CREATE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') B_CREATE_DATE,
+		TO_CHAR(B_UPDATE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') B_UPDATE_DATE,
+		MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG
+		FROM BOARD 
+		JOIN MEMBER USING(MEMBER_NO)
+		WHERE BOARD_NO = #{boardNo}
+		AND BOARD_DEL_FL = 'N'
+	</select>
+	
+	<!-- 특정 게시글의 이미지 목록 조회 -->
+	<select id="selectImageList" resultMap="boardImage_rm">
+		SELECT * FROM BOARD_IMG
+		WHERE BOARD_NO = #{boardNo}
+		ORDER BY IMG_ORDER
+	</select>
+	
+	<!-- 특정 게시글의 댓글 목록 조회 -->
+	<select id="selectCommentList" resultMap="comment_rm">
+		SELECT LEVEL, C.* FROM
+			(SELECT COMMENT_NO, COMMENT_CONTENT,
+				TO_CHAR(C_CREATE_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') C_CREATE_DATE,
+				BOARD_NO, MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG,
+				PARENT_NO, COMMENT_DEL_FL
+			FROM "COMMENT"
+			JOIN MEMBER USING(MEMBER_NO)
+			WHERE BOARD_NO = #{boardNo}
+			AND COMMENT_DEL_FL = 'N') C
+		START WITH PARENT_NO IS NULL 
+		CONNECT BY PRIOR COMMENT_NO = PARENT_NO 
+		ORDER SIBLINGS BY COMMENT_NO
 	</select>
 	
 	
