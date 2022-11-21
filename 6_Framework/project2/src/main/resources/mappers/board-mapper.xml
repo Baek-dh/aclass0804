@@ -121,10 +121,12 @@
 	<!-- 게시글 상세 조회 -->
 	<select id="selectBoardDetail" resultMap="board_rm">
 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, READ_COUNT, 
-		TO_CHAR(B_CREATE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') B_CREATE_DATE,
-		TO_CHAR(B_UPDATE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') B_UPDATE_DATE,
-		MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG
-		FROM BOARD 
+			TO_CHAR(B_CREATE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') B_CREATE_DATE,
+			TO_CHAR(B_UPDATE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') B_UPDATE_DATE,
+			MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG,
+			(SELECT COUNT(*) FROM BOARD_LIKE L
+			 WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT
+		FROM BOARD B
 		JOIN MEMBER USING(MEMBER_NO)
 		WHERE BOARD_NO = #{boardNo}
 		AND BOARD_DEL_FL = 'N'
@@ -153,7 +155,32 @@
 		ORDER SIBLINGS BY COMMENT_NO
 	</select>
 	
+	<!-- 조회 수 증가 -->
+	<update id="updateReadCount">
+		UPDATE BOARD SET
+		READ_COUNT = READ_COUNT + 1
+		WHERE BOARD_NO = #{boardNo}
+	</update>
 	
+	<!-- 좋아요 여부 체크 -->
+	<select id="boardLikeCheck"  resultType="_int">
+		SELECT COUNT(*) FROM BOARD_LIKE
+		WHERE BOARD_NO = #{boardNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 좋아요 수 증가(INSERT) -->
+	<insert id="boardLikeUp">
+		INSERT INTO BOARD_LIKE VALUES(#{boardNo}, #{memberNo})
+	</insert>
+	
+	
+	<!-- 좋아요 수 감소(DELETE) -->
+	<delete id="boardLikeDown">
+		DELETE FROM BOARD_LIKE
+		WHERE BOARD_NO = #{boardNo}
+		AND MEMBER_NO = #{memberNo}
+	</delete>
 
 
 
