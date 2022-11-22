@@ -39,3 +39,14 @@
 
     }
 })();
+
+// 글쓰기 버튼
+(() => {
+    const insertBtn = document.getElementById("insertBtn");
+
+    if (insertBtn != null) { // 버튼이 존재할 때만
+        insertBtn.addEventListener("click", () => {
+            location.href = "/write/" + boardCode;
+        })
+    }
+})();

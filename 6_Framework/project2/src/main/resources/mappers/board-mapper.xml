@@ -182,6 +182,50 @@
 		AND MEMBER_NO = #{memberNo}
 	</delete>
 
+	<!-- 게시글 삭제 -->
+	<update id="boardDelete">
+		UPDATE BOARD SET
+		BOARD_DEL_FL = 'Y'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+
+
+	<!-- 게시글 삽입 -->
+
+	<!--  
+		useGeneratedKeys 속성 : DB 내부적으로 생성한 키(ex. 시퀀스)를 사용
+		useGeneratedKeys = "true" : JDBC getGeneratedKeys() 메서드 사용 허용
+		
+		* 마이바티스의 동적 SQL *
+		- SQL 구문에 작성되는 태그로
+		  프로그램 수행 중 추가적인 SQL 수행 / SQL 형태의 변형 할 수 있음.
+		  (마마이바티스 기능 중 가장 강력한 기능)
+		  
+		  
+		  * 동적 SQL <selectKey>
+		  <selectKey> : INSERT/UPDATE에 사용된 키를 
+		  					    원하는 변수/필드에 담아서 반환하는 태그
+		  
+		  order : 메인 SQL이 수행되기 전(BEFORE) 또는 후(AFTER)에
+		  				<selectKey>의 SQL이 수행되도록 순서를 지정하는 속성		  
+		  
+		  keyProperty : key를 담을 변수를 지정하는 속성  
+	-->
+
+	<insert id="boardWrite"  parameterType="Board" useGeneratedKeys="true">
+	
+		<selectKey keyProperty="boardNo" resultType="_int" order="BEFORE">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO BOARD
+		VALUES(SEQ_BOARD_NO.NEXTVAL, <!-- 옆에 바꿔줘야됨 -->
+			   #{boardTitle}, #{boardContent},
+			   DEFAULT, DEFAULT, DEFAULT, DEFAULT, 
+			   #{memberNo}, #{boardCode} )
+	</insert>
+
+
 
 
 </mapper>

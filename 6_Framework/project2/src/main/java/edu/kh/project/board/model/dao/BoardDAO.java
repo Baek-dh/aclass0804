@@ -93,6 +93,26 @@ public class BoardDAO {
 	public int boardLikeDown(Map<String, Object> paramMap) {
 		return sqlSession.delete("boardMapper.boardLikeDown", paramMap);
 	}
+
+	/** 게시글 삭제
+	 * @param boardNo
+	 * @return result
+	 */
+	public int boardDelete(int boardNo) {
+		return sqlSession.update("boardMapper.boardDelete", boardNo);
+	}
+
+	/** 게시글 삽입
+	 * @param board
+	 * @return boardNo
+	 */
+	public int boardWrite(Board board) {
+		int result = sqlSession.insert("boardMapper.boardWrite", board);
+		//board의 boardNo 필드
+		// -> <selectKey>로 인해서 생성된 시퀀스값이 세팅되어있음.
+		
+		return 0;
+	}
 	
 	
 	
