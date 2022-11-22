@@ -585,12 +585,56 @@ SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, READ_COUNT,
 FROM BOARD B
 JOIN MEMBER USING(MEMBER_NO)
 WHERE BOARD_NO = 1998
-AND BOARD_DEL_FL = 'N'
+AND BOARD_DEL_FL = 'N';
+
+
+-- 게시글 삽입
+INSERT INTO BOARD
+VALUES(SEQ_BOARD_NO.NEXTVAL,
+	   #{boardTitle}, #{boardContent},
+	   DEFAULT, DEFAULT, DEFAULT, DEFAULT, 
+	   #{memberNo}, #{boardCode} );
+	  
+SELECT * FROM board_img
+
+
+-- 게시글 첨부 이미지 삽입(여러 행 동시 삽입)
+
+-- 0,1,2 삽입
+INSERT INTO BOARD_IMG
+VALUES(SEQ_IMG_NO.NEXTVAL, '/resources/images/board/',
+'20221116105843_00004.gif', '4.gif', 0 , 1000);
+INSERT INTO BOARD_IMG
+VALUES(SEQ_IMG_NO.NEXTVAL, '/resources/images/board/',
+'20221116105843_00004.gif', '4.gif', 1 , 1000);
+INSERT INTO BOARD_IMG
+VALUES(SEQ_IMG_NO.NEXTVAL, '/resources/images/board/',
+'20221116105843_00004.gif', '4.gif', 2 , 1000);
+
+--INSERT ALL : 한번에 여러 행 삽입 (단, 시퀀스 사용 불가)
+
+-- 서브쿼리를 이용한 INSERT + UNION ALL
+
+INSERT INTO BOARD_IMG 
+SELECT SEQ_IMG_NO.NEXTVAL IMG_NO, A.* FROM
+(SELECT '경로' IMG_PATH,
+	   '변경된 파일' IMG_RENAME,
+	   '원본 파일명' IMG_ORIGINAL,
+	   1 IMG_ORDER,
+	   1000 BOARD_NO
+FROM DUAL
+UNION ALL
+SELECT '경로2' IMG_PATH,
+	   '변경된 파일2' IMG_RENAME,
+	   '원본 파일명2' IMG_ORIGINAL,
+	   2 IMG_ORDER,
+	   1000 BOARD_NO
+FROM DUAL) A;
 
 
 
-
-
+SELECT * FROM BOARD_IMG;
+ROLLBACK;
 
 
 

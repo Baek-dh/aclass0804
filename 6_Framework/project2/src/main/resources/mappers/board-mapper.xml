@@ -219,12 +219,40 @@
 		</selectKey>
 	
 		INSERT INTO BOARD
-		VALUES(SEQ_BOARD_NO.NEXTVAL, <!-- 옆에 바꿔줘야됨 -->
+		VALUES(#{boardNo}, 
 			   #{boardTitle}, #{boardContent},
 			   DEFAULT, DEFAULT, DEFAULT, DEFAULT, 
 			   #{memberNo}, #{boardCode} )
 	</insert>
 
+
+	<!-- 게시글 첨부 이미지 삽입(리스트형식) -->
+	<!-- 
+		동적 SQL <foreach>
+		- 특정 SQL 구문을 반복할 때 사용
+		- collection : 반복할 객체의 타입(list, set, map, array....) 
+		- item : collection 객체에서 하나씩 순서대로 꺼낸 요소
+		- index : 현재 인덱스를 나타내는 변수
+		- open : 반복 전 출력할 구문
+		- close : 반복이 끝난 후 출력할 구문 
+		- separator : 분리 기호(반복 사이 구분자)
+	 -->
+	<insert id="insertBoardImageList" parameterType="list">
+		INSERT INTO BOARD_IMG 
+		SELECT SEQ_IMG_NO.NEXTVAL IMG_NO, A.* FROM
+		
+		<foreach collection="list" item="img" 
+			open="(" close=") A" separator="UNION ALL">
+			SELECT #{img.imagePath} IMG_PATH,
+				     #{img.imageReName} IMG_RENAME,
+				     #{img.imageOriginal} IMG_ORIGINAL,
+				     #{img.imageOrder}  IMG_ORDER,
+				     #{img.boardNo} BOARD_NO
+			FROM DUAL
+		</foreach>
+			
+			
+	</insert>
 
 
 

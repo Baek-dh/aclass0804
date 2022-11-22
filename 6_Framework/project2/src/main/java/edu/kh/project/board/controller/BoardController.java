@@ -1,5 +1,6 @@
 package edu.kh.project.board.controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -288,7 +289,7 @@ public class BoardController {
 		@PathVariable("boardCode") int boardCode,
 		RedirectAttributes ra, HttpSession session,
 		@RequestHeader("referer") String referer
-		) {
+		) throws IOException {
 		
 		// 1. boardCode를 board객체에 세팅(Board에 boardCode 필드 추가)
 		board.setBoardCode(boardCode);
@@ -298,6 +299,7 @@ public class BoardController {
 		
 		// 3. 업로드된 파일의 웹 접근경로/서버 내부 경로 준비
 		String webPath = "/resources/images/board/";
+		
 		String folderPath = session.getServletContext().getRealPath(webPath);
 		//	-> /resources/images/board/ 까지의 컴퓨터 저장 경로 반환
 		

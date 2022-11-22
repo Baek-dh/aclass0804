@@ -1,5 +1,6 @@
 package edu.kh.project.board.model.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -64,7 +65,8 @@ public interface BoardService {
 	 * @param folderPath
 	 * @return boardNo
 	 */
-	int boardWrite(Board board, List<MultipartFile> imageList, String webPath, String folderPath);
+	int boardWrite(Board board, List<MultipartFile> imageList, 
+			String webPath, String folderPath) throws IOException;
 
 	
 	
