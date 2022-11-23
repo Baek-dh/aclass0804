@@ -29,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.board.model.service.BoardService;
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.common.Util;
 import edu.kh.project.member.model.vo.Member;
 
 @Controller
@@ -324,6 +325,70 @@ public class BoardController {
 		
 		return "redirect:" + path;
 	}
+	
+	
+	// 게시글 수정 화면 전환
+	@GetMapping("/board/{boardCode}/{boardNo}/update")
+	public String boardUpdate(
+			@PathVariable("boardCode") int boardCode,
+			@PathVariable("boardNo") int boardNo,
+			Model model) {
+		
+		Board board = service.selectBoardDetail(boardNo);
+		
+		// 개행문자 처리 해제
+		board.setBoardContent( Util.newLineClear( board.getBoardContent() ) );
+		
+		model.addAttribute("board", board);
+		
+		return "board/boardUpdate";
+	}
+	
+	
+	// 게시글 수정
+	@PostMapping("/board/{boardCode}/{boardNo}/update")
+	public String boardUpdate(
+		Board board, // boardTitle, boardContent(커맨드 객체)
+		@PathVariable("boardCode") int boardCode, // 게시판 번호
+		@PathVariable("boardNo") int boardNo, // 수정할 게시글 번호
+		@RequestParam(value="cp", required=false, defaultValue="1") int cp, // 현재 페이지
+		@RequestParam(value="deleteList", required=false) String deleteList, // 삭제된 이미지 순서  
+		@RequestParam(value="images", required=false) List<MultipartFile> imageList, // 업로드한 파일 목록   
+		@RequestHeader("referer") String referer, // 이전 요청 주소
+		HttpSession session, // 서버 파일 저장경로 얻기 용도
+		RedirectAttributes ra // 리다이렉트 시 응답 메세지 전달용
+		) throws Exception {
+		
+		// 1. board 객체에 boardNo 세팅
+		board.setBoardNo(boardNo);
+		
+		// 2. 이미지 저장 경로 얻어오기
+		String webPath = "/resources/images/board/";
+		String folderPath = session.getServletContext().getRealPath(webPath);
+		
+		// 3. 게시글 수정 서비스 호출
+		int result = service.boardUpdate(board, imageList, webPath, folderPath, deleteList);
+		
+		// 4. 서비스 결과에 따른 응답 제어
+		String path = null;
+		String message = null;
+				
+		if(result > 0) {
+			// 상세조회 : /board/2/2007?cp=2
+			path = "/board/" + boardCode + "/" + boardNo + "?cp=" + cp;
+			message = "게시글이 수정되었습니다.";		
+			
+		}else {
+			path = referer;
+			message = "게시글 수정 실패...";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+	}
+	
+	
 	
 }
 

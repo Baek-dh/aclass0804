@@ -250,8 +250,45 @@
 				     #{img.boardNo} BOARD_NO
 			FROM DUAL
 		</foreach>
-			
-			
+	</insert>
+	
+	
+	<!-- 게시글 수정 -->
+	<update id="boardUpdate">
+		UPDATE BOARD SET
+		BOARD_TITLE = #{boardTitle},
+		BOARD_CONTENT = #{boardContent}
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<!-- 게시글 이미지 삭제 -->
+	<!-- 
+		#{key} == 'value' (양쪽 홑따옴표 추가)
+			-> PreparedStatement (삽입, 조건절의 값)
+		
+		${key} == value (따옴표 X)
+			-> Statement (SQL 일부)
+	-->
+	
+	<delete id="boardImageDelete">
+		DELETE FROM BOARD_IMG
+		${condition}
+	</delete>
+	
+	
+	<!-- 이미지 수정 -->
+	<update id="boardImageUpdate">
+		UPDATE BOARD_IMG SET
+		IMG_RENAME = #{imageReName},
+		IMG_ORIGINAL = #{imageOriginal}
+		WHERE BOARD_NO = #{boardNo}
+		AND IMG_ORDER = #{imageOrder}
+	</update>
+	
+	<!-- 이미지 삽입 -->
+	<insert id="boardImageInsert">
+		INSERT INTO BOARD_IMG VALUES(SEQ_IMG_NO.NEXTVAL,
+		#{imagePath}, #{imageReName}, #{imageOriginal}, #{imageOrder}, #{boardNo})
 	</insert>
 
 
