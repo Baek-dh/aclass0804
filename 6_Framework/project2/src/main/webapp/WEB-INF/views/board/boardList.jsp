@@ -132,9 +132,9 @@
                 </ul>
             </div>
 
-
+        ${boardCode}
 			<!-- 검색창 -->
-            <form action="#" method="get" id="boardSearch" onsubmit="return false">
+            <form action="${boardCode}" method="get" id="boardSearch" onsubmit="return true">
 
                 <select name="key" id="search-key">
                     <option value="t">제목</option>

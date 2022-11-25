@@ -292,6 +292,46 @@
 	</insert>
 
 
+	<!-- 검색 조건 일치 게시글 수 조회 -->
+	<!-- 
+		마이바티스 동적 SQL <if> / <choose>, <when>, <otherwise>
+	 -->
+	<select id="getListCount_search" resultType="_int">
+		SELECT COUNT(*) 
+		FROM "BOARD"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_CODE = #{boardCode}
+		AND BOARD_DEL_FL = 'N'
+		
+		<!-- 검색어가 있을 경우 -->
+		<if test='query != null and query != ""'>
+			
+			<choose>
+				<when test='key == "t"'>
+					AND BOARD_TITLE LIKE '%${query}%'
+				</when>
+				
+				<when test='key == "c"'>
+					AND BOARD_CONTENT LIKE '%${query}%'
+				</when>
+				
+				<when test='key == "tc"'>
+					AND ( BOARD_TITLE LIKE '%${query}%' 
+							OR BOARD_CONTENT LIKE '%${query}%')
+				</when>
+				
+				<otherwise>
+					AND MEMBER_NICKNAME LIKE '%${query}%'
+				</otherwise>
+			
+			</choose>
+		
+		</if>
+		
+		
+	</select>
+
+
 
 </mapper>
 
