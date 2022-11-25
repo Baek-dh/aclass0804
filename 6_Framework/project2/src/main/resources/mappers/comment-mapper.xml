@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="commentMapper">
+
+   	<!-- 댓글 등록 -->
+   	<insert id="insertComment">
+   		INSERT INTO "COMMENT" VALUES(
+	   		SEQ_COMMENT_NO.NEXTVAL, 
+	   		#{commentContent}, DEFAULT, DEFAULT, 
+	   		#{boardNo}, #{memberNo}, 
+	   		
+	   		<!-- 일반 댓글 -->
+	   		<if test='parentNo == 0'>
+	   			NULL
+	   		</if>
+	   		
+	   		<!-- 답글 -->
+	   		<if test='parentNo != 0'>
+	   			#{parentNo}
+	   		</if>
+	   		
+	   		)
+   	</insert>
+   	
+   	
+   	<!-- 댓글 삭제 -->
+   	<update id="deleteComment">
+   		UPDATE "COMMENT" SET 
+   		COMMENT_DEL_FL = 'Y'
+   		WHERE COMMENT_NO = #{commentNo}
+   	</update>
+   	
+   	
+   	<!-- 댓글 수정 -->
+   	<update id="updateComment">
+   		UPDATE "COMMENT" SET
+   		COMMENT_CONTENT = #{commentContent}
+   		WHERE COMMENT_NO = #{commentNo}
+   	</update>
+   	
+   	
+   	
+   	
+   	
+   	
+   	
+   	
+</mapper>

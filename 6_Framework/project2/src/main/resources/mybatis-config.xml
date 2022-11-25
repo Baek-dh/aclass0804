@@ -30,6 +30,7 @@
 		<mapper resource="/mappers/myPage-mapper.xml" />
 		<mapper resource="/mappers/ajax-mapper.xml" />
 		<mapper resource="/mappers/board-mapper.xml" />
+		<mapper resource="/mappers/comment-mapper.xml" />
 	</mappers>
 
 
