@@ -64,6 +64,7 @@
 		<result property="parentNo" column="PARENT_NO"/>
 		<result property="memberNickname" column="MEMBER_NICKNAME"/>
 		<result property="profileImage" column="PROFILE_IMG"/>
+		<result property="childCheck" column="CHILD_CHECK"/>
 	</resultMap>
 	
 	
@@ -104,7 +105,9 @@
 		   END B_CREATE_DATE,
 		   ]]>
 			(SELECT COUNT(*) FROM "COMMENT" C
-			 WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+			 WHERE C.BOARD_NO = B.BOARD_NO 
+			 AND COMMENT_DEL_FL = 'N') COMMENT_COUNT,
+			 
 			(SELECT COUNT(*) FROM BOARD_LIKE L
 			 WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
 			(SELECT IMG_PATH || IMG_RENAME FROM BOARD_IMG I
@@ -140,8 +143,9 @@
 	</select>
 	
 	<!-- 특정 게시글의 댓글 목록 조회 -->
+	<!-- CONNECT_BY_ISLEAF : 자식 있으면 0, 없으면 1 -->
 	<select id="selectCommentList" resultMap="comment_rm">
-		SELECT LEVEL, C.* FROM
+		<!-- SELECT LEVEL, C.* FROM
 			(SELECT COMMENT_NO, COMMENT_CONTENT,
 				TO_CHAR(C_CREATE_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') C_CREATE_DATE,
 				BOARD_NO, MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG,
@@ -149,7 +153,20 @@
 			FROM "COMMENT"
 			JOIN MEMBER USING(MEMBER_NO)
 			WHERE BOARD_NO = #{boardNo}
-			AND COMMENT_DEL_FL = 'N') C
+			AND COMMENT_DEL_FL = 'N'
+			) C
+		START WITH PARENT_NO IS NULL 
+		CONNECT BY PRIOR COMMENT_NO = PARENT_NO 
+		ORDER SIBLINGS BY COMMENT_NO -->
+		
+		SELECT LEVEL, CONNECT_BY_ISLEAF AS CHILD_CHECK, C.* FROM
+			(SELECT COMMENT_NO, COMMENT_CONTENT,
+				TO_CHAR(C_CREATE_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') C_CREATE_DATE,
+			BOARD_NO, MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG,
+			PARENT_NO, COMMENT_DEL_FL
+			FROM "COMMENT"
+			JOIN MEMBER USING(MEMBER_NO)
+			WHERE BOARD_NO = #{boardNo}) C
 		START WITH PARENT_NO IS NULL 
 		CONNECT BY PRIOR COMMENT_NO = PARENT_NO 
 		ORDER SIBLINGS BY COMMENT_NO
@@ -323,13 +340,71 @@
 				<otherwise>
 					AND MEMBER_NICKNAME LIKE '%${query}%'
 				</otherwise>
-			
 			</choose>
-		
 		</if>
-		
-		
 	</select>
+	
+	
+	<!-- 검색 조건 일치 게시글 목록 조회 -->
+	<select id="selectBoardList_search" parameterType="_int" resultMap="board_rm">
+		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, READ_COUNT, 
+		  <![CDATA[
+			CASE  
+		      WHEN SYSDATE - B_CREATE_DATE < 1/24/60
+		      THEN FLOOR( (SYSDATE - B_CREATE_DATE) * 24 * 60 * 60 ) || '초 전'
+		      WHEN SYSDATE - B_CREATE_DATE < 1/24
+		      THEN FLOOR( (SYSDATE - B_CREATE_DATE) * 24 * 60) || '분 전'
+		      WHEN SYSDATE - B_CREATE_DATE < 1
+		      THEN FLOOR( (SYSDATE - B_CREATE_DATE) * 24) || '시간 전'
+		      ELSE TO_CHAR(B_CREATE_DATE, 'YYYY-MM-DD')
+		   END B_CREATE_DATE,
+		   ]]>
+			(SELECT COUNT(*) FROM "COMMENT" C
+			 WHERE C.BOARD_NO = B.BOARD_NO
+			 AND COMMENT_DEL_FL = 'N') COMMENT_COUNT,
+			(SELECT COUNT(*) FROM BOARD_LIKE L
+			 WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+			(SELECT IMG_PATH || IMG_RENAME FROM BOARD_IMG I
+			 WHERE IMG_ORDER = 0
+			 AND I.BOARD_NO = B.BOARD_NO) THUMBNAIL
+		FROM BOARD B
+		JOIN MEMBER USING(MEMBER_NO)
+		WHERE BOARD_CODE = #{boardCode}
+		AND BOARD_DEL_FL = 'N'
+		
+		<!-- 검색어가 있을 경우 -->
+		<if test='query != null and query != ""'>
+			
+			<choose>
+				<when test='key == "t"'>
+					AND BOARD_TITLE LIKE '%${query}%'
+				</when>
+				
+				<when test='key == "c"'>
+					AND BOARD_CONTENT LIKE '%${query}%'
+				</when>
+				
+				<when test='key == "tc"'>
+					AND ( BOARD_TITLE LIKE '%${query}%' 
+							OR BOARD_CONTENT LIKE '%${query}%')
+				</when>
+				
+				<otherwise>
+					AND MEMBER_NICKNAME LIKE '%${query}%'
+				</otherwise>
+			</choose>
+		</if>
+		ORDER BY BOARD_NO DESC
+	</select>
+
+
+	<!-- 이미지 목록 조회 -->
+	<select id="selectImageList2" resultType="string">
+		SELECT IMG_RENAME FROM BOARD_IMG
+	</select>
+
+
+
 
 
 

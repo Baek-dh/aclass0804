@@ -34,6 +34,18 @@
       <property name="maxWaitMillis" value="-1" /> <!-- 예외 발생 전 커넥션이 반환 될 때 까지 대기하는 최대 시간(ms), 기본 -1(무기한) -->
    </bean>
    
+   <!-- JDBC 수행 내용을 로그로 출력하는 객체를 bean 등록 -->
+   <bean id="logDataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+      <constructor-arg ref="dataSource"/>
+      <property name="logFormatter">
+         <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+            <property name="loggingType" value="MULTI_LINE"/>
+            <property name="sqlPrefix" value="[SQL]"/>
+         </bean>
+      </property>
+   </bean>
+   
+   
    
    <!-- MyBatis 관련 Bean 생성 -->
    
@@ -51,7 +63,7 @@
    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
       <!-- mybatis-config.xml 설정 불러오기 -->
       <property name="configLocation" value="classpath:mybatis-config.xml" />
-      <property name="dataSource" ref="dataSource" />
+      <property name="dataSource" ref="logDataSource" />
    </bean>
    
    
@@ -64,7 +76,7 @@
    
    <!-- 스프링에서 사용하는 proxy를 이용한 트랜잭션 제어가 안될 경우 추가적인 트랜잭션 매니저를 추가해서 문제 해결 -->
    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-      <property name="dataSource" ref="dataSource" />
+      <property name="dataSource" ref="logDataSource" />
    </bean>
       
       

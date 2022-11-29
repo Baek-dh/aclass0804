@@ -1,41 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-	<!-- Appenders -->
-	<appender name="console" class="org.apache.log4j.ConsoleAppender">
-		<param name="Target" value="System.out" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
-		</layout>
-	</appender>
-	
-	<!-- Application Loggers -->
-	<logger name="edu.kh.project">
-		<level value="info" />
-	</logger>
-	
-	<!-- 3rdparty Loggers -->
-	<logger name="org.springframework.core">
-		<level value="info" />
-	</logger>
-	
-	<logger name="org.springframework.beans">
-		<level value="info" />
-	</logger>
-	
-	<logger name="org.springframework.context">
-		<level value="info" />
-	</logger>
+   <!-- Appenders -->
+   <appender name="console" class="org.apache.log4j.ConsoleAppender">
+      <param name="Target" value="System.out" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
+      </layout>
+   </appender>
+   
+   <!-- Appenders -->
+   <appender name="sql-console" class="org.apache.log4j.ConsoleAppender">
+      <param name="Target" value="System.out" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%m%n" />
+      </layout>
+   </appender>
+   
+   <!-- //날짜별 로그 파일 생성 하기 -->
+   <appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
+       <param name="File" value="/workspace/6_Framework/project2/logs/runtime.log" />
+       <param name="Append" value="true" />
+       <param name="encoding" value="UTF-8" />
+       <param name="DatePattern" value="'.'yyyy-MM-dd" />
+       <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
+      </layout>
+   </appender>
+   
+   <!-- Application Loggers -->
+   <logger name="edu.kh.project">
+      <level value="debug" />
+      <appender-ref ref="dailyRollingFile" />
+   </logger>
+   
+   <!-- 3rdparty Loggers -->
+   <logger name="org.springframework.core">
+      <level value="info" />
+   </logger>
+   
+   <logger name="org.springframework.beans">
+      <level value="info" />
+   </logger>
+   
+   <logger name="org.springframework.context">
+      <level value="info" />
+   </logger>
 
-	<logger name="org.springframework.web">
-		<level value="info" />
-	</logger>
+   <logger name="org.springframework.web">
+      <level value="info" />
+   </logger>
 
-	<!-- Root Logger -->
-	<root>
-		<priority value="warn" />
-		<appender-ref ref="console" />
-	</root>
-	
+
+
+   <logger name="java.sql.Connection">
+     <level value="debug" />
+     <appender-ref ref="sql-console" />
+   </logger>
+   
+   <logger name="java.sql.Statement">
+     <level value="debug" />
+     <appender-ref ref="sql-console" />
+   </logger>
+   
+   <logger name="java.sql.PreparedStatement">
+     <level value="debug" />
+     <appender-ref ref="sql-console" />
+   </logger>
+   
+   <logger name="java.sql.ResultSet">
+     <level value="debug" />
+     <appender-ref ref="sql-console" />
+   </logger>
+   
+   <logger name="jdbc.sqlonly" additivity="false">
+     <level value="INFO" />
+     <appender-ref ref="sql-console" />
+   </logger>
+   
+   <logger name="jdbc.resultsettable" additivity="false">
+     <level value="INFO" />
+     <appender-ref ref="sql-console" />
+   </logger>
+
+   <!-- Root Logger -->
+   <root>
+      <priority value="warn" />
+      <appender-ref ref="console" />
+   </root>
+   
 </log4j:configuration>
