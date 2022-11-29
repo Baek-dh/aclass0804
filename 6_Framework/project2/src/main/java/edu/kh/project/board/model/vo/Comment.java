@@ -18,4 +18,5 @@ public class Comment {
     private String memberNickname;
     private String profileImage;
     private int childCheck;
+    private int rootCommentNo;
 }
