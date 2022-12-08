@@ -1,0 +1,204 @@
+/* 채팅방 생성 버튼 */
+#openChatRoom {
+	width: 120px;
+}
+
+/*  채팅방 생성 모달*/
+#chat-modal {
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-body {
+	text-align: center;
+	background-color: white;
+	padding: 50px;
+	border-radius: 20px;
+}
+
+#chatRoomTitle {
+	width: 250px;
+}
+
+
+
+/* 채팅창 영역 */
+.chatting-area {
+	margin: auto;
+	height: 650px;
+	width: 1000px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	display: flex;;
+}
+
+/*  채팅 목록 */
+.chatting-list{
+	width: 30%;
+	border : 1px solid black;
+	list-style: none;
+	overflow: auto;
+}
+
+.chatting-item{
+	height: 12%;
+	display: flex;
+	padding: 5px 0;
+	border-bottom: 1px solid black;
+	cursor: pointer;
+}
+
+.chatting-item * {
+	pointer-events: none;
+}
+
+.chatting-item > div{ height: 100%; }
+.item-header{ width : 25%; }
+.item-body{ 
+	width : 75%; 
+	padding : 2px 0;
+}
+.item-body> p{ 
+	display: flex;
+	justify-content: space-between;
+}
+
+.chatting-item.select{
+	background-color: #ddd;
+}
+
+
+.list-profile{ width: 65px;}
+
+.target-name{
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.recent-send-time{
+	margin-right: 5px;
+}
+
+
+.item-body > div{
+	display: flex;
+	justify-content: space-between;
+}
+
+.recent-message{
+	width: 180px;
+
+	/* 여러 줄 말줄임 처리 */
+	white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+	/*  줄바꿈 처리 */
+	word-break: break-all;
+}
+
+.not-read-count{
+	width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    margin: 10px 10px 0 0;
+}
+
+
+/* 채팅 내용 */
+.chatting-content{
+	width: 70%;
+}
+
+.display-chatting {
+	width: 100%;
+	height: 570px;
+	border: 1px solid black;
+	overflow: auto;
+	list-style: none;
+	padding: 10px 10px;
+}
+
+.display-chatting > li{
+	margin: 10px 0;
+}
+
+.target-chat{
+	display: flex;
+	align-items: flex-start;
+}
+.target-chat > img{
+	width: 50px;
+	margin-right: 5px;
+}
+
+.chat {
+	display: inline-block;
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #eee;
+	text-align: left;
+	max-width: 500px;
+	word-break: break-all;
+	white-space: pre-wrap;
+}
+
+
+.input-area {
+	height: 80px;
+	width: 100%;
+	display: flex;
+}
+
+#inputChatting {
+	padding: 3px;
+	font-size: 1.3em;
+	width: 80%;
+	resize: none;
+}
+
+#send {
+	width: 20%;
+}
+
+.my-chat {
+	text-align: right;
+}
+
+.my-chat>p {
+	background-color: yellow;
+}
+
+.chatDate {
+	font-size: 9px;
+}
+
+#exit-area {
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+
+.exit {
+	text-align: center;
+}
+
+.exit>p {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.chat-exit {
+	width: 100%;
+	text-align: center;
+	background-color: black;
+	color: white;
+}

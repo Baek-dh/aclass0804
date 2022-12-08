@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.core.annotation.Order;
+
 // 필터 등록 + 필터링할 주소 매핑
-@WebFilter(filterName = "loginFilter", // 필터 이름, 필터가 여러개 존재할 때 순서 지정 시 사용
-		   urlPatterns = {"/member/myPage/*", "/member/logout"}) // 필터링한 요청 주소(패턴 가능)
+//@WebFilter(filterName = "loginFilter", // 필터 이름, 필터가 여러개 존재할 때 순서 지정 시 사용
+//		   urlPatterns = {"/member/myPage/*", "/member/logout"}) // 필터링한 요청 주소(패턴 가능)
 public class LoginFilter implements Filter {
 
 	public void init(FilterConfig fConfig) throws ServletException {
@@ -28,6 +30,7 @@ public class LoginFilter implements Filter {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		System.out.println("로그인필터");
 		
 		// 필터는 클라이언트의 요청이 되자마자
 		// 또는 응답이 되기 직전에 필터링 코드를 추가할 수 있는 기능
@@ -48,7 +51,6 @@ public class LoginFilter implements Filter {
 			// 연결된 다음 필터로 이동(없으면 Servlet / JSP로 이동)
 			chain.doFilter(request, response);
 		}
-		
 		
 		
 	}

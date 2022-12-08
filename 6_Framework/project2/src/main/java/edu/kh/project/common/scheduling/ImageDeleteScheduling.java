@@ -73,7 +73,7 @@ public class ImageDeleteScheduling {
 	// org.slf4j.LoggerFactory
 	private Logger logger = LoggerFactory.getLogger(ImageDeleteScheduling.class);
 	
-	@Scheduled(cron = "0 * * * * *") // 매 분 0초마다
+	@Scheduled(cron = "0 0 * * * *") // 매 분 0초마다
 	public void deleteImageFile() {
 //		System.out.println("0초마다 출력");
 		

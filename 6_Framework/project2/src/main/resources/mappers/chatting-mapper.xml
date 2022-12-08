@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="chattingMapper">
+
+	<resultMap type="ChattingRoom" id="chattingRoom_rm">
+		<id property="chattingNo" column="CHATTING_NO" />
+
+		<result property="lastMessage" column="LAST_MESSAGE" />
+		<result property="sendTime" column="SEND_TIME" />
+		<result property="targetNo" column="TARGET_NO" />
+		<result property="targetNickName" column="TARGET_NICKNAME" />
+		<result property="targetProfile" column="TARGET_PROFILE" />
+		<result property="notReadCount" column="NOT_READ_COUNT" />
+	</resultMap>
+
+	<resultMap type="Message" id="message_rm">
+		<id property="messageNo" column="MESSAGE_NO" />
+
+		<result property="messageContent" column="MESSAGE_CONTENT" />
+		<result property="readFlag" column="READ_FL" />
+		<result property="senderNo" column="SENDER_NO" />
+		<result property="chattingNo" column="CHATTING_NO" />
+		<result property="sendTime" column="SEND_TIME" />
+	</resultMap>
+
+
+	<!-- 채팅 확인 -->
+	<select id="checkChattingNo" resultType="_int">
+		SELECT NVL(SUM(CHATTING_NO),0) CHATTING_NO 
+		FROM CHATTING_ROOM
+		WHERE (OPEN_MEMBER = #{loginMemberNo} AND PARTICIPANT = #{targetNo})
+		OR (OPEN_MEMBER = #{targetNo} AND PARTICIPANT = #{loginMemberNo})
+	</select>
+	
+	
+	<!-- 채팅방 생성 -->
+	<insert id="createChattingRoom" parameterType="map" useGeneratedKeys="true">
+	
+		<selectKey keyProperty="chattingNo" order="BEFORE" resultType="_int">
+			SELECT SEQ_ROOM_NO.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO CHATTING_ROOM
+		VALUES(#{chattingNo}, DEFAULT, #{loginMemberNo}, #{targetNo})
+	</insert>
+
+
+	<!-- 참여중인 채팅방 목록 조회 -->
+	<select id="selectRoomList" resultMap="chattingRoom_rm">
+		SELECT CHATTING_NO
+			,(SELECT MESSAGE_CONTENT FROM (
+				SELECT * FROM MESSAGE M2
+				WHERE M2.CHATTING_NO = R.CHATTING_NO
+				ORDER BY MESSAGE_NO DESC) 
+				WHERE ROWNUM = 1) LAST_MESSAGE
+			,TO_CHAR(NVL((SELECT MAX(SEND_TIME) SEND_TIME 
+					FROM MESSAGE M
+					WHERE R.CHATTING_NO  = M.CHATTING_NO), CH_CREATE_DATE), 
+					'YYYY.MM.DD') SEND_TIME
+			,NVL2((SELECT OPEN_MEMBER FROM CHATTING_ROOM R2
+				WHERE R2.CHATTING_NO = R.CHATTING_NO
+				AND R2.OPEN_MEMBER = #{memberNo}),
+				R.PARTICIPANT,
+				R.OPEN_MEMBER
+				) TARGET_NO	
+			,NVL2((SELECT OPEN_MEMBER FROM CHATTING_ROOM R2
+				WHERE R2.CHATTING_NO = R.CHATTING_NO
+				AND R2.OPEN_MEMBER = #{memberNo}),
+				(SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NO = R.PARTICIPANT),
+				(SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NO = R.OPEN_MEMBER)
+				) TARGET_NICKNAME	
+			,NVL2((SELECT OPEN_MEMBER FROM CHATTING_ROOM R2
+				WHERE R2.CHATTING_NO = R.CHATTING_NO
+				AND R2.OPEN_MEMBER = #{memberNo}),
+				(SELECT PROFILE_IMG FROM MEMBER WHERE MEMBER_NO = R.PARTICIPANT),
+				(SELECT PROFILE_IMG FROM MEMBER WHERE MEMBER_NO = R.OPEN_MEMBER)
+				) TARGET_PROFILE
+			,(SELECT COUNT(*) FROM MESSAGE M WHERE M.CHATTING_NO = R.CHATTING_NO AND READ_FL = 'N' AND SENDER_NO != #{memberNo}) NOT_READ_COUNT
+			,(SELECT MAX(MESSAGE_NO) SEND_TIME FROM MESSAGE M WHERE R.CHATTING_NO  = M.CHATTING_NO) MAX_MESSAGE_NO
+		FROM CHATTING_ROOM R
+		WHERE OPEN_MEMBER = #{memberNo}
+		OR PARTICIPANT = #{memberNo}
+		ORDER BY MAX_MESSAGE_NO DESC NULLS LAST
+	</select>
+
+
+	<!-- 채팅 메세지 삽입 -->
+	<insert id="insertMessage">
+		INSERT INTO "MESSAGE"
+		VALUES(SEQ_MESSAGE_NO.NEXTVAL, #{messageContent}, DEFAULT, DEFAULT, #{senderNo}, #{chattingNo})
+	</insert>
+	
+	
+	<!-- 채팅 메세지 중 내가 보내지 않은 글을 읽음으로 표시 -->
+	<update id="updateReadFlag">
+		UPDATE "MESSAGE" SET
+		READ_FL = 'Y'
+		WHERE CHATTING_NO = #{chattingNo}
+		AND SENDER_NO != #{memberNo}
+	</update>
+
+	<!-- 채팅방 메세지 조회 -->
+	<select id="selectMessageList" resultMap="message_rm">
+		SELECT MESSAGE_NO, MESSAGE_CONTENT, READ_FL, SENDER_NO, CHATTING_NO,
+		TO_CHAR(SEND_TIME, 'YYYY.MM.DD HH24:MI') SEND_TIME 
+		FROM MESSAGE
+		WHERE CHATTING_NO  = #{chattingNo}
+		ORDER BY MESSAGE_NO
+	</select>
+
+
+
+
+
+</mapper>

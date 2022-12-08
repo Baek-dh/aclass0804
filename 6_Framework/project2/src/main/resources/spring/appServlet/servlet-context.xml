@@ -6,7 +6,9 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:task="http://www.springframework.org/schema/task"
 	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
@@ -85,6 +87,19 @@
 	<aop:aspectj-autoproxy/>	
 	
 	
+	<beans:bean id="chatHandler" class="edu.kh.project.chatting.model.websocket.ChattingWebsocketHandler"/>
+	<websocket:handlers>
+		<!-- websocket 매핑 주소 -->
+		<websocket:mapping handler="chatHandler" path="/chattingSock"/>
+		
+		<websocket:handshake-interceptors> 
+			<!-- interceptor : http통신에서 request, response를 가로채는 역할
+			handshake-interceptors :Httpsession에 있는 값을 가로채서 WebSocketSession 넣어주는 역할  -->
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+		
+		<websocket:sockjs/>
+	</websocket:handlers> 
 	
 	
 	

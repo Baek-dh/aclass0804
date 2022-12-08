@@ -264,7 +264,6 @@ public class BoardController {
 		
 		String message = null;
 		String path = null;
-		
 		if(result > 0) {
 			// 성공 시  : "삭제되었습니다" 메세지 전달
 			// 해당 게시판 목록 1페이지로 리다이렉트
